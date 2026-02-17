@@ -1,0 +1,180 @@
+.btn-primary{
+    background-color: #cc8800 !important;
+}
+.login-content, .product-category{
+	background-image: url("/online-shop/assets/images/bg.jpg");
+	background-size: 100% 100%;
+}
+.login-img{
+	height: 100%;
+	max-width: 100%;
+	display: block;
+	margin: auto;
+	position: relative;
+	right: -10px;
+}
+.login-section{
+	padding-top: 100px;
+	padding-bottom: 100px;
+}
+.login-section span{
+	color: #cc8800;
+	font-family: "Lucida Handwriting", cursive;
+	font-size: 30px; 
+}
+.login-section H1{
+	font-family: Georgia, serif;
+	font-weight: bold;
+	color: #6d6e72;
+}
+.landing-card .card-block .btn-lg, .login-section .btn{
+	border-radius: 20px;
+	padding: 5px 40px !important;
+	font-size: 17px !important;
+}
+.user-credential{
+	border-style: solid;
+	border-color: gray;
+	border-width: thin;
+}
+.user-credential.active{
+	border-left-color: #cc8800;
+	border-left-width: 1em;
+}
+.user-credential label{
+	color: #c3c2c6;
+	margin-left: 10px;
+}
+.client{
+	background-image: url("/online-shop/assets/images/home-img.jpg");
+	background-size: 100% 100%;
+}
+.client-home-nav{
+	background-color: #cc8800;
+    border-radius: 20px;
+    color: #cc8800 !important;
+	padding-top: 2%;
+	padding-left: 2%;
+	padding-bottom: 7%;
+	margin-top: 2%;
+	margin-left: 4%;
+	box-shadow: 5px 5px 10px rgba(0, 0, 0, 1.0);
+}
+.nav-section{
+	margin-top: 18%;
+	margin-bottom: 16%;
+}
+.category-img{
+	width: 80%;
+	height: 60%;
+	margin-bottom: 8%;
+}
+.product-category{
+	font-family: "Lucida Handwriting", cursive;
+	color: #000000;
+	font-size: 30px;
+}
+.product-category img:not(.categoty-name){
+	border-radius: 20px;
+	box-shadow: 5px 5px 10px rgba(0, 0, 0, 1.0);
+}
+.category-section{
+	margin-top: 16%;
+	margin-bottom: 5%;
+}
+[class*=sidebar-dark-]{
+	background-color: #cc8800;
+}
+.navbar-white{
+	background-color: #ffdd99;
+}
+.navbar-light .navbar-nav .nav-link{
+	color: #fff;
+}
+.product-sub-category{
+	background-image: url("/online-shop/assets/images/BELLISIMA-BG.jpg");
+	color: #fff;
+	/* background-size: 100% 100%; */
+}
+.product-sub-category .col-sub-category{
+	margin-top: 3%;
+}
+.hr-lines {
+	display: flex;
+	flex-direction: row;
+ }
+ .hr-lines:before,
+ .hr-lines:after {
+	content: "";
+	flex: 1 1;
+	border-bottom: 1px solid #fff;
+	margin: auto 1%;
+ }
+ .variety-img{
+	width: 60%;
+	height: 60%;
+
+	/* width: 200px; */
+    /* height: 200px; */
+	/* margin-bottom: 8%; */
+ }
+
+ .variety-section select, .variety .btn{
+	background-color: #cc8800;
+ }
+ .variety .btn{
+	color: #fff;
+	padding: 0px 20px;
+	border-radius: 15px;
+	font-size: 12px;
+ }
+ .variety-section select, .ordered-quantity{
+	margin-bottom: 1%;
+ }
+ .variety-section select{
+	padding: 0px 30px;
+	font-size: 12px;
+ }
+ .variety-section .variety{
+	margin-top: 3%;
+ }
+ .ordered-quantity input{
+	text-align:center;
+	width: 7ch;
+	color: #cc8800;
+	font-size: 14px;
+	font-weight: bold;
+ }
+.ordered-quantity button, .cart-card a{
+	background-color: transparent;
+	color: #cc8800;
+	border: none;
+}
+.user-panel img {
+	margin: 2rem 0rem;
+    width: 3.1rem !important;
+}
+.variety-section .variety-name{
+	font-size: larger;
+}
+.media input{
+	text-align:center;
+	width: 5ch;
+	color: #cc8800;
+	font-size: 14px;
+	font-weight: bold;
+}
+.btn-checkout{
+	background-color: #cc8800 !important;
+	color: #fff !important;
+}
+.cart-header{
+	padding: .5rem 1rem;
+	font-size: 1.5rem;
+}
+#variety-alternative{
+	color: #000000;
+}
+.bunch-img{
+	width: 60px
+}
