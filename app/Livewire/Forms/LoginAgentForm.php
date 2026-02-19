@@ -9,18 +9,10 @@ use Illuminate\Support\Str;
 use Illuminate\Validation\ValidationException;
 use Livewire\Attributes\Validate;
 use Livewire\Form;
-use App\Models\Client;
+use App\Models\User;
 use Illuminate\Support\Facades\Hash;
 
-/**
- * Configure Auth Settings in config/auth.php (define a new provider for your Clients and a new guard that uses that provider)
- * Ensure your Client model extends Authenticatable
- * Explicitly tell Laravel to use the client guard, not unless it uses the default
- * Accessing the Authenticated User (For Agents: Auth::guard('web')->user(); or simply auth()->user();
- * For Customers: Auth::guard('client')->user();)
- */
-
-class LoginForm extends Form
+class LoginAgentForm extends Form
 {
     // #[Validate('required|string|email')]
     #[Validate('required|string')]
@@ -41,8 +33,7 @@ class LoginForm extends Form
     {
         $this->ensureIsNotRateLimited();
 
-        $credentials = $this->only('Code', 'password');
-        if (!Auth::guard('clients')->attempt($credentials)) {
+        if (! Auth::attempt($this->only(['usercode', 'password']), $this->remember)) {
             RateLimiter::hit($this->throttleKey());
             toastr()->error('Invalid username or password', 'Sorry', ['positionClass' => 'toast-top-center']);
             throw ValidationException::withMessages([

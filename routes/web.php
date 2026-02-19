@@ -50,6 +50,7 @@ use App\Mail\OrderNotification;
 Route::get('/', [HomeController::class, 'index']);
 Route::get('/dashboard', [HomeController::class, 'dashboard']);
 Route::get('/logout', [HomeController::class, 'logout']);
+// Route::get('/login-agent', [HomeController::class, 'loginAgent']);
 Route::get('/guest', [HomeController::class, 'guest']);
 Route::get('/sub-category/{categoryName}', [SubCategoryController::class, 'subCategory']);
 Route::get('/variety/{subCategory}', [SubCategoryController::class, 'variety']);

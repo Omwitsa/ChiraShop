@@ -40,6 +40,11 @@ return [
             'driver' => 'session',
             'provider' => 'users',
         ],
+        // Add the client guard here
+        'clients' => [
+            'driver' => 'session',
+            'provider' => 'client',
+        ],
     ],
 
     /*
@@ -69,6 +74,11 @@ return [
         //     'driver' => 'database',
         //     'table' => 'users',
         // ],
+        // Add the client provider here
+        'client' => [
+            'driver' => 'eloquent',
+            'model' => App\Models\Client::class,
+        ],
     ],
 
     /*

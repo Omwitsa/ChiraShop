@@ -27,7 +27,7 @@ new #[Layout('layouts.guest')] class extends Component
         //     toastr()->error('Your account is inactive, Kindly contact admin', 'Sorry', ['positionClass' => 'toast-top-center']);
         //     $this->redirect('/login', navigate: true);
         // }
-        
+
         $this->form->authenticate();
         Session::regenerate();
         toastr()->success('Logged in successfully', 'Congrats', ['positionClass' => 'toast-top-center']);
@@ -45,26 +45,32 @@ new #[Layout('layouts.guest')] class extends Component
         <H1>LOVE THE BEAUTY</H1><br>
 
         <form wire:submit="login" autocomplete="off">
-                    <div class="user-credential active">
-                        <label>UserName</label>
-                        <input wire:model="form.usercode" name="usercode" type="text" class="form-control form-control-border border-width-2" placeholder="Username" autocomplete="off" required autofocus>
-                        <x-input-error :messages="$errors->get('usercode')" class="mt-2" />
-                    </div>
+            <div class="user-credential active">
+                <label>UserName</label>
+                <input wire:model="form.usercode" name="usercode" type="text" class="form-control form-control-border border-width-2" placeholder="Username" autocomplete="off" required autofocus>
+                <x-input-error :messages="$errors->get('usercode')" class="mt-2" />
+            </div>
 
-                    <div class="user-credential">
-                        <label>Password</label>
-                        <input wire:model="form.password" name="password" type="password" class="form-control form-control-border border-width-2" placeholder="**********" autocomplete="off" required>
-                        <x-input-error :messages="$errors->get('password')" class="mt-2" />
-                    </div><br><br>
+            <div class="user-credential">
+                <label>Password</label>
+                <input wire:model="form.password" name="password" type="password" class="form-control form-control-border border-width-2" placeholder="**********" autocomplete="off" required>
+                <x-input-error :messages="$errors->get('password')" class="mt-2" />
+            </div>
 
-                    <div class="row m-t-30">
-                        <div class="col-md-12">
-                            <x-primary-button class="btn btn-primary">
-                                {{ __('Login') }}
-                            </x-primary-button>
-                        </div>
-                    </div>
-                </form>
+            <div>
+                <a href="{{env('APP_ROOT')}}login-agent">
+                    <p>Am an agent</p>
+                </a>
+            </div><br><br>
+
+            <div class="row m-t-30">
+                <div class="col-md-12">
+                    <x-primary-button class="btn btn-primary">
+                        {{ __('Login') }}
+                    </x-primary-button>
+                </div>
+            </div>
+        </form>
     </div>
 
     {{-- <div class="col-sm-6">
