@@ -24,7 +24,7 @@ class LoginForm extends Form
 {
     // #[Validate('required|string|email')]
     #[Validate('required|string')]
-    public string $usercode = '';
+    public string $Code = '';
 
     #[Validate('required|string')]
     public string $password = '';
@@ -46,7 +46,7 @@ class LoginForm extends Form
             RateLimiter::hit($this->throttleKey());
             toastr()->error('Invalid username or password', 'Sorry', ['positionClass' => 'toast-top-center']);
             throw ValidationException::withMessages([
-                'form.usercode' => trans('auth.failed'),
+                'form.Code' => trans('auth.failed'),
             ]);
         }
 
@@ -66,7 +66,7 @@ class LoginForm extends Form
         $seconds = RateLimiter::availableIn($this->throttleKey());
 
         throw ValidationException::withMessages([
-            'form.usercode' => trans('auth.throttle', [
+            'form.Code' => trans('auth.throttle', [
                 'seconds' => $seconds,
                 'minutes' => ceil($seconds / 60),
             ]),
@@ -78,6 +78,6 @@ class LoginForm extends Form
      */
     protected function throttleKey(): string
     {
-        return Str::transliterate(Str::lower($this->usercode).'|'.request()->ip());
+        return Str::transliterate(Str::lower($this->Code).'|'.request()->ip());
     }
 }

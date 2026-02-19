@@ -19,7 +19,7 @@ new #[Layout('layouts.guest')] class extends Component
     {
         $this->validate();
         // $isInactive = DB::table('client')
-        //     ->where('ClientCode', $this->form->usercode)
+        //     ->where('ClientCode', $this->form->Code)
         //     ->where('Category', 'Inactive')
         //     ->exists();
 
@@ -47,8 +47,8 @@ new #[Layout('layouts.guest')] class extends Component
         <form wire:submit="login" autocomplete="off">
             <div class="user-credential active">
                 <label>UserName</label>
-                <input wire:model="form.usercode" name="usercode" type="text" class="form-control form-control-border border-width-2" placeholder="Username" autocomplete="off" required autofocus>
-                <x-input-error :messages="$errors->get('usercode')" class="mt-2" />
+                <input wire:model="form.Code" name="Code" type="text" class="form-control form-control-border border-width-2" placeholder="Username" autocomplete="off" required autofocus>
+                <x-input-error :messages="$errors->get('Code')" class="mt-2" />
             </div>
 
             <div class="user-credential">
