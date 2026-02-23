@@ -16,6 +16,7 @@ class Client extends Authenticatable
         'Name',
         'Code',
         'Type',
+        'group',
         'EmailRecepients',
         'DropOff',
         'Country',
@@ -23,6 +24,8 @@ class Client extends Authenticatable
         'Currency',
         'password',
         'active',
+        'personnel',
+        'DateCreated',
     ];
 
     protected $hidden = ['password', 'remember_token'];

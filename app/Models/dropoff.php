@@ -12,5 +12,7 @@ class dropoff extends Model
     protected $fillable = [
         'name',
         'active',
+        'personnel',
+        'DateCreated',
     ];
 }

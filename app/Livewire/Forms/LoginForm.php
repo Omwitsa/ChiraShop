@@ -17,7 +17,7 @@ use Illuminate\Support\Facades\Hash;
  * Ensure your Client model extends Authenticatable
  * Explicitly tell Laravel to use the client guard, not unless it uses the default
  * Accessing the Authenticated User (For Agents: Auth::guard('web')->user(); or simply auth()->user();
- * For Customers: Auth::guard('client')->user();)
+ * For Customers: Auth::guard('clients')->user();)
  */
 
 class LoginForm extends Form

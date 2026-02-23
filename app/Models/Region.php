@@ -12,5 +12,7 @@ class Region extends Model
     protected $fillable = [
         'name',
         'active',
+        'personnel',
+        'DateCreated',
     ];
 }

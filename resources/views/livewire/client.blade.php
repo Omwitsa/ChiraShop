@@ -37,6 +37,7 @@
                                     <th>Name</th>
                                     <th>Code</th>
                                     <th>Type</th>
+                                    <th>Group</th>
                                     <th>Drop Off</th>
                                     <th>Currency</th>
                                     <th></th>
@@ -50,6 +51,7 @@
                                         <td>{{ $client->Name }}</td>
                                         <td>{{ $client->Code }}</td>
                                         <td>{{ $client->Type }}</td>
+                                        <td>{{ $client->group }}</td>
                                         <td>{{ $client->DropOff }}</td>
                                         <td>{{ $client->Currency }}</td>
                                         <td>

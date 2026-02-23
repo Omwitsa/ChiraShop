@@ -31,7 +31,7 @@ new #[Layout('layouts.guest')] class extends Component
         $this->form->authenticate();
         Session::regenerate();
         toastr()->success('Logged in successfully', 'Congrats', ['positionClass' => 'toast-top-center']);
-        $this->redirect(env('APP_ROOT').'dashboard');
+        $this->redirect(env('APP_ROOT').'client-dashboard');
     }
 }; ?>
 
@@ -59,7 +59,7 @@ new #[Layout('layouts.guest')] class extends Component
 
             <div>
                 <a href="{{env('APP_ROOT')}}login-agent">
-                    <p>Am an agent</p>
+                    <p>I'm an agent</p>
                 </a>
             </div><br><br>
 

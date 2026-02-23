@@ -49,6 +49,7 @@ use App\Mail\OrderNotification;
 // Route::get('/', 'HomeController@index');
 Route::get('/', [HomeController::class, 'index']);
 Route::get('/dashboard', [HomeController::class, 'dashboard']);
+Route::get('/client-dashboard', [HomeController::class, 'clientDashboard']);
 Route::get('/logout', [HomeController::class, 'logout']);
 // Route::get('/login-agent', [HomeController::class, 'loginAgent']);
 Route::get('/guest', [HomeController::class, 'guest']);

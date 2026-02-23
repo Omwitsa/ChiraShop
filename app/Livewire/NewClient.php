@@ -21,6 +21,7 @@ class NewClient extends Component
     public string $Name = '';
     public string $Code = '';
     public string $Type = '';
+    public string $group = '';
     public string $EmailRecepients = '';
     public string $DropOff = '';
     public string $Country = '';
@@ -45,6 +46,7 @@ class NewClient extends Component
             'Name' => ['required', 'string', 'max:255'],
             'Code' => ['required', 'string', 'max:50'],
             'Type' => ['required', 'string', 'max:50'],
+            'group' => ['required', 'string', 'max:50'],
             'DropOff' => ['required', 'string', 'max:255'],
             'EmailRecepients' => ['string'],
             'Country' => ['required', 'string', 'max:50'],

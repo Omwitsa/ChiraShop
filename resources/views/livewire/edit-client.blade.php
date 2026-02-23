@@ -41,14 +41,15 @@
                             </div>
 
                             <div class="form-group row">
-                                <label class="col-xs-12 col-sm-2 col-form-label">Type</label>
+                                <label class="col-xs-12 col-sm-2 col-form-label">Group</label>
                                 <div class="col-xs-12 col-sm-4">
-                                    <select wire:model="Type" class="form-control" required>
+                                    <select wire:model="group" class="form-control" required>
                                         <option disabled value=""></option>
-                                        <option value="Retailer">Retailer</option>
-                                        <option value="Wholesaler">Wholesaler</option>
+                                        @foreach(\App\Constants\Enums\ClientGroups::cases() as $group)
+                                            <option value="{{ $group->value }}">{{ $group->name }}</option>
+                                        @endforeach
                                     </select>
-                                    <x-input-error :messages="$errors->get('Type')" class="mt-2" />
+                                    <x-input-error :messages="$errors->get('group')" class="mt-2" />
                                 </div>
 
                                <label class="col-xs-12 col-sm-2 col-form-label">Drop Off</label>
@@ -78,6 +79,16 @@
                             </div>
 
                             <div class="form-group row">
+                                <label class="col-xs-12 col-sm-2 col-form-label">Type</label>
+                                <div class="col-xs-12 col-sm-4">
+                                    <select wire:model="Type" class="form-control" required>
+                                        <option disabled value=""></option>
+                                        <option value="Retailer">Retailer</option>
+                                        <option value="Wholesaler">Wholesaler</option>
+                                    </select>
+                                    <x-input-error :messages="$errors->get('Type')" class="mt-2" />
+                                </div>
+
                                 <label class="col-xs-12 col-sm-2 col-form-label">Country</label>
                                 <div class="col-xs-12 col-sm-4">
                                     <select wire:model="Country" class="form-control">
@@ -88,7 +99,9 @@
                                     </select>
                                     <x-input-error :messages="$errors->get('DropOff')" class="mt-2" />
                                 </div>
+                            </div>
 
+                            <div class="form-group row">
                                 <label class="col-xs-12 col-sm-2 col-form-label">Email Recepients</label>
                                 <div class="col-xs-12 col-sm-4">
                                     <textarea wire:model="EmailRecepients" name="EmailRecepients" rows="3" class="form-control"></textarea>
