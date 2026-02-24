@@ -41,6 +41,7 @@ use App\Livewire\ClientHome;
 use App\Livewire\CategoryComponent;
 use App\Livewire\SubCategoryComponent;
 use App\Livewire\Checkout;
+use App\Livewire\Client\ClientOrders;
 
 use App\Models\OrderHeader;
 use App\Mail\OrderNotification;
@@ -103,6 +104,7 @@ Route::get('/new-packrate', NewPackRate::class);
 Route::get('/order-summary', OrderSummery::class); 
 Route::get('/sub-category-component/{category}', SubCategoryComponent::class); 
 Route::get('/checkout', Checkout::class); 
+Route::get('/client-orders', ClientOrders::class); 
 
 
 // Route for mailing

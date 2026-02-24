@@ -74,23 +74,11 @@ class HomeController extends Controller
             ]);
         }
 
-        // if(auth()->user()->role === 'Foreign') {
-        //     // $categories = DB::table('categories')
-        //     //     ->orderBy('id', 'desc')
-        //     //     ->get();
-        //     // foreach ($categories as $key => $value) {
-        //     //     $category = (object) $value;
-        //     //     $category->param = Str::lower(Str::replace(' ', '-', $category->name));
-        //     // }
+        if(Auth::guard('clients')->user()->group === 'Fearless') {
+            return view('fearless-dashboard');
+        }
 
-        //     // return view('category')->with([
-        //     //     'categories' => $categories
-        //     // ]);
-
-        //     return redirect('client-home');
-        // }
-
-        return view('local-dashboard');
+        return view('general-dashboard');
     }
 
     public function guest() {

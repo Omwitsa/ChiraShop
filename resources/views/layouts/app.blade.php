@@ -11,7 +11,13 @@
             @include('shared.local-sidebar')
         @endif
     @elseif(auth()->guard('clients')->check())
-        @include('shared.golfers-sidebar')
+        @if(auth()->guard('clients')->user()->group === 'Golfers')
+            @include('shared.golfers-sidebar')
+        @elseif(auth()->guard('clients')->user()->group === 'Fearless')
+            @include('shared.Fearless-sidebar')
+        @else
+            @include('shared.general-sidebar')
+        @endif
     @else
         <script>window.location = "/logout";</script>
     @endif

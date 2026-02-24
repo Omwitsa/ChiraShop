@@ -11,7 +11,7 @@
                 <img src="{{env('APP_ROOT')}}assets/images/icons/logo.png" alt="User Image">
             </div>
             <div class="info">
-                <!-- <a href="{{env('APP_ROOT')}}" class="d-block">{{auth()->user()->usercode}}</a> -->
+                <!-- <a href="{{env('APP_ROOT')}}" class="d-block">{{auth()->guard('clients')->user()->Code}}</a> -->
             </div>
         </div>
 
