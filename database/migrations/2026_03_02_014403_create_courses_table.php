@@ -11,12 +11,12 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('dropoffs', function (Blueprint $table) {
+        Schema::create('courses', function (Blueprint $table) {
             $table->id();
             $table->string('name', length: 100)->unique();
             $table->boolean('active')->default(true);
             $table->string('personnel', length: 50)->default('');
-            $table->dateTime('DateCreated')->default(date('Y-m-d', time()));
+            $table->dateTime('dateCreated')->default(date('Y-m-d', time()));
             $table->timestamps();
         });
     }
@@ -26,6 +26,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('dropoffs');
+        Schema::dropIfExists('courses');
     }
 };

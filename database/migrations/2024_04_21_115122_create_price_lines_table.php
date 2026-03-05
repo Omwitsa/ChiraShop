@@ -15,19 +15,11 @@ return new class extends Migration
             $table->id();
             $table->foreignId('price_header_id')->constrained();
             $table->string('variety', length: 100);
-            $table->decimal('len35', total: 8, places: 2);
-            $table->decimal('len40', total: 8, places: 2);
-            $table->decimal('len50', total: 8, places: 2);
-            $table->decimal('len60', total: 8, places: 2);
-            $table->decimal('len70', total: 8, places: 2);
-            $table->decimal('len80', total: 8, places: 2);
-            $table->decimal('len90', total: 8, places: 2);
-            $table->decimal('len100', total: 8, places: 2);
+            $table->decimal('price', total: 8, places: 2);
 
             $table->timestamps();
         });
     }
-
 
     /**
      * Reverse the migrations.

@@ -10,9 +10,11 @@ class PriceHeader extends Model
 {
     use HasFactory;
     protected $fillable = [
-        'Name',
-        'Currency',
+        'name',
+        'currency',
         'active',
+        'personnel',
+        'dateCreated',
     ];
 
     public function priceLines(): HasMany

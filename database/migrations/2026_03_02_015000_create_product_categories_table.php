@@ -11,14 +11,13 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('sub_categories', function (Blueprint $table) {
+        Schema::create('product_categories', function (Blueprint $table) {
             $table->id();
-            $table->string('Name', length: 50);
-            $table->string('HeadSize', length: 20);
-            $table->string('Category', length: 100);
-            $table->boolean('active')->default(true);
+            $table->string('name', length: 100)->unique();
             $table->string('picUrl');
-            $table->integer('MinimumOrder')->default(0);
+            $table->boolean('active')->default(true);
+            $table->string('personnel', length: 50)->default('');
+            $table->dateTime('dateCreated')->default(date('Y-m-d', time()));
             $table->timestamps();
         });
     }
@@ -28,6 +27,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('sub_categories');
+        Schema::dropIfExists('product_categories');
     }
 };

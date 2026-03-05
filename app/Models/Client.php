@@ -10,23 +10,26 @@ class Client extends Authenticatable
 {
     use HasFactory, Notifiable;
 
-    protected $table = 'client';
+    protected $table = 'clients';
 
     protected $fillable = [
-        'Name',
-        'Code',
-        'Type',
+        'name',
+        'code',
+        'type',
         'group',
-        'EmailRecepients',
-        'DropOff',
-        'Country',
-        'Price',
-        'Currency',
+        'emailRecepients',
+        'price',
+        'currency',
         'password',
         'active',
         'personnel',
-        'DateCreated',
+        'dateCreated',
     ];
 
     protected $hidden = ['password', 'remember_token'];
+
+    public function profile()
+    {
+        return $this->hasOne(Profile::class);
+    }
 }

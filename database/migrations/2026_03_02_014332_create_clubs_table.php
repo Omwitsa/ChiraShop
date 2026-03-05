@@ -11,14 +11,12 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('categories', function (Blueprint $table) {
+        Schema::create('clubs', function (Blueprint $table) {
             $table->id();
             $table->string('name', length: 100)->unique();
-            $table->string('farm', length: 100);
             $table->boolean('active')->default(true);
-            $table->string('picUrl');
-            $table->string('nameUrl')->default('');
-            $table->integer('MinimumOrder')->default(0);
+            $table->string('personnel', length: 50)->default('');
+            $table->dateTime('dateCreated')->default(date('Y-m-d', time()));
             $table->timestamps();
         });
     }
@@ -28,6 +26,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('categories');
+        Schema::dropIfExists('clubs');
     }
 };

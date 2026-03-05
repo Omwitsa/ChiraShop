@@ -17,7 +17,7 @@ use Illuminate\Support\Facades\Hash;
  * Ensure your Client model extends Authenticatable
  * Explicitly tell Laravel to use the client guard, not unless it uses the default
  * Accessing the Authenticated User (For Agents: Auth::guard('web')->user(); or simply auth()->user();
- * For Customers: Auth::guard('clients')->user();)
+ * For Customers: Auth::guard('client')->user();)
  */
 
 class LoginForm extends Form
@@ -42,7 +42,7 @@ class LoginForm extends Form
         $this->ensureIsNotRateLimited();
 
         $credentials = $this->only('Code', 'password');
-        if (!Auth::guard('clients')->attempt($credentials)) {
+        if (!Auth::guard('client')->attempt($credentials)) {
             RateLimiter::hit($this->throttleKey());
             toastr()->error('Invalid username or password', 'Sorry', ['positionClass' => 'toast-top-center']);
             throw ValidationException::withMessages([

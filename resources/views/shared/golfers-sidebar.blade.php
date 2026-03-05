@@ -33,7 +33,7 @@
                 <li class="nav-item">
                     <a href="{{env('APP_ROOT')}}client-orders" class="nav-link">
                         <i class="nav-icon fas fa-tachometer-alt"></i>
-                        <p>Orders</p>
+                        <p>Shop</p>
                     </a>
                 </li>
                 

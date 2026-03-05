@@ -23,7 +23,7 @@ class User extends Authenticatable
         'active',
         'role',
         'personnel',
-        'DateCreated',
+        'dateCreated',
     ];
 
     /**

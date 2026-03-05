@@ -13,17 +13,16 @@ return new class extends Migration
     {
         Schema::create('orderheader', function (Blueprint $table) {
             $table->id();
-            $table->bigInteger('ClientId');
-            $table->dateTime('DateCreated');
-            $table->date('ReceivingDate');
-            $table->string('LpoNo', length: 50);
-            $table->integer('Status');
-            $table->string('Farm', length: 100);
-            $table->integer('Type');
-            $table->integer('IsSendEmail');
+            $table->bigInteger('client');
+            $table->date('receivingDate');
+            $table->string('lpo', length: 50);
+            $table->integer('status');
+            $table->integer('isSendEmail');
             $table->string('confirmUrl');
-            $table->integer('DropOffId');
-            $table->integer('IsTransferred');
+            $table->integer('dropOffId');
+            $table->integer('isTransferred');
+            $table->string('personnel', length: 50)->default('');
+            $table->dateTime('dateCreated')->default(date('Y-m-d', time()));
             $table->timestamps();
         });
     }

@@ -11,10 +11,14 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('client_categories', function (Blueprint $table) {
+        Schema::create('profiles', function (Blueprint $table) {
             $table->id();
-            $table->string('name', length: 100)->unique();
-            $table->boolean('active')->default(true);
+            $table->string('playFrequency', length: 50)->unique();
+            $table->string('club', length: 100)->default('');
+            $table->string('courses', length: 100)->default('');
+            $table->string('dropOff', length: 100)->default('');
+            $table->string('preferredShower', length: 50)->default('');
+            $table->string('kitSize', length: 50)->default('');
             $table->string('personnel', length: 50)->default('');
             $table->dateTime('dateCreated')->default(date('Y-m-d', time()));
             $table->timestamps();
@@ -26,6 +30,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('client_categories');
+        Schema::dropIfExists('profiles');
     }
 };

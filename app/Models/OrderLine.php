@@ -15,23 +15,9 @@ class OrderLine extends Model
 
     protected $fillable = [
         'order_header_id',
-        'VarietyCode',
-        'VarietyName',
-        'subCategory',
-        'category',
-        'Length',
-        'BoxType',
-        'StemQty',
-        'PackRate',
-        'Boxes',
-        'Farm',
-        'BoxMarking',
+        'productCode',
+        'productName',
     ];
-
-    public function orderLineMixedBoxs(): HasMany
-    {
-        return $this->hasMany(OrderLineMixedBox::class);
-    }
 
     public function orderHeader(): BelongsTo
     {

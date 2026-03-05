@@ -11,17 +11,16 @@ class OrderHeader extends Model
     use HasFactory;
     protected $table = 'orderheader';
     protected $fillable = [
-        'ClientId',
-        'DateCreated',
-        'ReceivingDate',
-        'LpoNo',
-        'Status',
-        'Farm',
-        'Type',
-        'IsSendEmail',
+        'client',
+        'receivingDate',
+        'lpo',
+        'status',
+        'isSendEmail',
         'confirmUrl',
-        'DropOffId',
-        'IsTransferred',
+        'dropOff',
+        'isTransferred',
+        'personnel',
+        'dateCreated',
     ];
 
     public function orderLines(): HasMany

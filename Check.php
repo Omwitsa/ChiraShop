@@ -4,3 +4,5 @@ Users -> personnel, active
 
 https://github.com/yoeunes/toastr
 
+
+php artisan make:model Prifile -m

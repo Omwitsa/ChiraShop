@@ -3,7 +3,6 @@
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
-use App\Constants\Enums\ClientGroups;
 
 return new class extends Migration
 {
@@ -11,18 +10,18 @@ return new class extends Migration
      * Run the migrations.
      */
     public function up(): void
-    {// password
-        Schema::create('clients', function (Blueprint $table) {
+    {
+        Schema::create('products', function (Blueprint $table) {
             $table->id();
-            $table->string('name');
-            $table->string('code', length: 50);
-            $table->string('type', length: 50);
-            $table->string('group', length: 50)->default(ClientGroups::GENERAL->value);
-            $table->mediumText('emailRecepients');
-            $table->string('price', length: 100)->default('');
-            $table->string('currency', length: 20)->default('');
-            $table->string('password');
+            $table->string('name', length: 100)->unique(); 
+            $table->string('code', length: 50)->unique();
+            $table->string('category', length: 100);
+            $table->string('barcode', length: 20);
             $table->boolean('active')->default(true);
+            $table->integer('minimumOrder')->default(0);
+            $table->string('picUrl');
+            $table->boolean('inStock')->default(true);
+            $table->boolean('addOn')->default(false);
             $table->string('personnel', length: 50)->default('');
             $table->dateTime('dateCreated')->default(date('Y-m-d', time()));
             $table->timestamps();
@@ -34,6 +33,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('clients');
+        Schema::dropIfExists('products');
     }
 };

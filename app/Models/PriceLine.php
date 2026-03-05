@@ -11,15 +11,8 @@ class PriceLine extends Model
     use HasFactory;
 
     protected $fillable = [
-        'variety',
-        'len35',
-        'len40',
-        'len50',
-        'len60',
-        'len70',
-        'len80',
-        'len90',
-        'len100',
+        'product',
+        'price',
     ];
 
     public function priceHeader(): BelongsTo

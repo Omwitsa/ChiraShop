@@ -21,7 +21,7 @@ return new class extends Migration
             $table->boolean('active')->default(true);
             $table->string('role', length: 50)->default(Roles::BEAUTY->value);
             $table->string('personnel', length: 50)->default('');
-            $table->dateTime('DateCreated')->default(date('Y-m-d', time()));
+            $table->dateTime('dateCreated')->default(date('Y-m-d', time()));
             $table->rememberToken();
             $table->timestamps();
         });

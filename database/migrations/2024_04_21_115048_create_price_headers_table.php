@@ -13,9 +13,11 @@ return new class extends Migration
     {
         Schema::create('price_headers', function (Blueprint $table) {
             $table->id();
-            $table->string('Name', length: 100)->unique();
-            $table->string('Currency', length: 20);
+            $table->string('name', length: 100)->unique();
+            $table->string('currency', length: 20);
             $table->boolean('active')->default(true);
+            $table->string('personnel', length: 50)->default('');
+            $table->dateTime('dateCreated')->default(date('Y-m-d', time()));
             $table->timestamps();
         });
     }

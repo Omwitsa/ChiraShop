@@ -2,15 +2,15 @@
 
 namespace App\Models;
 
-use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class ClientCategory extends Model
+class ProductCategory extends Model
 {
-    use HasFactory;
+    protected $table = 'courses';
 
     protected $fillable = [
         'name',
+        'picUrl',
         'active',
         'personnel',
         'dateCreated',

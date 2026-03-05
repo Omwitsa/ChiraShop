@@ -13,6 +13,6 @@ class Region extends Model
         'name',
         'active',
         'personnel',
-        'DateCreated',
+        'dateCreated',
     ];
 }

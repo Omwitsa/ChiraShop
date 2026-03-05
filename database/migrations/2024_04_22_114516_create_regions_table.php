@@ -16,7 +16,7 @@ return new class extends Migration
             $table->string('name', length: 100)->unique();
             $table->boolean('active')->default(true);
             $table->string('personnel', length: 50)->default('');
-            $table->dateTime('DateCreated')->default(date('Y-m-d', time()));
+            $table->dateTime('dateCreated')->default(date('Y-m-d', time()));
             $table->timestamps();
         });
     }
