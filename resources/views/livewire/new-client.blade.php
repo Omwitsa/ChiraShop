@@ -27,21 +27,21 @@
                         <form wire:submit="creatClient" class="form-material" autocomplete="off">
                             @csrf
                             <div class="form-group row">
-                                <label class="col-xs-12 col-sm-2 col-form-label">Name</label>
+                                <label class="col-xs-12 col-sm-2 col-form-label">Name <span class="required">*</span></label>
                                 <div class="col-xs-12 col-sm-4">
-                                    <input wire:model="Name" name="Name" type="text" class="form-control" autocomplete="off" required>
-                                    <x-input-error :messages="$errors->get('Name')" class="mt-2" />
+                                    <input wire:model="name" name="name" type="text" class="form-control" autocomplete="off" required>
+                                    <x-input-error :messages="$errors->get('name')" class="mt-2" />
                                 </div>
 
-                                <label class="col-xs-12 col-sm-2 col-form-label">Code</label>
+                                <label class="col-xs-12 col-sm-2 col-form-label">Code <span class="required">*</span></label>
                                 <div class="col-xs-12 col-sm-4">
-                                    <input wire:model="Code" name="Code" type="text" class="form-control" autocomplete="off" required>
-                                    <x-input-error :messages="$errors->get('Code')" class="mt-2" />
+                                    <input wire:model="code" name="code" type="text" class="form-control" autocomplete="off" required>
+                                    <x-input-error :messages="$errors->get('code')" class="mt-2" />
                                 </div>
                             </div>
 
                             <div class="form-group row">
-                                <label class="col-xs-12 col-sm-2 col-form-label">Group</label>
+                                <label class="col-xs-12 col-sm-2 col-form-label">Group <span class="required">*</span></label>
                                 <div class="col-xs-12 col-sm-4">
                                     <select wire:model="group" class="form-control" required>
                                         <option disabled value=""></option>
@@ -52,26 +52,25 @@
                                     <x-input-error :messages="$errors->get('group')" class="mt-2" />
                                 </div>
 
-                               <label class="col-xs-12 col-sm-2 col-form-label">Drop Off</label>
+                                <label class="col-xs-12 col-sm-2 col-form-label">Type <span class="required">*</span></label>
                                 <div class="col-xs-12 col-sm-4">
-                                    <select wire:model="DropOff" class="form-control" required>
+                                    <select wire:model="type" class="form-control" required>
                                         <option disabled value=""></option>
-                                        @foreach($dropoffs as $dropoff)
-                                            <option value="{{ $dropoff->name }}">{{ $dropoff->name }}</option>
-                                        @endforeach
+                                        <option value="Retailer">Retailer</option>
+                                        <option value="Wholesaler">Wholesaler</option>
                                     </select>
-                                    <x-input-error :messages="$errors->get('DropOff')" class="mt-2" />
+                                    <x-input-error :messages="$errors->get('type')" class="mt-2" />
                                 </div>
                             </div>
 
                             <div class="form-group row">
-                                <label class="col-xs-12 col-sm-2 col-form-label">Password</label>
+                                <label class="col-xs-12 col-sm-2 col-form-label">Password <span class="required">*</span></label>
                                 <div class="col-xs-12 col-sm-4">
                                     <input  wire:model="password" name="password" type="password" class="form-control" autocomplete="off" required>
                                     <x-input-error :messages="$errors->get('password')" class="mt-2" />
                                 </div>
 
-                                <label class="col-xs-12 col-sm-2 col-form-label">Confirm Password</label>
+                                <label class="col-xs-12 col-sm-2 col-form-label">Confirm Password <span class="required">*</span></label>
                                 <div class="col-xs-12 col-sm-4">
                                     <input wire:model="password_confirmation" name="password_confirmation" type="password" class="form-control" autocomplete="off" required>
                                     <x-input-error :messages="$errors->get('password_confirmation')" class="mt-2" />
@@ -79,33 +78,10 @@
                             </div>
 
                             <div class="form-group row">
-                                <label class="col-xs-12 col-sm-2 col-form-label">Type</label>
-                                <div class="col-xs-12 col-sm-4">
-                                    <select wire:model="Type" class="form-control" required>
-                                        <option disabled value=""></option>
-                                        <option value="Retailer">Retailer</option>
-                                        <option value="Wholesaler">Wholesaler</option>
-                                    </select>
-                                    <x-input-error :messages="$errors->get('Type')" class="mt-2" />
-                                </div>
-
-                                <label class="col-xs-12 col-sm-2 col-form-label">Country</label>
-                                <div class="col-xs-12 col-sm-4">
-                                    <select wire:model="Country" class="form-control">
-                                        <option disabled value=""></option>
-                                        @foreach($countries as $country)
-                                            <option value="{{ $country->name }}">{{ $country->name }}</option>
-                                        @endforeach
-                                    </select>
-                                    <x-input-error :messages="$errors->get('DropOff')" class="mt-2" />
-                                </div>
-                            </div>
-
-                            <div class="form-group row">
                                 <label class="col-xs-12 col-sm-2 col-form-label">Email Recepients</label>
                                 <div class="col-xs-12 col-sm-4">
-                                    <textarea wire:model="EmailRecepients" name="EmailRecepients" rows="3" class="form-control"></textarea>
-                                    <x-input-error :messages="$errors->get('EmailRecepients')" class="mt-2" />
+                                    <input wire:model="emailRecepients" name="emailRecepients" type="text" class="form-control" autocomplete="off">
+                                    <x-input-error :messages="$errors->get('emailRecepients')" class="mt-2" />
                                 </div>
                             </div>
 

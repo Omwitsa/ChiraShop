@@ -15,39 +15,29 @@ use Illuminate\Support\Facades\Hash;
 class EditClient extends Component
 {
     public $client;
-    public $dropoffs;
-    public $countries;
     public $prices;
     public $active;
-    public string $Name = '';
-    public string $Code = '';
-    public string $Type = '';
+    public string $name = '';
+    public string $code = '';
+    public string $type = '';
     public string $group = '';
-    public string $EmailRecepients = '';
-    public string $DropOff = '';
-    public string $Country = '';
-    public string $Price = '';
-    public string $Currency = '';
+    public string $emailRecepients = '';
+    public string $price = '';
+    public string $currency = '';
     public string $password = '';
     public string $password_confirmation = '';
 
     public function mount($id)
     {
-        $this->dropoffs = dropoff::all();
-        // $this->categories = ClientCategory::all();
-        $this->countries = Region::all();
         $this->prices = PriceHeader::all();
-        // $this->packrates = PackRateHeader::all();
         $this->client = Client::find($id);
-        $this->Name = $this->client->Name;
-        $this->Code = $this->client->Code;
-        $this->Type = $this->client->Type;
+        $this->name = $this->client->name;
+        $this->code = $this->client->code;
+        $this->type = $this->client->type;
         $this->group = $this->client->group;
-        $this->EmailRecepients = $this->client->EmailRecepients;
-        $this->DropOff = $this->client->DropOff;
-        $this->Country = $this->client->Country;
-        $this->Price = $this->client->Price;
-        $this->Currency = $this->client->Currency;
+        $this->emailRecepients = $this->client->emailRecepients;
+        $this->price = $this->client->price;
+        $this->currency = $this->client->currency;
         $this->password = $this->client->password;
         $this->password_confirmation = $this->client->password;
         $this->active = $this->client->active === 1;
@@ -60,15 +50,13 @@ class EditClient extends Component
             return;
         }
 
-        $this->client->Name = $this->Name;
-        $this->client->Code = $this->Code;
-        $this->client->Type = $this->Type;
+        $this->client->name = $this->name;
+        $this->client->code = $this->code;
+        $this->client->type = $this->type;
         $this->client->group = $this->group;
-        $this->client->EmailRecepients = $this->EmailRecepients;
-        $this->client->DropOff = $this->DropOff;
-        $this->client->Country = $this->Country;
-        $this->client->Price = $this->Price;
-        $this->client->Currency = $this->Currency;
+        $this->client->emailRecepients = $this->emailRecepients;
+        $this->client->price = $this->price;
+        $this->client->currency = $this->currency;
         $this->client->password = Str::length($this->client->password) > 30 ? $this->password : Hash::make($this->password);
         $this->client->active = $this->active;
         

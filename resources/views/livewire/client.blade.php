@@ -38,7 +38,6 @@
                                     <th>Code</th>
                                     <th>Type</th>
                                     <th>Group</th>
-                                    <th>Drop Off</th>
                                     <th>Currency</th>
                                     <th></th>
                                 </tr>
@@ -48,11 +47,10 @@
                                 @foreach ($clients as $client)
                                     <tr>
                                         <th scope="row">{{ $loop->iteration}}</th>
-                                        <td>{{ $client->Name }}</td>
-                                        <td>{{ $client->Code }}</td>
-                                        <td>{{ $client->Type }}</td>
+                                        <td>{{ $client->name }}</td>
+                                        <td>{{ $client->code }}</td>
+                                        <td>{{ $client->type }}</td>
                                         <td>{{ $client->group }}</td>
-                                        <td>{{ $client->DropOff }}</td>
                                         <td>{{ $client->Currency }}</td>
                                         <td>
                                             <button wire:click="edit({{ $client->id }})" wire:key="{{ $client->id }}" type="button" class="btn btn-primary btn-sm waves-effect waves-light">Edit</button>|
