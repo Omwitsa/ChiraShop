@@ -5,7 +5,7 @@ namespace App\Livewire;
 use Livewire\Component;
 use App\Models\Client;
 
-class ClientComponent extends Component
+class ClientList extends Component
 {
     public $clients;
     public function mount()
@@ -26,7 +26,7 @@ class ClientComponent extends Component
 
     public function render()
     {
-        return view('livewire.client')->with([
+        return view('livewire.client-list')->with([
             'clients' => $this->clients,
         ]);
     }

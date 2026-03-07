@@ -36,9 +36,9 @@
             </li>
 
             <li class="nav-item">
-                <a href="{{env('APP_ROOT')}}dropoffs" class="nav-link">
+                <a href="{{env('APP_ROOT')}}clubs" class="nav-link">
                     <i class="nav-icon fas fa-tachometer-alt"></i>
-                    <p>Drop Off</p>
+                    <p>Clubs</p>
                 </a>
             </li>
 

@@ -5,7 +5,7 @@ namespace App\Livewire;
 use Livewire\Component;
 use App\Models\User;
 
-class UserComponent extends Component
+class UserList extends Component
 {
     public $users;
     public function mount()
@@ -24,11 +24,10 @@ class UserComponent extends Component
         $this->redirect(env('APP_ROOT').'users');
     }
 
-    
     public function render()
     {
         // dd(auth()->user());
-        return view('livewire.user')->with([
+        return view('livewire.user-list')->with([
             'users' => $this->users,
         ]);
     }
