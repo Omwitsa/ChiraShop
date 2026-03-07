@@ -3,13 +3,14 @@
 namespace App\Livewire;
 
 use Livewire\Component;
+
 use App\Models\User;
 use App\Models\Client;
 use Illuminate\Validation\Rules;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Auth\Events\Registered;
 
-class NewUser extends Component
+class UserNew extends Component
 {
     public $clients;
     public string $usercode = '';
@@ -20,7 +21,7 @@ class NewUser extends Component
     public string $password_confirmation = '';
     public function render()
     {
-        return view('livewire.new-user');
+        return view('livewire.user-new');
     }
 
     // public $varieties;

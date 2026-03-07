@@ -5,7 +5,7 @@ namespace App\Livewire;
 use Livewire\Component;
 use App\Models\ClientCategory;
 
-class NewClientCategory extends Component
+class ClientCategoryNew extends Component
 {
     public string $name = '';
 
@@ -22,6 +22,6 @@ class NewClientCategory extends Component
 
     public function render()
     {
-        return view('livewire.new-client-category');
+        return view('livewire.client-category-new');
     }
 }

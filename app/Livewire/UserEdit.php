@@ -8,7 +8,7 @@ use App\Models\User;
 use Illuminate\Support\Str;
 use Illuminate\Support\Facades\Hash;
 
-class EditUser extends Component
+class UserEdit extends Component
 {
     public $clients;
     public $user;
@@ -53,6 +53,6 @@ class EditUser extends Component
 
     public function render()
     {
-        return view('livewire.edit-user');
+        return view('livewire.user-edit');
     }
 }

@@ -56,6 +56,20 @@
                 </a>
             </li>
 
+            <li class="nav-item">
+                <a href="{{env('APP_ROOT')}}courses" class="nav-link">
+                    <i class="nav-icon fas fa-tachometer-alt"></i>
+                    <p>Courses</p>
+                </a>
+            </li>
+
+            <li class="nav-item">
+                <a href="{{env('APP_ROOT')}}product-categories" class="nav-link">
+                    <i class="nav-icon fas fa-tachometer-alt"></i>
+                    <p>Product Categories</p>
+                </a>
+            </li>
+
             {{-- <li class="nav-item">
                 <a href="{{env('APP_ROOT')}}orders" class="nav-link">
                     <i class="nav-icon fas fa-tachometer-alt"></i>

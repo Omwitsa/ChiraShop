@@ -5,7 +5,7 @@ namespace App\Livewire;
 use Livewire\Component;
 use App\Models\ClientCategory;
 
-class EditClientCategory extends Component
+class ClientCategoryEdit extends Component
 {
     public string $name = '';
     public $active;
@@ -29,6 +29,6 @@ class EditClientCategory extends Component
 
     public function render()
     {
-        return view('livewire.edit-client-category');
+        return view('livewire.client-category-edit');
     }
 }

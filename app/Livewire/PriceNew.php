@@ -6,7 +6,7 @@ use Livewire\Component;
 use App\Models\PriceHeader;
 use App\Models\Variety;
 
-class NewPrice extends Component
+class PriceNew extends Component
 {
     public $varieties;
     public string $Name = '';
@@ -46,6 +46,6 @@ class NewPrice extends Component
 
     public function render()
     {
-        return view('livewire.new-price');
+        return view('livewire.price-new');
     }
 }

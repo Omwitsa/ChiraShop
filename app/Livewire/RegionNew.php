@@ -5,7 +5,7 @@ namespace App\Livewire;
 use Livewire\Component;
 use App\Models\Region;
 
-class NewRegion extends Component
+class RegionNew extends Component
 {
     public string $name = '';
     public $id;
@@ -23,6 +23,6 @@ class NewRegion extends Component
 
     public function render()
     {
-        return view('livewire.new-region');
+        return view('livewire.region-new');
     }
 }

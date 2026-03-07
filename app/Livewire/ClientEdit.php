@@ -4,15 +4,11 @@ namespace App\Livewire;
 
 use Livewire\Component;
 use App\Models\Client;
-use App\Models\dropoff;
-use App\Models\ClientCategory;
-use App\Models\Region;
 use App\Models\PriceHeader;
-use App\Models\PackRateHeader;
 use Illuminate\Support\Str;
 use Illuminate\Support\Facades\Hash;
 
-class EditClient extends Component
+class ClientEdit extends Component
 {
     public $client;
     public $prices;
@@ -67,6 +63,6 @@ class EditClient extends Component
 
     public function render()
     {
-        return view('livewire.edit-client');
+        return view('livewire.client-edit');
     }
 }

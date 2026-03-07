@@ -5,7 +5,7 @@ namespace App\Livewire;
 use Livewire\Component;
 use App\Models\Region;
 
-class EditRegion extends Component
+class RegionEdit extends Component
 {
     public string $name = '';
     public $active;
@@ -30,6 +30,6 @@ class EditRegion extends Component
 
     public function render()
     {
-        return view('livewire.edit-region');
+        return view('livewire.region-edit');
     }
 }
