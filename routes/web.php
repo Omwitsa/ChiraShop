@@ -62,7 +62,7 @@ Route::get('/new-region', RegionNew::class);
 Route::get('/edit-region/{id}', RegionEdit::class)->name('edit-region');
 Route::get('/clubs', ClubList::class);
 Route::get('/new-club', ClubNew::class);
-Route::get('/edit-club', ClubEdit::class);
+Route::get('/edit-club/{id}', ClubEdit::class)->name('edit-club');
 Route::get('/users', UserList::class);
 Route::get('/new-user', UserNew::class);
 Route::get('/edit-user/{id}', UserEdit::class)->name('edit-user');
