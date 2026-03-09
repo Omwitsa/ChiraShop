@@ -41,7 +41,7 @@
                             </div>
 
                             <div class="form-group row">
-                                <label class="col-xs-12 col-sm-2 col-form-label">Category</label>
+                                <label class="col-xs-12 col-sm-2 col-form-label">Category <span class="required">*</span></label>
                                 <div class="col-xs-12 col-sm-4">
                                     <select wire:model="category" class="form-control" required>
                                         <option disabled value=""></option>
@@ -51,16 +51,13 @@
                                     </select>
                                     <x-input-error :messages="$errors->get('category')" class="mt-2" />
                                 </div>
-                            </div>
 
-                            <div class="form-group row">
-                                <label class="col-xs-12 col-sm-2 col-form-label">Email Recepients</label>
+                                <label class="col-xs-12 col-sm-2 col-form-label">Barcode</label>
                                 <div class="col-xs-12 col-sm-4">
-                                    <input wire:model="emailRecepients" name="emailRecepients" type="text" class="form-control" autocomplete="off">
-                                    <x-input-error :messages="$errors->get('emailRecepients')" class="mt-2" />
+                                    <input wire:model="barcode" name="barcode" type="text" class="form-control" autocomplete="off" required>
+                                    <x-input-error :messages="$errors->get('barcode')" class="mt-2" />
                                 </div>
                             </div>
-
                             <button type="submit" class="btn btn-primary waves-effect waves-light">Submit</button>
                         </form> 
                     </div>

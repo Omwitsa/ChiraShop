@@ -41,34 +41,21 @@
                             </div>
 
                             <div class="form-group row">
-                                <label class="col-xs-12 col-sm-2 col-form-label">Drop Off</label>
+                                <label class="col-xs-12 col-sm-2 col-form-label">Category <span class="required">*</span></label>
                                 <div class="col-xs-12 col-sm-4">
-                                    <select wire:model="DropOff" class="form-control" required>
-                                        <option disabled value=""></option>
-                                        @foreach($dropoffs as $dropoff)
-                                            <option value="{{ $dropoff->name }}">{{ $dropoff->name }}</option>
-                                        @endforeach
-                                    </select>
-                                    <x-input-error :messages="$errors->get('DropOff')" class="mt-2" />
-                                </div>
-
-                                <label class="col-xs-12 col-sm-2 col-form-label">Category</label>
-                                <div class="col-xs-12 col-sm-4">
-                                    <select wire:model="Category" class="form-control" required>
+                                    <select wire:model="category" class="form-control" required>
                                         <option disabled value=""></option>
                                         @foreach($categories as $category)
                                             <option value="{{ $category->name }}">{{ $category->name }}</option>
                                         @endforeach
                                     </select>
-                                    <x-input-error :messages="$errors->get('DropOff')" class="mt-2" />
+                                    <x-input-error :messages="$errors->get('category')" class="mt-2" />
                                 </div>
-                            </div>
 
-                            <div class="form-group row">
-                                <label class="col-xs-12 col-sm-2 col-form-label">Email Recepients</label>
+                                <label class="col-xs-12 col-sm-2 col-form-label">Barcode <span class="required">*</span></label>
                                 <div class="col-xs-12 col-sm-4">
-                                    <input wire:model="emailRecepients" name="emailRecepients" type="text" class="form-control" autocomplete="off">
-                                    <x-input-error :messages="$errors->get('emailRecepients')" class="mt-2" />
+                                    <input wire:model="barcode" name="barcode" type="text" class="form-control" autocomplete="off" required>
+                                    <x-input-error :messages="$errors->get('barcode')" class="mt-2" />
                                 </div>
                             </div>
 
