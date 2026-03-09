@@ -27,7 +27,7 @@
                         <form wire:submit="UpdateUser" class="form-material" autocomplete="off">
                             @csrf
                             <div class="form-group row">
-                                <label class="col-xs-12 col-sm-2 col-form-label">Usercode</label>
+                                <label class="col-xs-12 col-sm-2 col-form-label">Usercode<span class="required">*</span></label>
                                 <div class="col-xs-12 col-sm-4">
                                     {{-- @if($isAdmin)
                                         <input  wire:model="usercode" name="usercode" type="text" class="form-control" autocomplete="off" required>
@@ -43,7 +43,7 @@
                                     <x-input-error :messages="$errors->get('usercode')" class="mt-2" />
                                 </div>
 
-                                <label class="col-xs-12 col-sm-2 col-form-label">Role</label>
+                                <label class="col-xs-12 col-sm-2 col-form-label">Role<span class="required">*</span></label>
                                 <div class="col-xs-12 col-sm-4">
                                     <select wire:model="role" class="form-control" required>
                                         <option disabled value=""></option>
@@ -56,13 +56,13 @@
                             </div>
 
                             <div class="form-group row">
-                                <label class="col-xs-12 col-sm-2 col-form-label">Password</label>
+                                <label class="col-xs-12 col-sm-2 col-form-label">Password<span class="required">*</span></label>
                                 <div class="col-xs-12 col-sm-4">
                                     <input  wire:model="password" name="password" type="password" class="form-control" autocomplete="off" required>
                                     <x-input-error :messages="$errors->get('password')" class="mt-2" />
                                 </div>
 
-                                <label class="col-xs-12 col-sm-2 col-form-label">Confirm Password</label>
+                                <label class="col-xs-12 col-sm-2 col-form-label">Confirm Password<span class="required">*</span></label>
                                 <div class="col-xs-12 col-sm-4">
                                     <input wire:model="password_confirmation" name="password_confirmation" type="password" class="form-control" autocomplete="off" required>
                                     <x-input-error :messages="$errors->get('password_confirmation')" class="mt-2" />
@@ -70,7 +70,7 @@
                             </div>
 
                             <div class="form-group row">
-                                <label class="col-xs-12 col-sm-2 col-form-label">Email</label>
+                                <label class="col-xs-12 col-sm-2 col-form-label">Email<span class="required">*</span></label>
                                 <div class="col-xs-12 col-sm-4">
                                     <input  wire:model="email" name="email" type="email" class="form-control">
                                     <x-input-error :messages="$errors->get('email')" class="mt-2" />

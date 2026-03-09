@@ -27,7 +27,7 @@
                         <form wire:submit="createCategory" class="form-material" autocomplete="off">
                             @csrf
                             <div class="form-group row">
-                                <label class="col-xs-12 col-sm-2 col-form-label">Category</label>
+                                <label class="col-xs-12 col-sm-2 col-form-label">Category<span class="required">*</span></label>
                                 <div class="col-xs-12 col-sm-4">
                                     <input wire:model="name" name="name" type="text" class="form-control" autocomplete="off" required>
                                     <x-input-error :messages="$errors->get('name')" class="mt-2" />

@@ -13,7 +13,8 @@ return new class extends Migration
     {
         Schema::create('profiles', function (Blueprint $table) {
             $table->id();
-            $table->string('playFrequency', length: 50)->unique();
+            $table->string('clientCode', length: 50)->unique();
+            $table->string('playFrequency', length: 50)->default('');
             $table->string('club', length: 100)->default('');
             $table->string('courses', length: 100)->default('');
             $table->string('dropOff', length: 100)->default('');

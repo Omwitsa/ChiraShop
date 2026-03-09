@@ -14,8 +14,8 @@ return new class extends Migration
     {// password
         Schema::create('clients', function (Blueprint $table) {
             $table->id();
+            $table->string('code', length: 50)->unique();
             $table->string('name');
-            $table->string('code', length: 50);
             $table->string('type', length: 50);
             $table->string('group', length: 50)->default(ClientGroups::GENERAL->value);
             $table->string('emailRecepients', length: 200)->default('');

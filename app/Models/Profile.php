@@ -9,6 +9,7 @@ class Profile extends Model
     protected $table = 'profiles';
     
     protected $fillable = [
+        'clientCode',
         'playFrequency', // 1–2 rounds per month, Weekly, 2–3 times per week, Tournament / heavy player
         'club',
         'courses',
