@@ -27,6 +27,9 @@ use App\Livewire\CourseEdit;
 use App\Livewire\ProductCategoryList;
 use App\Livewire\ProductCategoryNew;
 use App\Livewire\ProductCategoryEdit;
+use App\Livewire\ProductList;
+use App\Livewire\ProductNew;
+use App\Livewire\ProductEdit;
 
 use App\Livewire\Orders;
 use App\Livewire\OrderSummery;
@@ -80,6 +83,9 @@ Route::get('/edit-course/{id}', CourseEdit::class)->name('edit-course');
 Route::get('/product-categories', ProductCategoryList::class);
 Route::get('/new-product-category', ProductCategoryNew::class);
 Route::get('/edit-product-category/{id}', ProductCategoryEdit::class)->name('edit-product-category');
+Route::get('/products', ProductList::class);
+Route::get('/new-product', ProductNew::class);
+Route::get('/edit-product/{id}', ProductEdit::class)->name('edit-product');
 
 
 Route::get('/orders', Orders::class);

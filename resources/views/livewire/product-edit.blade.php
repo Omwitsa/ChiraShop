@@ -41,39 +41,26 @@
                             </div>
 
                             <div class="form-group row">
-                                <label class="col-xs-12 col-sm-2 col-form-label">Group <span class="required">*</span></label>
+                                <label class="col-xs-12 col-sm-2 col-form-label">Drop Off</label>
                                 <div class="col-xs-12 col-sm-4">
-                                    <select wire:model="group" class="form-control" required>
+                                    <select wire:model="DropOff" class="form-control" required>
                                         <option disabled value=""></option>
-                                        @foreach(\App\Constants\Enums\ClientGroups::cases() as $group)
-                                            <option value="{{ $group->value }}">{{ $group->name }}</option>
+                                        @foreach($dropoffs as $dropoff)
+                                            <option value="{{ $dropoff->name }}">{{ $dropoff->name }}</option>
                                         @endforeach
                                     </select>
-                                    <x-input-error :messages="$errors->get('group')" class="mt-2" />
+                                    <x-input-error :messages="$errors->get('DropOff')" class="mt-2" />
                                 </div>
 
-                                <label class="col-xs-12 col-sm-2 col-form-label">Type <span class="required">*</span></label>
+                                <label class="col-xs-12 col-sm-2 col-form-label">Category</label>
                                 <div class="col-xs-12 col-sm-4">
-                                    <select wire:model="type" class="form-control" required>
+                                    <select wire:model="Category" class="form-control" required>
                                         <option disabled value=""></option>
-                                        <option value="Retailer">Retailer</option>
-                                        <option value="Wholesaler">Wholesaler</option>
+                                        @foreach($categories as $category)
+                                            <option value="{{ $category->name }}">{{ $category->name }}</option>
+                                        @endforeach
                                     </select>
-                                    <x-input-error :messages="$errors->get('type')" class="mt-2" />
-                                </div>
-                            </div>
-
-                            <div class="form-group row">
-                                <label class="col-xs-12 col-sm-2 col-form-label">Password <span class="required">*</span></label>
-                                <div class="col-xs-12 col-sm-4">
-                                    <input  wire:model="password" name="password" type="password" class="form-control" autocomplete="off" required>
-                                    <x-input-error :messages="$errors->get('password')" class="mt-2" />
-                                </div>
-
-                                <label class="col-xs-12 col-sm-2 col-form-label">Confirm Password <span class="required">*</span></label>
-                                <div class="col-xs-12 col-sm-4">
-                                    <input wire:model="password_confirmation" name="password_confirmation" type="password" class="form-control" autocomplete="off" required>
-                                    <x-input-error :messages="$errors->get('password_confirmation')" class="mt-2" />
+                                    <x-input-error :messages="$errors->get('DropOff')" class="mt-2" />
                                 </div>
                             </div>
 

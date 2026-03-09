@@ -19,7 +19,7 @@ class Product extends Model
         'minimumOrder',
         'picUrl',
         'inStock',
-        'addOn',
+        'isAddOn',
         'personnel',
         'dateCreated',
     ];

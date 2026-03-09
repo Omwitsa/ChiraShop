@@ -18,8 +18,8 @@ class ClientList extends Component
     }
 
     public function delete($id){
-        $region = Client::find($id);
-        $region->delete();
+        $client = Client::find($id);
+        $client->delete();
         toastr()->success('Client deleted successfully', 'Congrats', ['positionClass' => 'toast-top-center']);
         $this->redirect(env('APP_ROOT').'clients');
     }

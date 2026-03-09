@@ -70,6 +70,13 @@
                 </a>
             </li>
 
+            <li class="nav-item">
+                <a href="{{env('APP_ROOT')}}products" class="nav-link">
+                    <i class="nav-icon fas fa-tachometer-alt"></i>
+                    <p>Products</p>
+                </a>
+            </li>
+
             {{-- <li class="nav-item">
                 <a href="{{env('APP_ROOT')}}orders" class="nav-link">
                     <i class="nav-icon fas fa-tachometer-alt"></i>
