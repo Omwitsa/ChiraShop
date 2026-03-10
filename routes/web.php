@@ -31,11 +31,14 @@ use App\Livewire\ProductList;
 use App\Livewire\ProductNew;
 use App\Livewire\ProductEdit;
 
+use App\Livewire\Client\ClientOrders;
+use App\Livewire\Client\Shop;
+
 use App\Livewire\Orders;
 use App\Livewire\OrderSummery;
 use App\Livewire\ClientHome;
 use App\Livewire\Checkout;
-use App\Livewire\Client\ClientOrders;
+
 
 use App\Models\OrderHeader;
 use App\Mail\OrderNotification;
@@ -86,6 +89,7 @@ Route::get('/edit-product-category/{id}', ProductCategoryEdit::class)->name('edi
 Route::get('/products', ProductList::class);
 Route::get('/new-product', ProductNew::class);
 Route::get('/edit-product/{id}', ProductEdit::class)->name('edit-product');
+Route::get('/shop', Shop::class);
 
 
 Route::get('/orders', Orders::class);

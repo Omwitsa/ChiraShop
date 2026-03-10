@@ -68,13 +68,13 @@ class HomeController extends Controller
             'author'=>'foo'
         );
 
-        if(Auth::guard('clients')->user()->group === 'Golfers') {
+        if(Auth::guard('client')->user()->group === 'Golfers') {
             return view('golfers-dashboard')->with([
                 'data' => (object) $data
             ]);
         }
 
-        if(Auth::guard('clients')->user()->group === 'Fearless') {
+        if(Auth::guard('client')->user()->group === 'Fearless') {
             return view('fearless-dashboard');
         }
 

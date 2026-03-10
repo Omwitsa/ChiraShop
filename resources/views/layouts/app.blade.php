@@ -10,10 +10,10 @@
         @else
             @include('shared.local-sidebar')
         @endif
-    @elseif(auth()->guard('clients')->check())
-        @if(auth()->guard('clients')->user()->group === 'Golfers')
+    @elseif(auth()->guard('client')->check())
+        @if(auth()->guard('client')->user()->group === 'Golfers')
             @include('shared.golfers-sidebar')
-        @elseif(auth()->guard('clients')->user()->group === 'Fearless')
+        @elseif(auth()->guard('client')->user()->group === 'Fearless')
             @include('shared.Fearless-sidebar')
         @else
             @include('shared.general-sidebar')

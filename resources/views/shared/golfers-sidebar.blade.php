@@ -11,7 +11,7 @@
                 <img src="{{env('APP_ROOT')}}assets/images/icons/logo.png" alt="User Image">
             </div>
             <div class="info">
-                <!-- <a href="{{env('APP_ROOT')}}" class="d-block">{{auth()->guard('clients')->user()->Code}}</a> -->
+                <!-- <a href="{{env('APP_ROOT')}}" class="d-block">{{auth()->guard('client')->user()->Code}}</a> -->
             </div>
         </div>
 
@@ -31,11 +31,18 @@
                 </li>
 
                 <li class="nav-item">
-                    <a href="{{env('APP_ROOT')}}client-orders" class="nav-link">
+                    <a href="{{env('APP_ROOT')}}shop" class="nav-link">
                         <i class="nav-icon fas fa-tachometer-alt"></i>
                         <p>Shop</p>
                     </a>
                 </li>
+
+                <!-- <li class="nav-item">
+                    <a href="{{env('APP_ROOT')}}client-orders" class="nav-link">
+                        <i class="nav-icon fas fa-tachometer-alt"></i>
+                        <p>Shop</p>
+                    </a>
+                </li> -->
                 
                 <li class="nav-item">
                     <a href="#" class="nav-link">
