@@ -4,6 +4,7 @@ namespace App\Livewire;
 
 use Livewire\Component;
 use Livewire\WithFileUploads;
+use Livewire\Attributes\Validate;
 use App\Models\Product;
 use App\Models\ProductCategory;
 
@@ -11,62 +12,52 @@ class ProductEdit extends Component
 {
     use WithFileUploads;
 
-    public $client;
     public $categories;
-    public $prices;
-    public $active;
     public string $name = '';
     public string $code = '';
-    public string $type = '';
-    public string $group = '';
-    public string $emailRecepients = '';
-    public string $price = '';
-    public string $currency = '';
-    public string $password = '';
-    public string $password_confirmation = '';
+    public string $category = '';
+    public string $barcode = '';
+    public $product;
+    public string $picUrl = '';
+    public $active;
+    public $isAddOn;
+    public $inStock;
 
     #[Validate('image|max:1024')] // 1MB Max
-    public $file; // holds a TemporaryUploadedFile 
+    public $file; // holds a TemporaryUploadedFile
 
     public function mount($id)
     {
         $this->categories = ProductCategory::all();
-        $this->prices = PriceHeader::all();
-        $this->client = Client::find($id);
-        $this->name = $this->client->name;
-        $this->code = $this->client->code;
-        $this->type = $this->client->type;
-        $this->group = $this->client->group;
-        $this->emailRecepients = $this->client->emailRecepients;
-        $this->price = $this->client->price;
-        $this->currency = $this->client->currency;
-        $this->password = $this->client->password;
-        $this->password_confirmation = $this->client->password;
-        $this->active = $this->client->active === 1;
-
-        $this->picUrl = $this->variety->picUrl;
+        $this->product = Product::find($id);
+        $this->name = $this->product->name;
+        $this->code = $this->product->code;
+        $this->category = $this->product->category;
+        $this->barcode = $this->product->barcode;
+        $this->picUrl = $this->product->picUrl;
+        $this->active = $this->product->active === 1;
+        $this->isAddOn = $this->product->isAddOn === 1;
+        $this->inStock = $this->product->inStock === 1;
     }
 
-    public function UpdateClient()
+    public function UpdateProduct()
     {
         if($this->file){
             $name = time().'-'.$this->file->getClientOriginalName();
             $path = $this->file->storeAs('images', $name, 'public');
-            $this->variety->picUrl = $path;
+            $this->product->picUrl = $path;
         }
 
-        $this->client->name = $this->name;
-        $this->client->code = $this->code;
-        $this->client->type = $this->type;
-        $this->client->group = $this->group;
-        $this->client->emailRecepients = $this->emailRecepients;
-        $this->client->price = $this->price;
-        $this->client->currency = $this->currency;
-        $this->client->password = Str::length($this->client->password) > 30 ? $this->password : Hash::make($this->password);
-        $this->client->active = $this->active;
+        $this->product->name = $this->name;
+        $this->product->code = $this->code;
+        $this->product->category = $this->category;
+        $this->product->barcode = $this->barcode;
+        $this->product->active = $this->active;
+        $this->product->isAddOn = $this->isAddOn;
+        $this->product->inStock = $this->inStock;
         
-        $this->client->save();
-        toastr()->success('Client updated successfully', 'Congrats', ['positionClass' => 'toast-top-center']);
+        $this->product->save();
+        toastr()->success('Product updated successfully', 'Congrats', ['positionClass' => 'toast-top-center']);
         $this->redirect(env('APP_ROOT').'products');
     }
 

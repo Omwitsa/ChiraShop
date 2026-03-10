@@ -3,12 +3,12 @@
         <div class="container-fluid">
             <div class="row mb-2">
                 <div class="col-sm-6">
-                    <h1>Client</h1>
+                    <h1>Product</h1>
                 </div>
                 <div class="col-sm-6">
                     <ol class="breadcrumb float-sm-right">
                         <li class="breadcrumb-item"><a href="{{env('APP_ROOT')}}">Home</a></li>
-                        <li class="breadcrumb-item active">Client</li>
+                        <li class="breadcrumb-item active">Product</li>
                     </ol>
                 </div>
             </div>
@@ -20,11 +20,11 @@
             <div class="col-sm-12">
                 <div class="card">
                     <div class="card-header">
-                        <h3 class="card-title">Client</h3>
+                        <h3 class="card-title">Product</h3>
                     </div>
 
                     <div class="card-body">
-                        <form wire:submit="UpdateClient" class="form-material" autocomplete="off">
+                        <form wire:submit="UpdateProduct" class="form-material" autocomplete="off">
                             @csrf
                             <div class="form-group row">
                                 <label class="col-xs-12 col-sm-2 col-form-label">Name <span class="required">*</span></label>
@@ -52,9 +52,9 @@
                                     <x-input-error :messages="$errors->get('category')" class="mt-2" />
                                 </div>
 
-                                <label class="col-xs-12 col-sm-2 col-form-label">Barcode <span class="required">*</span></label>
+                                <label class="col-xs-12 col-sm-2 col-form-label">Barcode</label>
                                 <div class="col-xs-12 col-sm-4">
-                                    <input wire:model="barcode" name="barcode" type="text" class="form-control" autocomplete="off" required>
+                                    <input wire:model="barcode" name="barcode" type="text" class="form-control" autocomplete="off">
                                     <x-input-error :messages="$errors->get('barcode')" class="mt-2" />
                                 </div>
                             </div>
@@ -71,9 +71,9 @@
                                 <div class="col-xs-12 col-sm-1">
                                     <div wire:loading wire:target="file"> Uploading... </div>
                                     @if($file)         
-                                        <img src="{{ $file->temporaryUrl() }}" alt="Flowers" style="width:100%;">
+                                        <img src="{{ $file->temporaryUrl() }}" alt="Beauty" style="width:100%;">
                                     @else
-                                        <img src="{{ asset('storage'.env('IMG_STORAGE').$variety->picUrl) }}" alt="Flowers" style="width:100%;">
+                                        <img src="{{ asset('storage'.env('IMG_STORAGE').$product->picUrl) }}" alt="Beauty" style="width:100%;">
                                     @endif
                                 </div>
                             </div>
@@ -82,6 +82,13 @@
                                 <div class="form-check form-check-inline">
                                     <input wire:model="active" class="form-check-input" type="checkbox" id="active">
                                     <label class="form-check-label" for="active">Active</label>
+                                </div>
+                            </div>
+
+                            <div class="form-group row">
+                                <div class="form-check form-check-inline">
+                                    <input wire:model="inStock" class="form-check-input" type="checkbox" id="inStock">
+                                    <label class="form-check-label" for="inStock">In Stock</label>
                                 </div>
                             </div>
 

@@ -71,7 +71,7 @@
                                 <div class="col-xs-12 col-sm-1">
                                     <div wire:loading wire:target="file"> Uploading... </div>
                                     @if ($file) 
-                                        <img src="{{ $file->temporaryUrl() }}" alt="Flowers" style="width:100%;">
+                                        <img src="{{ $file->temporaryUrl() }}" alt="Beauty" style="width:100%;">
                                     @endif
                                 </div>
                             </div>
