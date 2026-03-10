@@ -21,6 +21,6 @@ class Product extends Model
         'inStock',
         'isAddOn',
         'personnel',
-        'dateCreated',
+        'dateCreated'
     ];
 }

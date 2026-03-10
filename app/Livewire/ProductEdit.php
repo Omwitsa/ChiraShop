@@ -3,11 +3,14 @@
 namespace App\Livewire;
 
 use Livewire\Component;
+use Livewire\WithFileUploads;
 use App\Models\Product;
 use App\Models\ProductCategory;
 
 class ProductEdit extends Component
 {
+    use WithFileUploads;
+
     public $client;
     public $categories;
     public $prices;
@@ -21,6 +24,9 @@ class ProductEdit extends Component
     public string $currency = '';
     public string $password = '';
     public string $password_confirmation = '';
+
+    #[Validate('image|max:1024')] // 1MB Max
+    public $file; // holds a TemporaryUploadedFile 
 
     public function mount($id)
     {
@@ -37,13 +43,16 @@ class ProductEdit extends Component
         $this->password = $this->client->password;
         $this->password_confirmation = $this->client->password;
         $this->active = $this->client->active === 1;
+
+        $this->picUrl = $this->variety->picUrl;
     }
 
     public function UpdateClient()
     {
-        if($this->password != $this->password_confirmation){
-            toastr()->error('Password and confirm password do not match', 'Sorry', ['positionClass' => 'toast-top-center']);
-            return;
+        if($this->file){
+            $name = time().'-'.$this->file->getClientOriginalName();
+            $path = $this->file->storeAs('images', $name, 'public');
+            $this->variety->picUrl = $path;
         }
 
         $this->client->name = $this->name;
