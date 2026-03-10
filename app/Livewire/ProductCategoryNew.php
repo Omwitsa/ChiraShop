@@ -8,12 +8,14 @@ use App\Models\ProductCategory;
 class ProductCategoryNew extends Component
 {
     public string $name = '';
+    public $sortOrder = 0;
     public $id;
 
     public function createCategory()
     {
         $validated = $this->validate([
             'name' => ['required', 'string', 'max:100'],
+            'sortOrder' => ['int'],
         ]);
 
         ProductCategory::create($validated);

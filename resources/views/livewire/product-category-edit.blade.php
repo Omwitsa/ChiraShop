@@ -32,6 +32,12 @@
                                     <input wire:model="name" name="name" type="text" class="form-control" autocomplete="off" required>
                                     <x-input-error :messages="$errors->get('name')" class="mt-2" />
                                 </div>
+
+                                <label class="col-xs-12 col-sm-2 col-form-label">Sort Order</label>
+                                <div class="col-xs-12 col-sm-4">
+                                    <input wire:model="sortOrder" name="sortOrder" type="number" class="form-control" autocomplete="off">
+                                    <x-input-error :messages="$errors->get('sortOrder')" class="mt-2" />
+                                </div>
                             </div>
 
                             <div class="form-group row">

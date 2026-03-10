@@ -8,6 +8,7 @@ use App\Models\ProductCategory;
 class ProductCategoryEdit extends Component
 {
     public string $name = '';
+    public $sortOrder = 0;
     public $active;
     public $category;
 
@@ -15,12 +16,14 @@ class ProductCategoryEdit extends Component
     {
         $this->category = ProductCategory::find($id);
         $this->name = $this->category->name;
+        $this->sortOrder = $this->category->sortOrder;
         $this->active = $this->category->active === 1;
     }
 
     public function UpdateCategory()
     {
         $this->category->name = $this->name;
+        $this->category->sortOrder = $this->sortOrder;
         $this->category->active = $this->active;
         $this->category->save();
 

@@ -16,6 +16,7 @@ return new class extends Migration
             $table->string('name', length: 100)->unique();
             $table->string('picUrl')->default('');
             $table->boolean('active')->default(true);
+            $table->integer('sortOrder')->default(0);
             $table->string('personnel', length: 50)->default('');
             $table->dateTime('dateCreated')->default(date('Y-m-d', time()));
             $table->timestamps();

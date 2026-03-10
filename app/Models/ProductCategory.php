@@ -12,6 +12,7 @@ class ProductCategory extends Model
         'name',
         'picUrl',
         'active',
+        'sortOrder',
         'personnel',
         'dateCreated',
     ];
