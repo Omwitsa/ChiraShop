@@ -25,13 +25,27 @@
 
                     <div class="card-body">
                         <div class="row">
-                            <div class="col-xs-12 col-sm-4">
-                                <div class="row type">
-                                    <div class="col-xs-12 col-sm-6">
-                                        <img src="{{ asset('storage') }}" alt="Flowers" style="width:100%;">
+                            @foreach ($products as $index => $product)
+                                <div class="col-xs-12 col-sm-3">
+                                    <div class="row type">
+                                        <div class="col-xs-12">
+                                            <img src="{{ asset('storage'.env('IMG_STORAGE').$product->picUrl) }}" alt="Beauty" style="width:100%;">
+                                        </div>
+                                    </div><br>
+
+                                    <div class="row">
+                                        <div class="col-sm-12 text-center">
+                                        <p> {{$product->name}} </p> 
+                                            @if (auth()->guard('client')->check())
+                                                <div class="form-group">
+                                                    <a href="" style="color: #FFFFFF" class="btn waves-effect waves-light btn-primary btn-outline-primary" wire:navigate>
+                                                    <i class="ti-shopping-cart"></i>Add to Cart</a>
+                                                </div>
+                                            @endif
+                                        </div>
                                     </div>
                                 </div>
-                            </div>
+                            @endforeach
                         </div>
                     </div>
                 </div>
