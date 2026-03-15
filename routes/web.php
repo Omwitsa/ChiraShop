@@ -33,6 +33,7 @@ use App\Livewire\ProductEdit;
 
 use App\Livewire\Client\ClientOrders;
 use App\Livewire\Client\Shop;
+use App\Livewire\Client\CartItems;
 
 use App\Livewire\Orders;
 use App\Livewire\OrderSummery;
@@ -90,7 +91,7 @@ Route::get('/products', ProductList::class);
 Route::get('/new-product', ProductNew::class);
 Route::get('/edit-product/{id}', ProductEdit::class)->name('edit-product');
 Route::get('/shop', Shop::class);
-
+Route::get('/cart-items', CartItems::class);
 
 Route::get('/orders', Orders::class);
 Route::get('/client-home', ClientHome::class);

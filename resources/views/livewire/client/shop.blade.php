@@ -24,13 +24,13 @@
                     </div>
 
                     <div class="card-body">
-                        @foreach ($productCategories as $index => $category)
+                        @foreach ($productCategories as $c_index => $category)
                             <div class="row">
                                 <div class="col-xs-12">
                                     <h3> {{$category->name}} </h3> 
 
                                     <div class="row">
-                                        @foreach ($category->products as $index1 => $product)
+                                        @foreach ($category->products as $p_index => $product)
                                             <div class="col-xs-12 col-sm-3">
                                                 <div class="row type">
                                                     <div class="col-xs-12">
@@ -43,8 +43,16 @@
                                                     <p> {{$product->name}} </p> 
                                                         @if (auth()->guard('client')->check())
                                                             <div class="form-group">
-                                                                <a href="" style="color: #FFFFFF" class="btn waves-effect waves-light btn-primary btn-outline-primary" wire:navigate>
-                                                                <i class="ti-shopping-cart"></i>Add to Cart</a>
+                                                                @if($product->inStock)
+                                                                    <button wire:click="addToCart({{ $c_index }}, {{ $p_index }})" wire:key="{{ $product->id }}" class="btn waves-effect waves-light btn-primary">ADD TO CART</button>
+                                                                @else
+                                                                    <button wire:click="" wire:key="{{ $product->id }}" type="button" class="btn">Out of Stock</button>
+                                                                @endif
+                                                                @if ($product->addedToCart)
+                                                                   <a href="{{env('APP_ROOT')}}cart-items" class="btn waves-effect waves-light btn-secondary" wire:navigate>
+                                                                    <i class="ti-shopping-cart"></i>View Cart</a>
+                                                                @endif
+                                                                
                                                             </div>
                                                         @endif
                                                     </div>

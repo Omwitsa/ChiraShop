@@ -4,6 +4,18 @@
 .btn-primary{
     background-color: #cc8800 !important;
 }
+.product-img { 
+	width: 100px; 
+	height: 100px; 
+	object-fit: cover; 
+	border-radius: 8px; 
+}
+.qty-input { 
+	width: 60px; 
+	text-align: center; 
+	border: 1px solid #ddd; 
+	border-radius: 4px; 
+}
 .login-content, .product-category{
 	background-image: url("/online-shop/assets/images/bg.jpg");
 	background-size: 100% 100%;
