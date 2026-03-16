@@ -16,6 +16,9 @@ return new class extends Migration
             $table->string('name', length: 100)->unique();
             $table->string('currency', length: 20);
             $table->boolean('active')->default(true);
+            $table->dateTime('startDate')->default(date('Y-m-d', time()));
+            $table->dateTime('endDate')->default(date('Y-m-d', time()));
+            $table->string('notes')->default('');
             $table->string('personnel', length: 50)->default('');
             $table->dateTime('dateCreated')->default(date('Y-m-d', time()));
             $table->timestamps();

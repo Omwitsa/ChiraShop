@@ -11,14 +11,19 @@ class OrderHeader extends Model
     use HasFactory;
     protected $table = 'orderheader';
     protected $fillable = [
-        'client',
+        'clientId',
+        'orderDate',
         'receivingDate',
-        'lpo',
+        'confirmDate',
         'status',
-        'isSendEmail',
-        'confirmUrl',
+        'lpo',
+        'autoConfirm',
         'dropOff',
-        'isTransferred',
+        'amount',
+        'lineTotal',
+        'currency',
+        'sendEmail',
+        'transferred',
         'personnel',
         'dateCreated',
     ];

@@ -14,9 +14,9 @@ return new class extends Migration
         Schema::create('price_lines', function (Blueprint $table) {
             $table->id();
             $table->foreignId('price_header_id')->constrained();
-            $table->string('variety', length: 100);
-            $table->decimal('price', total: 8, places: 2);
-
+            $table->bigInteger('productId');
+            $table->decimal('price', total: 11, places: 2);
+            $table->string('notes')->default('');
             $table->timestamps();
         });
     }

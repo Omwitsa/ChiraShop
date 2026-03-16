@@ -11,12 +11,12 @@ class OrderLine extends Model
 {
     use HasFactory;
     protected $table = 'orderline';
-    protected $primaryKey = 'OrderLineId';
-
     protected $fillable = [
         'order_header_id',
-        'productCode',
-        'productName',
+        'productId',
+        'orderQuantity',
+        'price',
+        'notes',
     ];
 
     public function orderHeader(): BelongsTo

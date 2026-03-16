@@ -13,14 +13,19 @@ return new class extends Migration
     {
         Schema::create('orderheader', function (Blueprint $table) {
             $table->id();
-            $table->bigInteger('client');
+            $table->bigInteger('clientId');
+            $table->date('orderDate');
             $table->date('receivingDate');
-            $table->string('lpo', length: 50);
             $table->integer('status');
-            $table->integer('isSendEmail');
-            $table->string('confirmUrl');
-            $table->integer('dropOffId');
-            $table->integer('isTransferred');
+            $table->string('lpo', length: 50)->default('');
+            $table->string('dropOff', length: 100)->default('');
+            $table->decimal('amount', total: 11, places: 2);
+            $table->decimal('lineTotal', total: 11, places: 2);
+            $table->string('currency', length: 20)->default('');
+            $table->boolean('sendEmail')->default(false);
+            $table->boolean('transferred')->default(false);
+            $table->boolean('autoConfirm')->default(false);
+            $table->dateTime('confirmDate')->default(date('Y-m-d', time()));
             $table->string('personnel', length: 50)->default('');
             $table->dateTime('dateCreated')->default(date('Y-m-d', time()));
             $table->timestamps();

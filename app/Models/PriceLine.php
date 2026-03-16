@@ -11,8 +11,9 @@ class PriceLine extends Model
     use HasFactory;
 
     protected $fillable = [
-        'product',
+        'productId',
         'price',
+        'notes',
     ];
 
     public function priceHeader(): BelongsTo

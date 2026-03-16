@@ -13,6 +13,9 @@ class PriceHeader extends Model
         'name',
         'currency',
         'active',
+        'startDate',
+        'endDate',
+        'notes',
         'personnel',
         'dateCreated',
     ];
