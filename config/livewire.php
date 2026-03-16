@@ -52,7 +52,7 @@ return [
 
     'lazy_placeholder' => null,
 
-    'asset_url' => '/chara-shop/livewire/livewire.js',
+    // 'asset_url' => '/livewire/livewire.js',
 
     /*
     |---------------------------------------------------------------------------
