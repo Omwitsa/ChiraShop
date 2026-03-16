@@ -53,6 +53,7 @@ return [
     'lazy_placeholder' => null,
 
     // 'asset_url' => '/livewire/livewire.js',
+    'asset_url' => env('APP_URL'),
 
     /*
     |---------------------------------------------------------------------------

@@ -22,7 +22,6 @@ new #[Layout('layouts.guest')] class extends Component
         //     ->where('ClientCode', $this->form->Code)
         //     ->where('Category', 'Inactive')
         //     ->exists();
-
         // if($isInactive){
         //     toastr()->error('Your account is inactive, Kindly contact admin', 'Sorry', ['positionClass' => 'toast-top-center']);
         //     $this->redirect('/login', navigate: true);
