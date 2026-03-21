@@ -21,18 +21,25 @@ class ProductNew extends Component
     #[Validate('image|max:1024')] // 1MB Max
     public $file; // holds a TemporaryUploadedFile
 
+
+
+
+    public $image;        // holds a TemporaryUploadedFile
+    public $croppedImage; // The base64 or file path from the frontend
+
     public function mount()
     {
         $this->categories = ProductCategory::all();
         // $this->categories = ClientCategory::all();
         // $this->prices = Product::all();
         // $this->packrates = PackRateHeader::all();
+        
     }
 
     public function creatProduct()
     {
-        $name = time().'-'.$this->file->getClientOriginalName();
-        $path = $this->file->storeAs('images', $name, 'public');
+        $name = time().'-'.$this->image->getClientOriginalName();
+        $path = $this->image->storeAs('images', $name, 'public');
 
         $product = new Product;
         $product->name = $this->name;

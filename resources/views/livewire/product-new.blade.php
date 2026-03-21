@@ -62,18 +62,37 @@
                             <div class="form-group row">
                                 <label class="col-xs-12 col-sm-2 col-form-label">Upload Picture</label>
                                 <div class="col-xs-12 col-sm-4">
-                                    <input wire:model="file" type="file" class="form-control">
-                                    <x-input-error :messages="$errors->get('file')" class="mt-2" />
+                                    <div x-data="{ 
+                                        cropper: null,
+                                        initCropper() {
+                                            this.cropper = new Cropper(this.$refs.img, {
+                                                aspectRatio: 1, // Optional: Force a square
+                                                viewMode: 1,
+                                            });
+                                        },
+                                        saveCrop() {
+                                            let canvas = this.cropper.getCroppedCanvas();
+                                            let base64 = canvas.toDataURL('image/png');
+                                            @this.set('croppedImage', base64); // Send back to Livewire
+                                        }
+                                    }">
+                                        <input type="file" wire:model="image" @change="setTimeout(() => initCropper(), 500)">
+
+                                        @if($image)
+                                            <div class="mt-4" style="max-height: 400px;">
+                                                <img x-ref="img" src="{{ $image->temporaryUrl() }}" style="max-width: 100%;">
+                                            </div>
+                                            
+                                            <button type="button" @click="saveCrop" class="bg-blue-500 text-white px-4 py-2 mt-2">
+                                                Apply Crop
+                                            </button>
+                                        @endif
+                                    </div>
                                 </div>
                             </div>
 
                             <div class="form-group row">
-                                <div class="col-xs-12 col-sm-1">
-                                    <div wire:loading wire:target="file"> Uploading... </div>
-                                    @if ($file) 
-                                        <img src="{{ $file->temporaryUrl() }}" alt="Beauty" style="width:100%;">
-                                    @endif
-                                </div>
+                                
                             </div>
 
                             <div class="form-group row">

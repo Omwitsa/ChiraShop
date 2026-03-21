@@ -35,6 +35,8 @@
         <link rel="stylesheet" href="{{env('APP_ROOT')}}assets/plugins/summernote/summernote-bs4.min.css">
         <link rel="stylesheet" type="text/css" href="{{env('APP_ROOT')}}assets/dist/css/custom.css">
 
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/cropperjs/1.5.13/cropper.min.css">
+
         @livewireStyles
     </head>
 
@@ -91,6 +93,9 @@
         <script src="{{env('APP_ROOT')}}assets/dist/js/pages/dashboard.js"></script>
         
         <script src="{{env('APP_ROOT')}}assets/dist/js/custom.js"></script>
+
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/cropperjs/1.5.13/cropper.min.js"></script>
+
         @livewireScripts
 
         <script>
