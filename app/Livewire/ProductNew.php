@@ -19,14 +19,9 @@ class ProductNew extends Component
     public string $barcode = '';
     public $isAddOn;
     #[Validate('image|max:1024')] // 1MB Max
-    public $file; // holds a TemporaryUploadedFile
-
-
-
-
-    public $image;        // holds a TemporaryUploadedFile
-    public $croppedImage; // The base64 or file path from the frontend
-
+    public $image;         // holds a TemporaryUploadedFile
+    public $croppedImage;
+    
     public function mount()
     {
         $this->categories = ProductCategory::all();
@@ -38,6 +33,14 @@ class ProductNew extends Component
 
     public function creatProduct()
     {
+        // // Decode the base64 string sent from the frontend
+        // $imageData = explode(',', $this->croppedImage)[1];
+    
+        // // Using Intervention Image to force dimensions one last time
+        // $img = Image::make(base64_decode($imageData))
+        //     ->resize(800, 800);
+        //     // ->encode('jpg', 80);
+
         $name = time().'-'.$this->image->getClientOriginalName();
         $path = $this->image->storeAs('images', $name, 'public');
 
@@ -50,6 +53,9 @@ class ProductNew extends Component
         $product->picUrl = $path;
         $product->save();
 
+        //  // Reset state
+        // // $this->reset(['image', 'croppedImage']);
+        // session()->flash('message', 'Image saved successfully!');
         $this->redirect(env('APP_ROOT').'products');
     }
 

@@ -34,7 +34,7 @@
                                             <div class="col-xs-12 col-sm-3">
                                                 <div class="row type">
                                                     <div class="col-xs-12">
-                                                        <img src="{{ asset('storage'.env('IMG_STORAGE').$product->picUrl) }}" alt="Beauty" style="width:100%;">
+                                                        <img src="{{ asset('storage'.env('IMG_STORAGE').$product->picUrl) }}" style="width:100%;" alt="Beauty">
                                                     </div>
                                                 </div><br>
 

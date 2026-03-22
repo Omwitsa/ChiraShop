@@ -62,32 +62,58 @@
                             <div class="form-group row">
                                 <label class="col-xs-12 col-sm-2 col-form-label">Upload Picture</label>
                                 <div class="col-xs-12 col-sm-4">
-                                    <div x-data="{ 
-                                        cropper: null,
-                                        initCropper() {
-                                            this.cropper = new Cropper(this.$refs.img, {
-                                                aspectRatio: 1, // Optional: Force a square
-                                                viewMode: 1,
-                                            });
-                                        },
-                                        saveCrop() {
-                                            let canvas = this.cropper.getCroppedCanvas();
-                                            let base64 = canvas.toDataURL('image/png');
-                                            @this.set('croppedImage', base64); // Send back to Livewire
-                                        }
-                                    }">
-                                        <input type="file" wire:model="image" @change="setTimeout(() => initCropper(), 500)">
-
-                                        @if($image)
-                                            <div class="mt-4" style="max-height: 400px;">
-                                                <img x-ref="img" src="{{ $image->temporaryUrl() }}" style="max-width: 100%;">
+                                    @if (!$image)
+                                        <div class="p-6 border-2 border-dashed border-gray-300 rounded-lg">
+                                            <input type="file" wire:model="image" accept="image/*">
+                                            <div wire:loading wire:target="image">Uploading preview...</div>
+                                        </div>
+                                    @endif
+                                    
+                                    @if ($image)
+                                        <div 
+                                            x-data="{ 
+                                                cropper: null,
+                                                init() {
+                                                    this.cropper = new Cropper(this.$refs.img, {
+                                                        aspectRatio: 1,      // 1 for Square, 16/9 for Widescreen, etc.
+                                                        viewMode: 1,         // Restricts the crop box to not exceed the size of the canvas
+                                                        dragMode: 'move',    // Allows user to move the image inside the fixed box
+                                                        autoCropArea: 1,     // Default to the largest possible area
+                                                        restore: false,
+                                                        guides: true,
+                                                        center: true,
+                                                        highlight: false,
+                                                        cropBoxMovable: false, // Set to false if you want the BOX to stay put while the IMAGE moves
+                                                        cropBoxResizable: false // Set to false to force the exact same shape every time
+                                                    });
+                                                },
+                                                creatProduct() {
+                                                    // This forces the resulting image to be exactly 800x800
+                                                    const canvas = this.cropper.getCroppedCanvas({
+                                                        width: 800,
+                                                        height: 800,
+                                                        imageSmoothingEnabled: true,
+                                                        imageSmoothingQuality: 'high',
+                                                    });
+                                                    
+                                                    // @this.set('croppedImage', canvas.toDataURL('image/jpeg', 0.9)); // 0.9 is quality
+                                                    @this.set('croppedImage', canvas.toDataURL());
+                                                    @this.call('creatProduct');
+                                                }
+                                            }"
+                                            class="mt-4"
+                                        >
+                                            <div class="max-w-md mx-auto" style="max-height: 200px;">
+                                                <img x-ref="img" src="{{ $image->temporaryUrl() }}" style="max-width: 100%;" class="block max-w-full">
                                             </div>
-                                            
-                                            <button type="button" @click="saveCrop" class="bg-blue-500 text-white px-4 py-2 mt-2">
-                                                Apply Crop
-                                            </button>
-                                        @endif
-                                    </div>
+
+                                            <div class="mt-4 flex gap-2">
+                                                <button type="button" wire:click="$set('image', null)" class="bg-gray-400 text-white px-4 py-2 rounded">
+                                                    Cancel
+                                                </button>
+                                            </div>
+                                        </div>
+                                    @endif
                                 </div>
                             </div>
 
@@ -102,7 +128,10 @@
                                 </div>
                             </div>
 
-                            <button type="submit" class="btn btn-primary waves-effect waves-light">Submit</button>
+                            <button type="submit" @click="creatProduct" class="btn btn-primary waves-effect waves-light">
+                                Crop & Save
+                            </button>
+                            <!-- <button type="submit" class="btn btn-primary waves-effect waves-light">Submit</button> -->
                         </form> 
                     </div>
                 </div>
