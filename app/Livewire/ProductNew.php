@@ -8,6 +8,10 @@ use Livewire\Attributes\Validate;
 use App\Models\Product;
 use App\Models\ProductCategory;
 
+use Illuminate\Support\Facades\Storage;
+use Intervention\Image\Laravel\Facades\Image;
+
+
 class ProductNew extends Component
 {
     use WithFileUploads;
@@ -40,6 +44,19 @@ class ProductNew extends Component
         // $img = Image::make(base64_decode($imageData))
         //     ->resize(800, 800);
         //     // ->encode('jpg', 80);
+
+
+
+        // $extension = \Input::file('Photo')->getClientOriginalExtension(); // getting image extension
+        // $fileName = md5($UserName).'.'.$extension; 
+        // $ufile=\Input::file('Photo');
+        // $ufile->move($destinationPath, $fileName);
+        // $img = Image::make($destinationPath.$fileName)->resize(320, 240)->save($destinationPath.$fileName)
+
+
+        // $imageFromStorage = Storage::get('images/avatar-image.jpg');
+        // $image = Image::read($imageFromStorage);
+
 
         $name = time().'-'.$this->image->getClientOriginalName();
         $path = $this->image->storeAs('images', $name, 'public');
