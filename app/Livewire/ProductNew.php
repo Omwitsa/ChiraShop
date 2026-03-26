@@ -21,6 +21,15 @@ class ProductNew extends Component
     public string $code = '';
     public string $category = '';
     public string $barcode = '';
+    public string $reasonToLove = '';
+    public string $description = '';
+    public string $olFactoryNotes = '';
+    public string $ingredients = '';
+    public string $howToUse = '';
+    public string $claims = '';
+    public string $origin = '';
+    public string $volume = '';
+    public string $shipmentTime = '';
     public $isAddOn;
     #[Validate('image|max:1024')] // 1MB Max
     public $image;         // holds a TemporaryUploadedFile
@@ -66,6 +75,15 @@ class ProductNew extends Component
         $product->code = $this->code;
         $product->category = $this->category;
         $product->barcode = $this->barcode;
+        $product->reasonToLove = $this->reasonToLove;
+        $product->description = $this->description;
+        $product->olFactoryNotes = $this->olFactoryNotes;
+        $product->ingredients = $this->ingredients;
+        $product->howToUse = $this->howToUse;
+        $product->claims = $this->claims;
+        $product->origin = $this->origin;
+        $product->volume = $this->volume;
+        $product->shipmentTime = $this->shipmentTime;
         $product->isAddOn = $this->isAddOn === 1;
         $product->picUrl = $path;
         $product->save();

@@ -17,6 +17,15 @@ class ProductEdit extends Component
     public string $code = '';
     public string $category = '';
     public string $barcode = '';
+    public string $reasonToLove = '';
+    public string $description = '';
+    public string $olFactoryNotes = '';
+    public string $ingredients = '';
+    public string $howToUse = '';
+    public string $claims = '';
+    public string $origin = '';
+    public string $volume = '';
+    public string $shipmentTime = '';
     public $product;
     public string $picUrl = '';
     public $active;

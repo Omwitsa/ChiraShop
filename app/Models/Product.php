@@ -20,6 +20,15 @@ class Product extends Model
         'picUrl',
         'inStock',
         'isAddOn',
+        'reasonToLove',
+        'description',
+        'olFactoryNotes',
+        'ingredients',
+        'howToUse',
+        'claims',
+        'origin',
+        'volume',
+        'shipmentTime',
         'personnel',
         'dateCreated'
     ];
