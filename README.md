@@ -23,3 +23,6 @@ Create a virtual link with the below command
 
 ## Optimization Cammand
 - php artisan optimize:clear
+
+## Modify existing migrations
+- php artisan migrate:refresh

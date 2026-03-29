@@ -60,48 +60,6 @@
                             </div>
 
                             <div class="form-group row">
-                                <label class="col-xs-12 col-sm-2 col-form-label">Reason To Love</label>
-                                <div class="col-xs-12 col-sm-4">
-                                    <input wire:model="reasonToLove" name="reasonToLove" type="text" class="form-control" autocomplete="off">
-                                    <x-input-error :messages="$errors->get('reasonToLove')" class="mt-2" />
-                                </div>
-
-                                <label class="col-xs-12 col-sm-2 col-form-label">Description</label>
-                                <div class="col-xs-12 col-sm-4">
-                                    <input wire:model="description" name="description" type="text" class="form-control" autocomplete="off">
-                                    <x-input-error :messages="$errors->get('description')" class="mt-2" />
-                                </div>
-                            </div>
-
-                            <div class="form-group row">
-                                <label class="col-xs-12 col-sm-2 col-form-label">OL Factory Notes</label>
-                                <div class="col-xs-12 col-sm-4">
-                                    <input wire:model="olFactoryNotes" name="olFactoryNotes" type="text" class="form-control" autocomplete="off">
-                                    <x-input-error :messages="$errors->get('olFactoryNotes')" class="mt-2" />
-                                </div>
-
-                                <label class="col-xs-12 col-sm-2 col-form-label">Ingredients</label>
-                                <div class="col-xs-12 col-sm-4">
-                                    <input wire:model="ingredients" name="ingredients" type="text" class="form-control" autocomplete="off">
-                                    <x-input-error :messages="$errors->get('ingredients')" class="mt-2" />
-                                </div>
-                            </div>
-
-                            <div class="form-group row">
-                                <label class="col-xs-12 col-sm-2 col-form-label">How To Use</label>
-                                <div class="col-xs-12 col-sm-4">
-                                    <input wire:model="howToUse" name="howToUse" type="text" class="form-control" autocomplete="off">
-                                    <x-input-error :messages="$errors->get('howToUse')" class="mt-2" />
-                                </div>
-
-                                <label class="col-xs-12 col-sm-2 col-form-label">Claims</label>
-                                <div class="col-xs-12 col-sm-4">
-                                    <input wire:model="claims" name="claims" type="text" class="form-control" autocomplete="off">
-                                    <x-input-error :messages="$errors->get('claims')" class="mt-2" />
-                                </div>
-                            </div>
-
-                            <div class="form-group row">
                                 <label class="col-xs-12 col-sm-2 col-form-label">Origin</label>
                                 <div class="col-xs-12 col-sm-4">
                                     <input wire:model="origin" name="origin" type="text" class="form-control" autocomplete="off">
@@ -112,6 +70,48 @@
                                 <div class="col-xs-12 col-sm-4">
                                     <input wire:model="volume" name="volume" type="text" class="form-control" autocomplete="off">
                                     <x-input-error :messages="$errors->get('volume')" class="mt-2" />
+                                </div>
+                            </div>
+
+                            <div class="form-group row">
+                                <label class="col-xs-12 col-sm-2 col-form-label">Reason To Love</label>
+                                <div class="col-xs-12 col-sm-4">
+                                    <textarea wire:model="reasonToLove" name="reasonToLove" rows="3" class="form-control" autocomplete="off"></textarea>
+                                    <x-input-error :messages="$errors->get('reasonToLove')" class="mt-2" />
+                                </div>
+
+                                <label class="col-xs-12 col-sm-2 col-form-label">Description</label>
+                                <div class="col-xs-12 col-sm-4">
+                                    <textarea wire:model="description" name="description" rows="3" class="form-control" autocomplete="off"></textarea>
+                                    <x-input-error :messages="$errors->get('description')" class="mt-2" />
+                                </div>
+                            </div>
+
+                            <div class="form-group row">
+                                <label class="col-xs-12 col-sm-2 col-form-label">OL Factory Notes</label>
+                                <div class="col-xs-12 col-sm-4">
+                                    <textarea wire:model="olFactoryNotes" name="olFactoryNotes" rows="3" class="form-control" autocomplete="off"></textarea>
+                                    <x-input-error :messages="$errors->get('olFactoryNotes')" class="mt-2" />
+                                </div>
+
+                                <label class="col-xs-12 col-sm-2 col-form-label">Ingredients</label>
+                                <div class="col-xs-12 col-sm-4">
+                                    <textarea wire:model="ingredients" name="ingredients" rows="3" class="form-control" autocomplete="off"></textarea>
+                                    <x-input-error :messages="$errors->get('ingredients')" class="mt-2" />
+                                </div>
+                            </div>
+
+                            <div class="form-group row">
+                                <label class="col-xs-12 col-sm-2 col-form-label">How To Use</label>
+                                <div class="col-xs-12 col-sm-4">
+                                    <textarea wire:model="howToUse" name="howToUse" rows="3" class="form-control" autocomplete="off"></textarea>
+                                    <x-input-error :messages="$errors->get('howToUse')" class="mt-2" />
+                                </div>
+
+                                <label class="col-xs-12 col-sm-2 col-form-label">Claims</label>
+                                <div class="col-xs-12 col-sm-4">
+                                    <textarea wire:model="claims" name="claims" rows="3" class="form-control" autocomplete="off"></textarea>
+                                    <x-input-error :messages="$errors->get('claims')" class="mt-2" />
                                 </div>
                             </div>
 

@@ -43,6 +43,15 @@ class ProductEdit extends Component
         $this->code = $this->product->code;
         $this->category = $this->product->category;
         $this->barcode = $this->product->barcode;
+        $this->reasonToLove = $this->product->reasonToLove;
+        $this->description = $this->product->description;
+        $this->olFactoryNotes = $this->product->olFactoryNotes;
+        $this->ingredients = $this->product->ingredients;
+        $this->howToUse = $this->product->howToUse;
+        $this->claims = $this->product->claims;
+        $this->origin = $this->product->origin;
+        $this->volume = $this->product->volume;
+        $this->shipmentTime = $this->product->shipmentTime;
         $this->picUrl = $this->product->picUrl;
         $this->active = $this->product->active === 1;
         $this->isAddOn = $this->product->isAddOn === 1;
@@ -64,7 +73,15 @@ class ProductEdit extends Component
         $this->product->active = $this->active;
         $this->product->isAddOn = $this->isAddOn;
         $this->product->inStock = $this->inStock;
-        
+        $this->product->reasonToLove = $this->reasonToLove;
+        $this->product->description = $this->description;
+        $this->product->olFactoryNotes = $this->olFactoryNotes;
+        $this->product->ingredients = $this->ingredients;
+        $this->product->howToUse = $this->howToUse;
+        $this->product->claims = $this->claims;
+        $this->product->origin = $this->origin;
+        $this->product->volume = $this->volume;
+        $this->product->shipmentTime = $this->shipmentTime;
         $this->product->save();
         toastr()->success('Product updated successfully', 'Congrats', ['positionClass' => 'toast-top-center']);
         $this->redirect(env('APP_ROOT').'products');
