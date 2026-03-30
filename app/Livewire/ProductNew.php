@@ -46,13 +46,15 @@ class ProductNew extends Component
 
     public function creatProduct()
     {
-        // // Decode the base64 string sent from the frontend
+        // Decode the base64 string sent from the frontend
         // $imageData = explode(',', $this->croppedImage)[1];
     
         // // Using Intervention Image to force dimensions one last time
         // $img = Image::make(base64_decode($imageData))
         //     ->resize(800, 800);
         //     // ->encode('jpg', 80);
+
+        // Storage::disk('public')->put('profiles/user-1.jpg', $img);
 
 
 
@@ -65,6 +67,29 @@ class ProductNew extends Component
 
         // $imageFromStorage = Storage::get('images/avatar-image.jpg');
         // $image = Image::read($imageFromStorage);
+
+
+
+
+        // // Decode the base64 string sent from the frontend
+        // $imageData = explode(',', $this->croppedImage)[1];
+        // $decodedImage = base64_decode($imageData);
+
+        // $name = 'cropped_' . time() . '.png';
+        // Storage::disk('public')->put($name, $decodedImage);
+
+        // // Reset state
+        // $this->reset(['image', 'croppedImage']);
+
+
+
+        dd($this->croppedImage);
+        // // Remove the 'data:image/png;base64,' part
+        // $image_parts = explode(";base64,", $this->croppedImage);
+        // $image_base64 = base64_decode($image_parts[1]);
+
+        // $filename = 'crops/' . uniqid() . '.png';
+        // Storage::disk('public')->put($filename, $image_base64);
 
 
         $name = time().'-'.$this->image->getClientOriginalName();
