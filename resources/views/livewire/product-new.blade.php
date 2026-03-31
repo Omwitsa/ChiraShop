@@ -124,16 +124,24 @@
                             </div>
 
                             <div class="form-group row">
+                                <div class="form-check form-check-inline">
+                                    <input wire:model="isAddOn" class="form-check-input" type="checkbox" id="isAddOn">
+                                    <label class="form-check-label" for="isAddOn">Is Add On</label>
+                                </div>
+                            </div><hr>
+
+                             <div class="form-group row">
                                 <label class="col-xs-12 col-sm-2 col-form-label">Upload Picture</label>
                                 <div class="col-xs-12 col-sm-4">
-                                    @if (!$image)
-                                        <div class="p-6 border-2 border-dashed border-gray-300 rounded-lg">
-                                            <input type="file" wire:model="image" accept="image/*">
-                                            <div wire:loading wire:target="image">Uploading preview...</div>
-                                        </div>
-                                    @endif
-                                    
-                                    @if ($image)
+                                    <input wire:model="image" type="file" class="form-control">
+                                    <div wire:loading wire:target="image"> Uploading... </div>
+                                    <x-input-error :messages="$errors->get('image')" class="mt-2" />
+                                </div>
+                            </div>
+
+                            @if ($image) 
+                                <div class="form-group row">
+                                    <div class="col-xs-12 col-sm-1">
                                         <div 
                                             x-data="{ 
                                                 cropper: null,
@@ -167,9 +175,14 @@
                                             }"
                                             class="mt-4"
                                         >
+
                                             <div class="max-w-md mx-auto" style="max-height: 200px;">
                                                 <img x-ref="img" src="{{ $image->temporaryUrl() }}" style="max-width: 100%;" class="block max-w-full">
                                             </div>
+
+                                            <button type="submit" @click="creatProduct" class="btn btn-primary waves-effect waves-light">
+                                                Crop & Save
+                                            </button>
 
                                             <div class="mt-4 flex gap-2">
                                                 <button type="button" wire:click="$set('image', null)" class="bg-gray-400 text-white px-4 py-2 rounded">
@@ -177,25 +190,9 @@
                                                 </button>
                                             </div>
                                         </div>
-                                    @endif
+                                    </div>
                                 </div>
-                            </div>
-
-                            <div class="form-group row">
-                                
-                            </div>
-
-                            <div class="form-group row">
-                                <div class="form-check form-check-inline">
-                                    <input wire:model="isAddOn" class="form-check-input" type="checkbox" id="isAddOn">
-                                    <label class="form-check-label" for="isAddOn">Is Add On</label>
-                                </div>
-                            </div>
-
-                            <button type="submit" @click="creatProduct" class="btn btn-primary waves-effect waves-light">
-                                Crop & Save
-                            </button>
-                            <!-- <button type="submit" class="btn btn-primary waves-effect waves-light">Submit</button> -->
+                            @endif
                         </form> 
                     </div>
                 </div>
