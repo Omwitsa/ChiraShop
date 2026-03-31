@@ -140,55 +140,58 @@
                             </div>
 
                             @if ($image) 
-                                <div class="form-group row">
-                                    <div class="col-xs-12 col-sm-1">
-                                        <div 
-                                            x-data="{ 
-                                                cropper: null,
-                                                init() {
-                                                    this.cropper = new Cropper(this.$refs.img, {
-                                                        aspectRatio: 1,      // 1 for Square, 16/9 for Widescreen, etc.
-                                                        viewMode: 1,         // Restricts the crop box to not exceed the size of the canvas
-                                                        dragMode: 'move',    // Allows user to move the image inside the fixed box
-                                                        autoCropArea: 1,     // Default to the largest possible area
-                                                        restore: false,
-                                                        guides: true,
-                                                        center: true,
-                                                        highlight: false,
-                                                        cropBoxMovable: false, // Set to false if you want the BOX to stay put while the IMAGE moves
-                                                        cropBoxResizable: false // Set to false to force the exact same shape every time
-                                                    });
-                                                },
-                                                creatProduct() {
-                                                    // This forces the resulting image to be exactly 800x800
-                                                    const canvas = this.cropper.getCroppedCanvas({
-                                                        width: 800,
-                                                        height: 800,
-                                                        imageSmoothingEnabled: true,
-                                                        imageSmoothingQuality: 'high',
-                                                    });
-                                                    
-                                                    // @this.set('croppedImage', canvas.toDataURL('image/jpeg', 0.9)); // 0.9 is quality
-                                                    @this.set('croppedImage', canvas.toDataURL());
-                                                    @this.call('creatProduct');
-                                                }
-                                            }"
-                                            class="mt-4"
-                                        >
+                                <div class="form-group row"
+                                    x-data="{ 
+                                        cropper: null,
+                                        init() {
+                                            this.cropper = new Cropper(this.$refs.img, {
+                                                aspectRatio: 1,      // 1 for Square, 16/9 for Widescreen, etc.
+                                                viewMode: 1,         // Restricts the crop box to not exceed the size of the canvas
+                                                dragMode: 'move',    // Allows user to move the image inside the fixed box
+                                                autoCropArea: 1,     // Default to the largest possible area
+                                                restore: false,
+                                                guides: true,
+                                                center: true,
+                                                highlight: false,
+                                                cropBoxMovable: false, // Set to false if you want the BOX to stay put while the IMAGE moves
+                                                cropBoxResizable: false // Set to false to force the exact same shape every time
+                                            });
+                                        },
+                                        creatProduct() {
+                                            // This forces the resulting image to be exactly 800x800
+                                            const canvas = this.cropper.getCroppedCanvas({
+                                                width: 800,
+                                                height: 800,
+                                                imageSmoothingEnabled: true,
+                                                imageSmoothingQuality: 'high',
+                                            });
+                                            
+                                            // @this.set('croppedImage', canvas.toDataURL('image/jpeg', 0.9)); // 0.9 is quality
+                                            @this.set('croppedImage', canvas.toDataURL());
+                                            @this.call('creatProduct');
+                                        }
+                                    }">
+                                    <div class="col-sm-12">
+                                        <div class="row mt-4">
+                                            <div class="col-sm-12">
+                                                <div class="max-w-md mx-auto" style="max-height: 200px;">
+                                                    <img x-ref="img" src="{{ $image->temporaryUrl() }}" style="max-width: 100%;" class="block max-w-full">
+                                                </div>
+                                            </div>
+                                        </div>
 
-                                            <div class="max-w-md mx-auto" style="max-height: 200px;">
-                                                <img x-ref="img" src="{{ $image->temporaryUrl() }}" style="max-width: 100%;" class="block max-w-full">
+                                        <div class="row mt-4">
+                                            <div class="col-xs-12 col-sm-2">
+                                                <button type="submit" @click="creatProduct" class="btn btn-primary waves-effect waves-light">
+                                                    Crop & Save
+                                                </button>
                                             </div>
 
-                                            <button type="submit" @click="creatProduct" class="btn btn-primary waves-effect waves-light">
-                                                Crop & Save
-                                            </button>
-
-                                            <div class="mt-4 flex gap-2">
+                                            <!-- <div class="col-xs-12 col-sm-2">
                                                 <button type="button" wire:click="$set('image', null)" class="bg-gray-400 text-white px-4 py-2 rounded">
                                                     Cancel
                                                 </button>
-                                            </div>
+                                            </div> -->
                                         </div>
                                     </div>
                                 </div>
