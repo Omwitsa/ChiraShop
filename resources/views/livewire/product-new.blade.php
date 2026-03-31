@@ -173,7 +173,7 @@
                                     }">
                                     <div class="col-sm-12">
                                         <div class="row mt-4">
-                                            <div class="col-sm-12">
+                                            <div class="col-sm-6">
                                                 <div class="max-w-md mx-auto" style="max-height: 200px;">
                                                     <img x-ref="img" src="{{ $image->temporaryUrl() }}" style="max-width: 100%;" class="block max-w-full">
                                                 </div>
@@ -182,7 +182,11 @@
 
                                         <div class="row mt-4">
                                             <div class="col-xs-12 col-sm-2">
-                                                <button type="submit" @click="creatProduct" class="btn btn-primary waves-effect waves-light">
+                                                <!-- <button type="submit" @click="creatProduct" class="btn btn-primary waves-effect waves-light">
+                                                    Crop & Save
+                                                </button> -->
+
+                                                <button type="button" x-on:click="creatProduct" class="btn btn-primary waves-effect waves-light">
                                                     Crop & Save
                                                 </button>
                                             </div>

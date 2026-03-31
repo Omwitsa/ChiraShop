@@ -47,53 +47,18 @@ class ProductNew extends Component
     public function creatProduct()
     {
         // Decode the base64 string sent from the frontend
-        // $imageData = explode(',', $this->croppedImage)[1];
-    
+        $imageData = explode(";base64,", $this->croppedImage)[1]; // Remove the 'data:image/png;base64,' part
+        $decodedImage = base64_decode($imageData);
+
         // // Using Intervention Image to force dimensions one last time
-        // $img = Image::make(base64_decode($imageData))
+        // $img = Image::make($decodedImage)
         //     ->resize(800, 800);
         //     // ->encode('jpg', 80);
 
-        // Storage::disk('public')->put('profiles/user-1.jpg', $img);
-
-
-
-        // $extension = \Input::file('Photo')->getClientOriginalExtension(); // getting image extension
-        // $fileName = md5($UserName).'.'.$extension; 
-        // $ufile=\Input::file('Photo');
-        // $ufile->move($destinationPath, $fileName);
-        // $img = Image::make($destinationPath.$fileName)->resize(320, 240)->save($destinationPath.$fileName)
-
-
-        // $imageFromStorage = Storage::get('images/avatar-image.jpg');
-        // $image = Image::read($imageFromStorage);
-
-
-
-
-        // // Decode the base64 string sent from the frontend
-        // $imageData = explode(',', $this->croppedImage)[1];
-        // $decodedImage = base64_decode($imageData);
-
-        // $name = 'cropped_' . time() . '.png';
-        // Storage::disk('public')->put($name, $decodedImage);
-
-        // // Reset state
-        // $this->reset(['image', 'croppedImage']);
-
-
-
-        dd($this->croppedImage);
-        // // Remove the 'data:image/png;base64,' part
-        // $image_parts = explode(";base64,", $this->croppedImage);
-        // $image_base64 = base64_decode($image_parts[1]);
-
-        // $filename = 'crops/' . uniqid() . '.png';
-        // Storage::disk('public')->put($filename, $image_base64);
-
-
         $name = time().'-'.$this->image->getClientOriginalName();
-        $path = $this->image->storeAs('images', $name, 'public');
+        $filename = pathinfo($name, PATHINFO_FILENAME);
+        $path = 'images/' . $filename . '.png';
+        Storage::disk('public')->put($path, $decodedImage);
 
         $product = new Product;
         $product->name = $this->name;
@@ -112,9 +77,8 @@ class ProductNew extends Component
         $product->isAddOn = $this->isAddOn === 1;
         $product->picUrl = $path;
         $product->save();
-
-        //  // Reset state
-        // // $this->reset(['image', 'croppedImage']);
+        
+        $this->reset(['image', 'croppedImage']); // Reset state
         // session()->flash('message', 'Image saved successfully!');
         $this->redirect(env('APP_ROOT').'products');
     }

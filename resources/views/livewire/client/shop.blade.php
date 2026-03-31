@@ -31,7 +31,7 @@
 
                                     <div class="row">
                                         @foreach ($category->products as $p_index => $product)
-                                            <div class="col-xs-12 col-sm-3">
+                                            <div class="col-xs-12 col-sm-3 p-4">
                                                 <div class="row type">
                                                     <div class="col-xs-12">
                                                         <img src="{{ asset('storage'.env('IMG_STORAGE').$product->picUrl) }}" style="width:100%;" alt="Beauty">
