@@ -7,6 +7,8 @@ use Livewire\WithFileUploads;
 use Livewire\Attributes\Validate;
 use App\Models\Product;
 use App\Models\ProductCategory;
+use Illuminate\Support\Facades\Storage;
+use Intervention\Image\Laravel\Facades\Image;
 
 class ProductEdit extends Component
 {
@@ -31,9 +33,9 @@ class ProductEdit extends Component
     public $active;
     public $isAddOn;
     public $inStock;
-
     #[Validate('image|max:1024')] // 1MB Max
-    public $file; // holds a TemporaryUploadedFile
+    public $image;         // holds a TemporaryUploadedFile
+    public $croppedImage;
 
     public function mount($id)
     {
@@ -60,9 +62,20 @@ class ProductEdit extends Component
 
     public function UpdateProduct()
     {
-        if($this->file){
-            $name = time().'-'.$this->file->getClientOriginalName();
-            $path = $this->file->storeAs('images', $name, 'public');
+        if($this->image){
+            // Decode the base64 string sent from the frontend
+            $imageData = explode(";base64,", $this->croppedImage)[1]; // Remove the 'data:image/png;base64,' part
+            $decodedImage = base64_decode($imageData);
+
+            // // Using Intervention Image to force dimensions one last time
+            // $img = Image::make($decodedImage)
+            //     ->resize(800, 800);
+            //     // ->encode('jpg', 80);
+
+            $name = time().'-'.$this->image->getClientOriginalName();
+            $filename = pathinfo($name, PATHINFO_FILENAME);
+            $path = 'images/' . $filename . '.png';
+            Storage::disk('public')->put($path, $decodedImage);
             $this->product->picUrl = $path;
         }
 
