@@ -140,24 +140,26 @@
                             </div>
 
                             @if ($image) 
-                                <div class="form-group row"
+                                <div class="form-group row" wire:key="cropper-wrapper-{{ $image->temporaryUrl() }}"
                                     x-data="{ 
                                         cropper: null,
                                         init() {
-                                            this.cropper = new Cropper(this.$refs.img, {
-                                                aspectRatio: 1,      // 1 for Square, 16/9 for Widescreen, etc.
-                                                viewMode: 1,         // Restricts the crop box to not exceed the size of the canvas
-                                                dragMode: 'move',    // Allows user to move the image inside the fixed box
-                                                autoCropArea: 1,     // Default to the largest possible area
-                                                restore: false,
-                                                guides: true,
-                                                center: true,
-                                                highlight: false,
-                                                cropBoxMovable: false, // Set to false if you want the BOX to stay put while the IMAGE moves
-                                                cropBoxResizable: false // Set to false to force the exact same shape every time
+                                            this.$nextTick(() => {
+                                                this.cropper = new Cropper(this.$refs.img, {
+                                                    aspectRatio: 1,      // 1 for Square, 16/9 for Widescreen, etc.
+                                                    viewMode: 1,         // Restricts the crop box to not exceed the size of the canvas
+                                                    dragMode: 'move',    // Allows user to move the image inside the fixed box
+                                                    autoCropArea: 1,     // Default to the largest possible area
+                                                    restore: false,
+                                                    guides: true,
+                                                    center: true,
+                                                    highlight: false,
+                                                    cropBoxMovable: false, // Set to false if you want the BOX to stay put while the IMAGE moves
+                                                    cropBoxResizable: false // Set to false to force the exact same shape every time
+                                                });
                                             });
                                         },
-                                        creatProduct() {
+                                        cropImage() {
                                             // This forces the resulting image to be exactly 800x800
                                             const canvas = this.cropper.getCroppedCanvas({
                                                 width: 800,
@@ -182,11 +184,11 @@
 
                                         <div class="row mt-4">
                                             <div class="col-xs-12 col-sm-2">
-                                                <!-- <button type="submit" @click="creatProduct" class="btn btn-primary waves-effect waves-light">
+                                                <!-- <button type="submit" @click="cropImage" class="btn btn-primary waves-effect waves-light">
                                                     Crop & Save
                                                 </button> -->
 
-                                                <button type="button" x-on:click="creatProduct" class="btn btn-primary waves-effect waves-light">
+                                                <button type="button" x-on:click="cropImage" class="btn btn-primary waves-effect waves-light">
                                                     Crop & Save
                                                 </button>
                                             </div>
