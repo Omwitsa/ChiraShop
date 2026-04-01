@@ -142,7 +142,7 @@
                                     <input wire:model="isAddOn" class="form-check-input" type="checkbox" id="isAddOn">
                                     <label class="form-check-label" for="isAddOn">Is Add On</label>
                                 </div>
-                            </div>
+                            </div><hr>
 
                             <div class="form-group row">
                                 <label class="col-xs-12 col-sm-2 col-form-label">Upload Picture</label>
@@ -189,7 +189,8 @@
                                     }">
                                     <div class="col-sm-12">
                                         <div class="row mt-4">
-                                            <div class="col-sm-6">
+                                            <div class="col-sm-2"></div>
+                                            <div class="col-sm-3">
                                                 <div class="max-w-md mx-auto" style="max-height: 200px;">
                                                     <img x-ref="img" src="{{ $image->temporaryUrl() }}" style="max-width: 100%;" class="block max-w-full">
                                                 </div>
@@ -199,7 +200,7 @@
                                         <div class="row mt-4">
                                             <div class="col-xs-12 col-sm-2">
                                                 <button type="button" x-on:click="cropImage" class="btn btn-primary waves-effect waves-light">
-                                                    Crop & Save
+                                                    Submit
                                                 </button>
                                             </div>
 
@@ -211,20 +212,20 @@
                                         </div>
                                     </div>
                                 </div>
-                            @else
+                            @endif
+
+                            @if (!$image)
                                 <div class="form-group row">
-                                    <div class="col-sm-6">
-                                        <div class="max-w-md mx-auto" style="max-height: 200px;">
+                                    <div class="col-xs-12 col-sm-2">
+                                        <div class="max-w-md mx-auto">
                                             <!-- <img x-ref="img" src="{{ asset('storage'.env('IMG_STORAGE').$product->picUrl) }}" style="max-width: 100%;" class="block max-w-full"> -->
                                              <img src="{{ Storage::url($product->picUrl) }}" alt="Chara Beauty" style="max-width: 100%;" class="block max-w-full">
                                         </div>
                                     </div>
                                 </div>
-                            @endif
 
-                            
-
-                            <!-- <button type="submit" class="btn btn-primary waves-effect waves-light">Submit</button> -->
+                                <button type="submit" class="btn btn-primary waves-effect waves-light">Submit</button>
+                            @endif 
                         </form>
                     </div>
                 </div>

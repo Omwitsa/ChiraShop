@@ -175,7 +175,8 @@
                                     }">
                                     <div class="col-sm-12">
                                         <div class="row mt-4">
-                                            <div class="col-sm-6">
+                                            <div class="col-sm-2"></div>
+                                            <div class="col-sm-3">
                                                 <div class="max-w-md mx-auto" style="max-height: 200px;">
                                                     <img x-ref="img" src="{{ $image->temporaryUrl() }}" style="max-width: 100%;" class="block max-w-full">
                                                 </div>
@@ -189,7 +190,7 @@
                                                 </button> -->
 
                                                 <button type="button" x-on:click="cropImage" class="btn btn-primary waves-effect waves-light">
-                                                    Crop & Save
+                                                    Submit
                                                 </button>
                                             </div>
 
