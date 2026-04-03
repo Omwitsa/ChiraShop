@@ -6,8 +6,8 @@
         <title>ONLINE SHOP</title>
 
         <!-- Favicon icon -->
-        <link rel="shortcut icon" href="{{env('APP_ROOT')}}assets/images/logo.png" type="image/x-icon">
-        <link rel="icon" href="{{env('APP_ROOT')}}assets/images/logo.png" type="image/x-icon">
+        <link rel="shortcut icon" href="{{env('APP_ROOT')}}assets/images/icons/logo.png" type="image/x-icon">
+        <link rel="icon" href="{{env('APP_ROOT')}}assets/images/icons/logo.png" type="image/x-icon">
 
         <!-- Google Font: Source Sans Pro -->
         <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">

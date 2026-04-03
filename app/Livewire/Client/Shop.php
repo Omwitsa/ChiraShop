@@ -30,6 +30,10 @@ class Shop extends Component
         $this->categoryProducts();
     }
 
+    public function viewInfo($id){
+        $this->redirectRoute('product-info', ['id' => $id]);
+    }
+
     public function categoryProducts()
     {
         foreach ($this->productCategories as $key => $value) {
@@ -53,6 +57,8 @@ class Shop extends Component
         $product->quantity = 1;
         $product->price = 1500;
         $product->subTotal = $product->quantity * $product->price;
+
+        dd($product);
 
         $itemOrdered = in_array($product->id, array_column($this->cartItems, 'id'));
         if(!$itemOrdered){

@@ -218,8 +218,7 @@
                                 <div class="form-group row">
                                     <div class="col-xs-12 col-sm-2">
                                         <div class="max-w-md mx-auto">
-                                            <!-- <img x-ref="img" src="{{ asset('storage'.env('IMG_STORAGE').$product->picUrl) }}" style="max-width: 100%;" class="block max-w-full"> -->
-                                             <img src="{{ Storage::url($product->picUrl) }}" alt="Chara Beauty" style="max-width: 100%;" class="block max-w-full">
+                                             <img x-ref="img" src="{{ asset('storage'.env('IMG_STORAGE').$product->picUrl) }}" alt="Chara Beauty" style="max-width: 100%;" class="block max-w-full">
                                         </div>
                                     </div>
                                 </div>

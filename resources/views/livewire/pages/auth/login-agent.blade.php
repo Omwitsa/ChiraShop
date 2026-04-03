@@ -39,7 +39,7 @@ new #[Layout('layouts.guest')] class extends Component
 <div class="row">
     <div class="col-sm-3"></div>
     <div class="col-sm-6 text-center">
-        <img src="{{env('APP_ROOT')}}assets/images/logo.png" alt="roses" style="width:15%;"><br><br><br>
+        <img src="{{env('APP_ROOT')}}assets/images/icons/logo.png" alt="roses" style="width:15%;"><br><br><br>
         <div class="card">
             <div class="card-body login-card-body">
                 <H1 class="login-box-msg">LOVE THE BEAUTY</H1>

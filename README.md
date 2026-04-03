@@ -18,7 +18,7 @@ Create a virtual link with the below command
 - Modify the index file to read autoload and bootstrap from the root folder
 - Run php artisan livewire:publish --assets
 - configure the asset Url in config/livewire.php to include the subfolder path 
-  i.e 'asset_url' => '/newtech/livewire/livewire.js'
+  i.e 'asset_url' => '/chara-shop/livewire/livewire.js',
 - Modify .evn file to match the appriopriate production properties
 
 ## Optimization Cammand

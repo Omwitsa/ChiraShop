@@ -29,11 +29,12 @@ use App\Livewire\ProductCategoryNew;
 use App\Livewire\ProductCategoryEdit;
 use App\Livewire\ProductList;
 use App\Livewire\ProductNew;
-use App\Livewire\ProductEdit;
+use App\Livewire\ProductEdit; 
 
 use App\Livewire\Client\ClientOrders;
 use App\Livewire\Client\Shop;
 use App\Livewire\Client\CartItems;
+use App\Livewire\Client\ProductInfo;
 
 use App\Livewire\Orders;
 use App\Livewire\OrderSummery;
@@ -92,6 +93,7 @@ Route::get('/new-product', ProductNew::class);
 Route::get('/edit-product/{id}', ProductEdit::class)->name('edit-product');
 Route::get('/shop', Shop::class);
 Route::get('/cart-items', CartItems::class);
+Route::get('/product-info/{id}', ProductInfo::class)->name('product-info');
 
 Route::get('/orders', Orders::class);
 Route::get('/client-home', ClientHome::class);
