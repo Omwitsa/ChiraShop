@@ -58,8 +58,6 @@ class Shop extends Component
         $product->price = 1500;
         $product->subTotal = $product->quantity * $product->price;
 
-        dd($product);
-
         $itemOrdered = in_array($product->id, array_column($this->cartItems, 'id'));
         if(!$itemOrdered){
             Session::push('cartItems', $product);
