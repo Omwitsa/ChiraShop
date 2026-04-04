@@ -23,12 +23,12 @@ return new class extends Migration
             $table->string('picUrl')->default('');
             $table->boolean('inStock')->default(true);
             $table->boolean('isAddOn')->default(false);
-            $table->string('reasonToLove')->default('');
-            $table->string('description')->default('');
-            $table->string('olFactoryNotes')->default('');
-            $table->string('ingredients')->default('');
-            $table->string('howToUse')->default('');
-            $table->string('claims')->default('');
+            $table->text('reasonToLove');
+            $table->text('description');
+            $table->text('olFactoryNotes');
+            $table->text('ingredients');
+            $table->text('howToUse');
+            $table->text('claims');
             $table->string('origin')->default('');
             $table->string('volume')->default('');
             $table->string('shipmentTime')->default('');

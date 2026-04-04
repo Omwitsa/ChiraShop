@@ -12,6 +12,9 @@ Run
 Create a virtual link with the below command
 - php artisan storage:link
 
+Run Migrations
+- php artisan migrate
+
 ## Deployment
 
 - Cut public content into the root folder. Exclude storage folder if present in the public folder.
@@ -23,6 +26,3 @@ Create a virtual link with the below command
 
 ## Optimization Cammand
 - php artisan optimize:clear
-
-## Modify existing migrations
-- php artisan migrate:refresh
