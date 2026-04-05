@@ -76,7 +76,16 @@
                                         <span class="font-weight-bold">Total</span>
                                         <h4 class="font-weight-bold">Ksh {{ $orderHeader['total'] }}</h4>
                                     </div>
-                                    <button class="btn btn-checkout btn-block">PROCEED TO CHECKOUT</button>
+
+                                    <div class="row">
+                                        <div class="col-sm-4">
+                                            <button wire:click="order()" class="btn btn-checkout btn-block">Order Now</button>
+                                        </div>
+
+                                        <div class="8">
+                                            <a href="{{env('APP_ROOT')}}shop" class="btn btn-checkout btn-block">Continue Shopping</a>
+                                        </div>
+                                    </div>
                                     
                                     <div class="mt-4 text-center">
                                         <p class="text-muted-small">We accept:</p>

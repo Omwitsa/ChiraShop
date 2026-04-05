@@ -40,22 +40,27 @@
 
                                                 <div class="row">
                                                     <div class="col-sm-12 text-center">
-                                                    <p> {{$product->name}} </p> 
-                                                        @if (auth()->guard('client')->check())
-                                                            <div class="form-group">
-                                                                @if($product->inStock)
-                                                                    <button wire:click="addToCart({{ $c_index }}, {{ $p_index }})" wire:key="{{ $product->id }}" class="btn waves-effect waves-light btn-primary">ADD TO CART</button>
-                                                                @else
-                                                                    <button wire:click="" wire:key="{{ $product->id }}" type="button" class="btn">Out of Stock</button>
-                                                                @endif
-                                                                @if ($product->addedToCart)
-                                                                   <a href="{{env('APP_ROOT')}}cart-items" class="btn waves-effect waves-light btn-secondary" wire:navigate>
-                                                                    <i class="ti-shopping-cart"></i>View Cart</a>
-                                                                @endif
-                                                                
-                                                            </div>
-                                                        @endif
+                                                        <p> {{$product->name}} </p> 
                                                     </div>
+                                                </div>
+
+                                                <div class="row">
+                                                    @if (auth()->guard('client')->check())
+                                                        <div class="col-sm-7">
+                                                            @if($product->inStock)
+                                                                <button wire:click="addToCart({{ $c_index }}, {{ $p_index }})" wire:key="{{ $product->id }}" class="btn waves-effect waves-light btn-primary">ADD TO CART</button>
+                                                            @else
+                                                                <button wire:click="" wire:key="{{ $product->id }}" type="button" class="btn">Out of Stock</button>
+                                                            @endif
+                                                        </div>
+
+                                                        <div class="col-sm-5">
+                                                            @if ($product->addedToCart)
+                                                                <a href="{{env('APP_ROOT')}}cart-items" class="btn waves-effect waves-light btn-secondary" wire:navigate>
+                                                                <i class="ti-shopping-cart"></i>View Cart</a>
+                                                            @endif
+                                                        </div>
+                                                    @endif
                                                 </div>
                                             </div>
                                         @endforeach
