@@ -3,6 +3,7 @@
 namespace App\Livewire\Client;
 
 use App\Constants\Enums\ClientGroups;
+use Illuminate\Support\Facades\Session;
 use Livewire\Component;
 use App\Models\OrderHeader;
 use stdclass;
@@ -11,11 +12,13 @@ class CartItems extends Component
 {
     public $cartItems;
     public $orderHeader;
+    public $client;
 
     public function mount()
     {
         $this->orderHeader['shipping'] = 0;
         $this->cartItems = session('cartItems'); 
+        $this->client = auth()->guard('client')->user();
         $this->calculateOrderValue();
     }
 
@@ -62,7 +65,7 @@ class CartItems extends Component
 
     public function order()
     {
-        $total = collect($this->cartItems)->sum('price');
+        $total = collect($this->cartItems)->sum('subTotal');
         $order = OrderHeader::create([
             'clientId' => $this->client->id,
             'orderDate' => date('Y-m-d', time()),
@@ -88,7 +91,9 @@ class CartItems extends Component
             $order->orderLines()->create($orderedItem);
         }
 
-        // return redirect(request()->header('Referer'));
+        Session::forget('cartItems');
+        toastr()->success('Your order has been submitted successfully', 'Congrats', ['positionClass' => 'toast-top-center']);
+        $this->redirect(env('APP_ROOT').'shop');
     }
 
     public function decrement($index)
