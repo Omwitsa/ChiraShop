@@ -53,7 +53,7 @@ class ClientEdit extends Component
         $this->client->emailRecepients = $this->emailRecepients;
         $this->client->price = $this->price;
         $this->client->currency = $this->currency;
-        $this->client->password = Str::length($this->client->password) > 30 ? $this->password : Hash::make($this->password);
+        $this->client->password = Str::length($this->password) > 30 ? $this->password : Hash::make($this->password);
         $this->client->active = $this->active;
         
         $this->client->save();

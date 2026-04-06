@@ -43,7 +43,7 @@ class UserEdit extends Component
         $this->user->usercode = $this->usercode;
         $this->user->email = $this->email;
         $this->user->role = $this->role;
-        $this->user->password = Str::length($this->user->password) > 30 ? $this->password : Hash::make($this->password);
+        $this->user->password = Str::length($this->password) > 30 ? $this->password : Hash::make($this->password);
         $this->user->active = $this->active;
         $this->user->save();
 
