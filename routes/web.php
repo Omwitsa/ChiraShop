@@ -46,6 +46,7 @@ use App\Models\OrderHeader;
 use App\Mail\OrderNotification;
 // Route::view('/', 'welcome');
 
+
 // Route::get('/', 'HomeController@index');
 Route::get('/', [HomeController::class, 'index']);
 Route::get('/dashboard', [HomeController::class, 'dashboard']);
@@ -102,10 +103,21 @@ Route::get('/checkout', Checkout::class);
 Route::get('/client-orders', ClientOrders::class); 
 
 
-// Route for mailing
-Route::get('/email', function(){
-    $order = OrderHeader::find(10);
-    return new OrderNotification($order);
-});
+// // Route for mailing
+// Route::get('/email', function(){
+//     $order = OrderHeader::find(10);
+//     return new OrderNotification($order);
+// });
+
+// Route::get('/test-mail', function () {
+//     // Replace with any email address
+//     Mail::to('test@example.com')->send(new OrderNotification());
+
+//     return "Check your log file!";
+// });
+
+
+
+
 
 require __DIR__.'/auth.php';

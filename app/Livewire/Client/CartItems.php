@@ -2,9 +2,9 @@
 
 namespace App\Livewire\Client;
 
-use App\Constants\Enums\ClientGroups;
-use Illuminate\Support\Facades\Session;
 use Livewire\Component;
+use App\Mail\OrderNotification;
+use Illuminate\Support\Facades\Mail;
 use App\Models\OrderHeader;
 use stdclass;
 
@@ -65,35 +65,41 @@ class CartItems extends Component
 
     public function order()
     {
-        $total = collect($this->cartItems)->sum('subTotal');
-        $order = OrderHeader::create([
-            'clientId' => $this->client->id,
-            'orderDate' => date('Y-m-d', time()),
-            'receivingDate' => date('Y-m-d', time()),
-            'status' => '1',
-            'lpo' => '',
-            'dropOff' => '',
-            'lineTotal' => $total,
-            'amount' => $total,
-        ]);
+        // $total = collect($this->cartItems)->sum('subTotal');
+        // $order = OrderHeader::create([
+        //     'clientId' => $this->client->id,
+        //     'orderDate' => date('Y-m-d', time()),
+        //     'receivingDate' => date('Y-m-d', time()),
+        //     'status' => '1',
+        //     'lpo' => '',
+        //     'dropOff' => '',
+        //     'lineTotal' => $total,
+        //     'amount' => $total,
+        // ]);
 
-        foreach ($this->cartItems as $item) {
-            $item->order_header_id = $order->id;
-            // $order->orderLines()->create((array)$item);
-            $orderedItem = [
-                'order_header_id' => $order->id,
-                'productId' => $item->id,
-                'orderQuantity' => $item->quantity,
-                'price' => $item->price,
-                'notes' => ''
-            ];
+        // foreach ($this->cartItems as $item) {
+        //     $item->order_header_id = $order->id;
+        //     // $order->orderLines()->create((array)$item);
+        //     $orderedItem = [
+        //         'order_header_id' => $order->id,
+        //         'productId' => $item->id,
+        //         'orderQuantity' => $item->quantity,
+        //         'price' => $item->price,
+        //         'notes' => ''
+        //     ];
 
-            $order->orderLines()->create($orderedItem);
-        }
+        //     $order->orderLines()->create($orderedItem);
+        // }
 
-        Session::forget('cartItems');
-        toastr()->success('Your order has been submitted successfully', 'Congrats', ['positionClass' => 'toast-top-center']);
-        $this->redirect(env('APP_ROOT').'shop');
+        // Session::forget('cartItems');
+        // toastr()->success('Your order has been submitted successfully', 'Congrats', ['positionClass' => 'toast-top-center']);
+        // $this->redirect(env('APP_ROOT').'shop');
+
+        // Mail::to($request->user())->send(new OrderNotification($user));
+
+        // Mail::to('recipient@example.com')->queue(new OrderNotification());
+        // Mail::to('admin@example.com')->send(new OrderNotification($this->cartItems));
+        Mail::to('recipient@example.com')->send(new OrderNotification());
     }
 
     public function decrement($index)

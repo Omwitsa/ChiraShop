@@ -8,19 +8,25 @@ use Illuminate\Mail\Mailable;
 use Illuminate\Mail\Mailables\Content;
 use Illuminate\Mail\Mailables\Envelope;
 use Illuminate\Queue\SerializesModels;
-use App\Models\OrderHeader;
 
 class OrderNotification extends Mailable implements ShouldQueue
 {
     use Queueable, SerializesModels;
 
+    public $data;
+
     /**
      * Create a new message instance.
      */
-    public function __construct(public OrderHeader $order)
+    public function __construct()
     {
         //
     }
+
+    // public function __construct($data)
+    // {
+    //     $this->data = $data;
+    // }
 
     /**
      * Get the message envelope.
@@ -38,9 +44,19 @@ class OrderNotification extends Mailable implements ShouldQueue
     public function content(): Content
     {
         return new Content(
-            markdown: 'mails.notify-order',
+            view: 'mails.notify-order', // The Blade file path
+            with: [
+                'name' => "Wilson",
+            ],
         );
     }
+
+    // public function build()
+    // {
+    //     return $this->subject('Contact Form')
+    //                 ->view('emails.contact')
+    //                 ->with('data', $this->data);
+    // }
 
     /**
      * Get the attachments for the message.
