@@ -18,15 +18,11 @@ class OrderNotification extends Mailable
     /**
      * Create a new message instance.
      */
-    public function __construct()
+   
+    public function __construct($data)
     {
-        //
+        $this->data = $data;
     }
-
-    // public function __construct($data)
-    // {
-    //     $this->data = $data;
-    // }
 
     /**
      * Get the message envelope.
@@ -46,24 +42,10 @@ class OrderNotification extends Mailable
         return new Content(
             view: 'mails.notify-order', // The Blade file path
             with: [
-                'name' => "Wilson",
+                'data' => $this->data,
             ],
         );
     }
-
-    // public function content(): Content
-    // {
-    //     return new Content(
-    //         markdown: 'mails.notify-order',
-    //     );
-    // }
-
-    // public function build()
-    // {
-    //     return $this->subject('Contact Form')
-    //                 ->view('emails.contact')
-    //                 ->with('data', $this->data);
-    // }
 
     /**
      * Get the attachments for the message.
