@@ -51,6 +51,13 @@ class OrderNotification extends Mailable
         );
     }
 
+    // public function content(): Content
+    // {
+    //     return new Content(
+    //         markdown: 'mails.notify-order',
+    //     );
+    // }
+
     // public function build()
     // {
     //     return $this->subject('Contact Form')

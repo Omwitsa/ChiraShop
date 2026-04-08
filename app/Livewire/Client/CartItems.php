@@ -99,7 +99,7 @@ class CartItems extends Component
 
         // Mail::to('recipient@example.com')->queue(new OrderNotification());
         // Mail::to('admin@example.com')->send(new OrderNotification($this->cartItems));
-        Mail::to('recipient@example.com')->send(new OrderNotification());
+        Mail::to('omwitsawilson@yahoo.com')->send(new OrderNotification());
     }
 
     public function decrement($index)
