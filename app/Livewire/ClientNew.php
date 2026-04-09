@@ -37,7 +37,7 @@ class ClientNew extends Component
             'code' => ['required', 'string', 'max:50'],
             'type' => ['required', 'string', 'max:50'],
             'group' => ['required', 'string', 'max:50'],
-            'emailRecepients' => ['string'],
+            'emailRecepients' => ['required', 'string'],
             'price' => ['string', 'max:100'],
             'currency' => ['string', 'max:50'],
             'password' => ['required', 'string', 'confirmed', Rules\Password::defaults()],

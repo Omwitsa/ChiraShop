@@ -1,6 +1,6 @@
 <div class="card">
-    <div class="card-header">
-        <h3 class="card-title text-center">{{ $data->clientName }}</h3>
+    <div class="card-header text-center">
+        <h3 class="card-title">{{ $data->clientName }}</h3>
     </div>
 
     <div class="card-body table-responsive p-0">

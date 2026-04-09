@@ -97,7 +97,7 @@ class CartItems extends Component
         $header->total = $total;
         $header->lines = $this->cartItems;
 
-        Mail::to('omwitsawilson@yahoo.com')->send(new OrderNotification($header));
+        Mail::to($this->client->emailRecepients)->send(new OrderNotification($header));
         Session::forget('cartItems');
         toastr()->success('Your order has been submitted successfully', 'Congrats', ['positionClass' => 'toast-top-center']);
         $this->redirect(env('APP_ROOT').'shop');
