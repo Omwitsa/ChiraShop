@@ -79,7 +79,16 @@
 
                                     <div class="row">
                                         <div class="col-sm-4">
-                                            <button wire:click="order()" class="btn btn-checkout btn-block">Order Now</button>
+                                            <button wire:click="order" wire:target="order" wire:loading.attr="disabled" class="btn btn-checkout btn-block">
+                                                <span wire:loading.remove wire:target="order">
+                                                    Order Now
+                                                </span>
+
+                                                 <span wire:loading wire:target="order">
+                                                    <span class="spinner-border spinner-border-sm me-2" role="status"></span>
+                                                    Processing...
+                                                </span>
+                                            </button>
                                         </div>
 
                                         <div class="8">
