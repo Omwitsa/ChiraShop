@@ -4,44 +4,52 @@ namespace App\Livewire;
 
 use Livewire\Component;
 use App\Models\PriceHeader;
-use App\Models\Variety;
+use App\Models\Product;
+use App\Models\ClientCategory;
+use Illuminate\Support\Facades\DB;
 
 class PriceNew extends Component
 {
-    public $varieties;
-    public string $Name = '';
-    public string $Currency = '';
-
+    public string $name = '';
+    public $startDate;
+    public $endDate;
+    public $products;
+    public $clientCategories;
+    public int $clientCategoryId = 1;
     public $priceLines = [];
 
     public function mount()
     {
-        // $this->varieties = Variety::all();
+        $this->products = Product::all();
+        $this->clientCategories = ClientCategory::all();
     }
 
-    public function addPriceLine()
+    public function updatedClientCategoryId()
     {
-        $this->priceLines[] = ['variety' => '', 'len35' => 0, 'len40' => 0, 'len50' => 0, 'len60' => 0, 'len70' => 0, 'len80' => 0, 'len90' => 0, 'len100' => 0];
-    }
+        $this->priceLines = DB::select('SELECT p.id, p.name, l.price, p.category FROM products p LEFT JOIN price_lines l ON p.id = l.productId LEFT JOIN price_headers h ON l.price_header_id = h.id WHERE clientCategoryId = ? ORDER BY p.category, p.name', [$this->clientCategoryId]);
+        if (PriceHeader::where('clientCategoryId', $this->clientCategoryId)->doesntExist()) {
+            $this->priceLines = DB::select('SELECT p.id, p.name, l.price, p.category FROM products p LEFT JOIN price_lines l ON p.id = l.productId LEFT JOIN price_headers h ON l.price_header_id = h.id ORDER BY p.category, p.name');
+        }
 
-    public function removePriceLine($index)
-    {
-        unset($this->priceLines[$index]);
+        foreach ($this->priceLines as $item) {
+            $item->price = 0;
+        }
     }
 
     public function createPrice()
     {
-        $validated = $this->validate([
-            'Name' => ['required', 'string', 'max:100'],
-            'Currency' => ['required', 'string', 'max:20'],
-        ]);
+        dd($this->priceLines);
+        // $validated = $this->validate([
+        //     'Name' => ['required', 'string', 'max:100'],
+        //     'Currency' => ['required', 'string', 'max:20'],
+        // ]);
 
-        $price = PriceHeader::create($validated);
-        foreach ($this->priceLines as $item) {
-            $price->priceLines()->create($item);
-        }
+        // $price = PriceHeader::create($validated);
+        // foreach ($this->priceLines as $item) {
+        //     $price->priceLines()->create($item);
+        // }
 
-        $this->redirect(env('APP_ROOT').'prices');
+        // $this->redirect(env('APP_ROOT').'prices');
     }
 
     public function render()

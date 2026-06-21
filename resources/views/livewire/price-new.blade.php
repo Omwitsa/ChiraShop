@@ -40,44 +40,58 @@
                                         </li>
                                     </ul>
                                     <!-- Tab panes -->
-                                    <div class="tab-content card-block">
+                                    <div class="tab-content card-block"><br>
                                         <div class="tab-pane active" id="header" role="tabpanel">
                                             <div class="form-group row">
-                                                <label class="col-xs-12 col-sm-2 col-form-label">Name</label>
+                                                <label class="col-xs-12 col-sm-2 col-form-label">Description <span class="required">*</span></label>
                                                 <div class="col-xs-12 col-sm-4">
-                                                    <input wire:model="Name" name="Name" type="text" class="form-control" autocomplete="off" required>
-                                                    <x-input-error :messages="$errors->get('Name')" class="mt-2" />
+                                                    <input wire:model="name" name="name" type="text" class="form-control" autocomplete="off" required>
+                                                    <x-input-error :messages="$errors->get('name')" class="mt-2" />
                                                 </div>
 
-                                                <label class="col-xs-12 col-sm-2 col-form-label">Currency</label>
+                                                <label class="col-xs-12 col-sm-2 col-form-label">Category <span class="required">*</span></label>
                                                 <div class="col-xs-12 col-sm-4">
-                                                    <input wire:model="Currency" name="Currency" type="text" class="form-control" autocomplete="off" required>
-                                                    <x-input-error :messages="$errors->get('Currency')" class="mt-2" />
+                                                    <select wire:model.live="clientCategoryId" class="form-control" required>
+                                                        <option disabled value=""></option>
+                                                        @foreach($clientCategories as $category)
+                                                            <option value="{{ $category->id }}">{{ $category->name }}</option>
+                                                        @endforeach
+                                                    </select>
+                                                    <x-input-error :messages="$errors->get('clientCategoryId')" class="mt-2" />
+                                                </div>
+                                            </div>
+
+                                            <div class="form-group row">
+                                                <label class="col-xs-12 col-sm-2 col-form-label">Effective Date <span class="required">*</span></label>
+                                                <div class="col-xs-12 col-sm-4">
+                                                    <input wire:model="startDate" name="startDate" type="date" class="form-control" autocomplete="off" required>
+                                                    <x-input-error :messages="$errors->get('startDate')" class="mt-2" />
                                                 </div>
                                             </div>
                                         </div>
 
                                         <div class="tab-pane" id="lineItem" role="tabpanel">
-                                            <div>
-                                                @foreach($priceLines as $index => $item)
-                                                    <div>
-                                                        <select wire:model="priceLines.{{ $index }}.variety" required>
-                                                            <option disabled value=""></option>
-                                                            @foreach($varieties as $variety)
-                                                                <option value="{{ $variety->VarietyName }}">{{ $variety->VarietyName }}</option>
-                                                            @endforeach
-                                                        </select>
-                                                        <input type="text" wire:model="priceLines.{{ $index }}.len40" placeholder="length 40">
-                                                        <input type="text" wire:model="priceLines.{{ $index }}.len50" placeholder="length 50">
-                                                        <input type="text" wire:model="priceLines.{{ $index }}.len60" placeholder="length 60">
-                                                        <input type="text" wire:model="priceLines.{{ $index }}.len70" placeholder="length 70">
-                                                        <input type="text" wire:model="priceLines.{{ $index }}.len80" placeholder="length 80">
-                                                        <input type="text" wire:model="priceLines.{{ $index }}.len90" placeholder="length 90">
-                                                        <a class="btn btn-warning btn-sm waves-effect waves-light" wire:click="removePriceLine({{ $index }})">Remove</a>
-                                                    </div><hr>
-                                                @endforeach
-                                                
-                                                <a class="btn btn-info waves-effect waves-light" wire:click="addPriceLine">Add</a>
+                                            <div class="card-body table-responsive p-0">
+                                                <table class="table table-hover text-nowrap">
+                                                    <thead>
+                                                        <tr>
+                                                            <th>#</th>
+                                                            <th>Category</th>
+                                                            <th>Product</th>
+                                                            <th>Price</th>
+                                                        </tr>
+                                                    </thead>
+                                                    <tbody>
+                                                        @foreach ($priceLines as $index => $line)
+                                                            <tr>
+                                                                <th scope="row">{{ $loop->iteration}}</th>
+                                                                <td>{{ $line->category }}</td>
+                                                                <td>{{ $line->name }}</td>
+                                                                <td><input wire:model="priceLines.{{ $index }}.price" type="text" class="form-control" autocomplete="off"></td>
+                                                            </tr>
+                                                        @endforeach
+                                                    </tbody>
+                                                </table>
                                             </div>
                                         </div>
                                     </div>

@@ -34,9 +34,9 @@
                             <thead>
                                 <tr>
                                     <th>#</th>
-                                    <th>Name</th>
-                                    <th>Currency</th>
-                                    <th>Active</th>
+                                    <th>Description</th>
+                                    <th>From</th>
+                                    <th>From</th>
                                 </tr>
                             </thead>
 
@@ -45,8 +45,8 @@
                                     <tr>
                                         <th scope="row">{{ $loop->iteration}}</th>
                                         <td>{{ $price->Name }}</td>
-                                        <td>{{ $price->Currency }}</td>
-                                        <td>{{ $price->active }}</td>
+                                        <td>{{ $price->startDate }}</td>
+                                        <td>{{ $price->endDate }}</td>
                                     </tr>
                                 @endforeach
                             </tbody>
