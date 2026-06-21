@@ -12,6 +12,7 @@ class PriceLine extends Model
 
     protected $fillable = [
         'productId',
+        'client_category',
         'price',
         'notes',
     ];

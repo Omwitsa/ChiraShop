@@ -52,14 +52,15 @@
                                     <x-input-error :messages="$errors->get('group')" class="mt-2" />
                                 </div>
 
-                                <label class="col-xs-12 col-sm-2 col-form-label">Type <span class="required">*</span></label>
+                                <label class="col-xs-12 col-sm-2 col-form-label">Category <span class="required">*</span></label>
                                 <div class="col-xs-12 col-sm-4">
-                                    <select wire:model="type" class="form-control" required>
+                                    <select wire:model="category" class="form-control" required>
                                         <option disabled value=""></option>
-                                        <option value="Retailer">Retailer</option>
-                                        <option value="Wholesaler">Wholesaler</option>
+                                        @foreach($categories as $category)
+                                            <option value="{{ $category->name }}">{{ $category->name }}</option>
+                                        @endforeach
                                     </select>
-                                    <x-input-error :messages="$errors->get('type')" class="mt-2" />
+                                    <x-input-error :messages="$errors->get('category')" class="mt-2" />
                                 </div>
                             </div>
 

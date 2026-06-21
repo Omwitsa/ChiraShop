@@ -5,17 +5,19 @@ namespace App\Livewire;
 use Livewire\Component;
 use App\Models\Client;
 use App\Models\PriceHeader;
+use App\Models\ClientCategory;
 use Illuminate\Support\Str;
 use Illuminate\Support\Facades\Hash;
 
 class ClientEdit extends Component
 {
+    public $categories;
     public $client;
     public $prices;
     public $active;
     public string $name = '';
     public string $code = '';
-    public string $type = '';
+    public string $category = '';
     public string $group = '';
     public string $emailRecepients = '';
     public string $price = '';
@@ -26,10 +28,11 @@ class ClientEdit extends Component
     public function mount($id)
     {
         $this->prices = PriceHeader::all();
+        $this->categories = ClientCategory::all();
         $this->client = Client::find($id);
         $this->name = $this->client->name;
         $this->code = $this->client->code;
-        $this->type = $this->client->type;
+        $this->category = $this->client->category;
         $this->group = $this->client->group;
         $this->emailRecepients = $this->client->emailRecepients;
         $this->price = $this->client->price;
@@ -48,7 +51,7 @@ class ClientEdit extends Component
 
         $this->client->name = $this->name;
         $this->client->code = $this->code;
-        $this->client->type = $this->type;
+        $this->client->category = $this->category;
         $this->client->group = $this->group;
         $this->client->emailRecepients = $this->emailRecepients;
         $this->client->price = $this->price;

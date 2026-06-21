@@ -43,6 +43,13 @@
             </li>
 
             <li class="nav-item">
+                <a href="{{env('APP_ROOT')}}client-categories" class="nav-link">
+                    <i class="nav-icon fas fa-tachometer-alt"></i>
+                    <p>Client Categories</p>
+                </a>
+            </li>
+
+            <li class="nav-item">
                 <a href="{{env('APP_ROOT')}}clients" class="nav-link">
                     <i class="nav-icon fas fa-tachometer-alt"></i>
                     <p>Clients</p>
@@ -74,6 +81,13 @@
                 <a href="{{env('APP_ROOT')}}products" class="nav-link">
                     <i class="nav-icon fas fa-tachometer-alt"></i>
                     <p>Products</p>
+                </a>
+            </li>
+
+            <li class="nav-item">
+                <a href="{{env('APP_ROOT')}}prices" class="nav-link">
+                    <i class="nav-icon fas fa-tachometer-alt"></i>
+                    <p>Prices</p>
                 </a>
             </li>
 
@@ -126,13 +140,6 @@
                 </a>
             </li> --}}
 
-            {{-- <li class="nav-item">
-                <a href="{{env('APP_ROOT')}}prices" class="nav-link">
-                    <i class="nav-icon fas fa-tachometer-alt"></i>
-                    <p>Prices</p>
-                </a>
-            </li> --}}
-            
             <li class="nav-item">
                 <a href="#" class="nav-link">
                     <i class="nav-icon fas fa-tachometer-alt"></i>

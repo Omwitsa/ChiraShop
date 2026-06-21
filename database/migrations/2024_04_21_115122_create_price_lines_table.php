@@ -15,6 +15,7 @@ return new class extends Migration
             $table->id();
             $table->foreignId('price_header_id')->constrained();
             $table->bigInteger('productId');
+            $table->string('client_category')->default('');
             $table->decimal('price', total: 11, places: 2);
             $table->string('notes')->default('');
             $table->timestamps();

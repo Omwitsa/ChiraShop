@@ -16,7 +16,7 @@ class PriceNew extends Component
 
     public function mount()
     {
-        $this->varieties = Variety::all();
+        // $this->varieties = Variety::all();
     }
 
     public function addPriceLine()

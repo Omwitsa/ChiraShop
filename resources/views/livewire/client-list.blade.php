@@ -36,7 +36,7 @@
                                     <th>#</th>
                                     <th>Name</th>
                                     <th>Code</th>
-                                    <th>Type</th>
+                                    <th>Category</th>
                                     <th>Group</th>
                                     <th>Currency</th>
                                     <th></th>
@@ -49,7 +49,7 @@
                                         <th scope="row">{{ $loop->iteration}}</th>
                                         <td>{{ $client->name }}</td>
                                         <td>{{ $client->code }}</td>
-                                        <td>{{ $client->type }}</td>
+                                        <td>{{ $client->category }}</td>
                                         <td>{{ $client->group }}</td>
                                         <td>{{ $client->Currency }}</td>
                                         <td>
