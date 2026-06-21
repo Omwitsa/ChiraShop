@@ -49,7 +49,7 @@
                                         <th scope="row">{{ $loop->iteration}}</th>
                                         <td>{{ $client->name }}</td>
                                         <td>{{ $client->code }}</td>
-                                        <td>{{ $client->category }}</td>
+                                        <td>{{ $client->categoryId }}</td>
                                         <td>{{ $client->group }}</td>
                                         <td>{{ $client->Currency }}</td>
                                         <td>

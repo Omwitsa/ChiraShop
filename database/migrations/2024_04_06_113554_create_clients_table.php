@@ -16,10 +16,9 @@ return new class extends Migration
             $table->id();
             $table->string('code', length: 50)->unique();
             $table->string('name');
-            $table->string('category', length: 100);
+            $table->integer('categoryId')->default(1);
             $table->string('group', length: 50)->default(ClientGroups::GENERAL->value);
             $table->string('emailRecepients', length: 200)->default('');
-            $table->string('price', length: 100)->default('');
             $table->string('currency', length: 20)->default('');
             $table->string('password');
             $table->boolean('active')->default(true);

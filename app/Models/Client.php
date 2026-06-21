@@ -15,10 +15,9 @@ class Client extends Authenticatable
     protected $fillable = [
         'name',
         'code',
-        'category',
+        'categoryId',
         'group',
         'emailRecepients',
-        'price',
         'currency',
         'password',
         'active',

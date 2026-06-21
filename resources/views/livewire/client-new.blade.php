@@ -54,13 +54,13 @@
 
                                 <label class="col-xs-12 col-sm-2 col-form-label">Category <span class="required">*</span></label>
                                 <div class="col-xs-12 col-sm-4">
-                                    <select wire:model="category" class="form-control" required>
+                                    <select wire:model="categoryId" class="form-control" required>
                                         <option disabled value=""></option>
                                         @foreach($categories as $category)
-                                            <option value="{{ $category->name }}">{{ $category->name }}</option>
+                                            <option value="{{ $category->id }}">{{ $category->name }}</option>
                                         @endforeach
                                     </select>
-                                    <x-input-error :messages="$errors->get('category')" class="mt-2" />
+                                    <x-input-error :messages="$errors->get('categoryId')" class="mt-2" />
                                 </div>
                             </div>
 
