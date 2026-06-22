@@ -36,7 +36,7 @@
                                     <th>#</th>
                                     <th>Description</th>
                                     <th>From</th>
-                                    <th>From</th>
+                                    <th>To</th>
                                 </tr>
                             </thead>
 
@@ -44,7 +44,7 @@
                                 @foreach ($prices as $price)
                                     <tr>
                                         <th scope="row">{{ $loop->iteration}}</th>
-                                        <td>{{ $price->Name }}</td>
+                                        <td>{{ $price->name }}</td>
                                         <td>{{ $price->startDate }}</td>
                                         <td>{{ $price->endDate }}</td>
                                     </tr>

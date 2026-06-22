@@ -2,6 +2,7 @@
 
 namespace App\Livewire;
 
+use Carbon\Carbon;
 use Livewire\Component;
 use App\Models\PriceHeader;
 use App\Models\Product;
@@ -16,40 +17,50 @@ class PriceNew extends Component
     public $products;
     public $clientCategories;
     public int $clientCategoryId = 1;
+    public int $priceHeaderId = 0;
     public $priceLines = [];
 
     public function mount()
     {
+        $this->startDate = Carbon::today()->format('Y-m-d'); 
         $this->products = Product::all();
         $this->clientCategories = ClientCategory::all();
     }
 
     public function updatedClientCategoryId()
     {
-        $this->priceLines = DB::select('SELECT p.id, p.name, l.price, p.category FROM products p LEFT JOIN price_lines l ON p.id = l.productId LEFT JOIN price_headers h ON l.price_header_id = h.id WHERE clientCategoryId = ? ORDER BY p.category, p.name', [$this->clientCategoryId]);
+        $this->priceLines = DB::select('SELECT p.id, h.id AS priceHeaderId, p.id AS productId, p.name, l.price, p.category FROM products p LEFT JOIN price_lines l ON p.id = l.productId LEFT JOIN price_headers h ON l.price_header_id = h.id WHERE clientCategoryId = ? ORDER BY p.category, p.name', [$this->clientCategoryId]);
         if (PriceHeader::where('clientCategoryId', $this->clientCategoryId)->doesntExist()) {
-            $this->priceLines = DB::select('SELECT p.id, p.name, l.price, p.category FROM products p LEFT JOIN price_lines l ON p.id = l.productId LEFT JOIN price_headers h ON l.price_header_id = h.id ORDER BY p.category, p.name');
+            $this->priceLines = DB::select('SELECT p.id, h.id AS priceHeaderId, p.id AS productId, p.name, l.price, p.category FROM products p LEFT JOIN price_lines l ON p.id = l.productId LEFT JOIN price_headers h ON l.price_header_id = h.id ORDER BY p.category, p.name');
         }
-
+        
         foreach ($this->priceLines as $item) {
-            $item->price = 0;
+            $item->price = $item->price ?? 0;
+            $item->priceHeaderId =  $item->priceHeaderId ?? 0;
         }
     }
 
     public function createPrice()
     {
-        dd($this->priceLines);
-        // $validated = $this->validate([
-        //     'Name' => ['required', 'string', 'max:100'],
-        //     'Currency' => ['required', 'string', 'max:20'],
-        // ]);
+        $priceHeader = DB::table('price_headers')
+            ->where('id', $this->priceHeaderId)
+            ->update(['endDate' => $this->startDate]);
 
-        // $price = PriceHeader::create($validated);
-        // foreach ($this->priceLines as $item) {
-        //     $price->priceLines()->create($item);
-        // }
+        $price = PriceHeader::create([
+            'name' => $this->name,
+            'currency' => '',
+            'startDate' => $this->startDate,
+            'clientCategoryId' => $this->clientCategoryId,
+        ]);
 
-        // $this->redirect(env('APP_ROOT').'prices');
+        foreach ($this->priceLines as $item) {
+            $price->priceLines()->create([
+                'productId' => $item->productId,
+                'price' => $item->price,
+            ]);
+        }
+
+        $this->redirect(env('APP_ROOT').'prices');
     }
 
     public function render()

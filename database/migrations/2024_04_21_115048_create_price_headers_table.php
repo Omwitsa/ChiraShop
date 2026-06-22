@@ -14,12 +14,12 @@ return new class extends Migration
         Schema::create('price_headers', function (Blueprint $table) {
             $table->id();
             $table->string('name', length: 100)->unique();
-            $table->string('currency', length: 20);
+            $table->string('currency', length: 20)->nullable();
             $table->boolean('active')->default(true);
             $table->integer('clientCategoryId')->default(1);
             $table->dateTime('startDate')->default(date('Y-m-d', time()));
-            $table->dateTime('endDate')->default(date('Y-m-d', time()));
-            $table->string('notes')->default('');
+            $table->dateTime('endDate')->nullable();
+            $table->string('notes')->nullable();
             $table->string('personnel', length: 50)->default('');
             $table->dateTime('dateCreated')->default(date('Y-m-d', time()));
             $table->timestamps();
