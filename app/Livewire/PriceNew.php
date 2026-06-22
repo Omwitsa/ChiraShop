@@ -25,18 +25,20 @@ class PriceNew extends Component
         $this->startDate = Carbon::today()->format('Y-m-d'); 
         $this->products = Product::all();
         $this->clientCategories = ClientCategory::all();
+
+        $this->updatedClientCategoryId();
     }
 
     public function updatedClientCategoryId()
     {
-        $this->priceLines = DB::select('SELECT p.id, h.id AS priceHeaderId, p.id AS productId, p.name, l.price, p.category FROM products p LEFT JOIN price_lines l ON p.id = l.productId LEFT JOIN price_headers h ON l.price_header_id = h.id WHERE clientCategoryId = ? ORDER BY p.category, p.name', [$this->clientCategoryId]);
+        $this->priceLines = DB::select('SELECT p.id, h.id AS priceHeaderId, p.id AS productId, p.name, l.price, p.category FROM products p LEFT JOIN price_lines l ON p.id = l.productId LEFT JOIN price_headers h ON l.price_header_id = h.id WHERE endDate IS NULL AND clientCategoryId = ? ORDER BY p.category, p.name', [$this->clientCategoryId]);
         if (PriceHeader::where('clientCategoryId', $this->clientCategoryId)->doesntExist()) {
             $this->priceLines = DB::select('SELECT p.id, h.id AS priceHeaderId, p.id AS productId, p.name, l.price, p.category FROM products p LEFT JOIN price_lines l ON p.id = l.productId LEFT JOIN price_headers h ON l.price_header_id = h.id ORDER BY p.category, p.name');
         }
         
         foreach ($this->priceLines as $item) {
             $item->price = $item->price ?? 0;
-            $item->priceHeaderId =  $item->priceHeaderId ?? 0;
+            $this->priceHeaderId =  $item->priceHeaderId ?? 0;
         }
     }
 
