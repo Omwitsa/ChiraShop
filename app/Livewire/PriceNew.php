@@ -5,6 +5,7 @@ namespace App\Livewire;
 use Carbon\Carbon;
 use Livewire\Component;
 use App\Models\PriceHeader;
+use App\Models\PriceLine;
 use App\Models\Product;
 use App\Models\ClientCategory;
 use Illuminate\Support\Facades\DB;
@@ -31,14 +32,21 @@ class PriceNew extends Component
 
     public function updatedClientCategoryId()
     {
-        $this->priceLines = DB::select('SELECT p.id, h.id AS priceHeaderId, p.id AS productId, p.name, l.price, p.category FROM products p LEFT JOIN price_lines l ON p.id = l.productId LEFT JOIN price_headers h ON l.price_header_id = h.id WHERE endDate IS NULL AND clientCategoryId = ? ORDER BY p.category, p.name', [$this->clientCategoryId]);
-        if (PriceHeader::where('clientCategoryId', $this->clientCategoryId)->doesntExist()) {
-            $this->priceLines = DB::select('SELECT p.id, h.id AS priceHeaderId, p.id AS productId, p.name, l.price, p.category FROM products p LEFT JOIN price_lines l ON p.id = l.productId LEFT JOIN price_headers h ON l.price_header_id = h.id ORDER BY p.category, p.name');
+        $priceHeader = PriceHeader::where('clientCategoryId', $this->clientCategoryId)
+               ->whereNull('endDate')
+               ->first();
+
+        if($priceHeader != null){
+            $this->priceHeaderId = $priceHeader->id;
         }
-        
+
+        $this->priceLines = DB::select('SELECT id AS productId, name, category FROM products ORDER BY category, name;');
         foreach ($this->priceLines as $item) {
-            $item->price = $item->price ?? 0;
-            $this->priceHeaderId =  $item->priceHeaderId ?? 0;
+            $line = PriceLine::where('price_header_id', $this->priceHeaderId)
+            ->where('productId', $item->productId)
+            ->first();
+
+            $item->price = $line->price ?? 0;
         }
     }
 
