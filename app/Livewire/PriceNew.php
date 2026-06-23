@@ -36,6 +36,7 @@ class PriceNew extends Component
                ->whereNull('endDate')
                ->first();
 
+        $this->priceHeaderId = 0;
         if($priceHeader != null){
             $this->priceHeaderId = $priceHeader->id;
         }
