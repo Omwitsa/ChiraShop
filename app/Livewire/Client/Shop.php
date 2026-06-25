@@ -72,7 +72,8 @@ class Shop extends Component
             $products= DB::select('SELECT p.id, p.name, p.code, p.barcode, p.active, p.minimumOrder, p.picUrl, p.inStock, p.isAddOn, p.reasonToLove, 
             p.description, p.olFactoryNotes, p.ingredients, p.howToUse, p.claims, p.origin, p.volume, p.shipmentTime, p.categoryId, l.price 
             FROM products p INNER JOIN price_lines l ON p.id = l.productId INNER JOIN price_headers h ON h.id = l.price_header_id 
-            WHERE h.endDate IS NULL AND h.clientCategoryId = ? AND p.active = true AND p.categoryId = ? AND l.price > 0;', [$clientCategoryId, $productCategory->id]);
+            WHERE h.startDate <= now() AND (h.endDate >= now() OR h.endDate IS NULL) AND h.clientCategoryId = ? AND p.active = true 
+            AND p.categoryId = ? AND l.price > 0;', [$clientCategoryId, $productCategory->id]);
             foreach ($products as $p_key => $p_value) {
                 $product = (object) $p_value;
                 $itemOrdered = in_array($product->id, array_column($this->cartItems, 'id'));
