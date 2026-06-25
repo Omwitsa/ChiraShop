@@ -7,6 +7,7 @@ use App\Models\Product;
 use Illuminate\Support\Facades\Session;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Arr;
+use Auth;
 
 class Shop extends Component
 {
@@ -21,8 +22,8 @@ class Shop extends Component
         }
 
         $this->productCategories = DB::table('product_categories')
-        ->join('products', 'product_categories.name', '=', 'products.category')
-        ->select('product_categories.name', 'product_categories.sortOrder')
+        ->join('products', 'product_categories.id', '=', 'products.categoryId')
+        ->select('product_categories.id', 'product_categories.name', 'product_categories.sortOrder')
         ->orderBy('product_categories.sortOrder')
         ->distinct()
         ->get();
@@ -34,11 +35,44 @@ class Shop extends Component
         $this->redirectRoute('product-info', ['id' => $id]);
     }
 
-    public function categoryProducts()
+    public function categoryProducts1()
     {
+        $clientCategoryId = Auth::guard('client')->user()->categoryId;
+
         foreach ($this->productCategories as $key => $value) {
             $productCategory = (object) $value;
-            $products= DB::select('SELECT * FROM products WHERE category = ? AND active = true', [$productCategory->name]);
+            $products= DB::select('SELECT * FROM products WHERE categoryId = ? AND active = true', [$productCategory->id]);
+            foreach ($products as $p_key => $p_value) {
+                $product = (object) $p_value;
+                $product->price = 0;
+                $itemOrdered = in_array($product->id, array_column($this->cartItems, 'id'));
+                $product->addedToCart = empty($this->cartItems) ? false : $itemOrdered;
+                
+                $line = DB::table('price_headers')
+                    ->join('price_lines', 'price_headers.id', '=', 'price_lines.price_header_id')
+                    ->where('price_headers.clientCategoryId', $clientCategoryId)
+                    ->where('price_lines.productId', $product->id)
+                    ->whereNull('price_headers.endDate')
+                    ->select('price_lines.price')
+                    ->first();
+
+                $product->price = $line->price;
+            }
+
+            $productCategory->products = $products;
+        }
+    }
+
+    public function categoryProducts()
+    {
+        $clientCategoryId = Auth::guard('client')->user()->categoryId;
+
+        foreach ($this->productCategories as $key => $value) {
+            $productCategory = (object) $value;
+            $products= DB::select('SELECT p.id, p.name, p.code, p.barcode, p.active, p.minimumOrder, p.picUrl, p.inStock, p.isAddOn, p.reasonToLove, 
+            p.description, p.olFactoryNotes, p.ingredients, p.howToUse, p.claims, p.origin, p.volume, p.shipmentTime, p.categoryId, l.price 
+            FROM products p INNER JOIN price_lines l ON p.id = l.productId INNER JOIN price_headers h ON h.id = l.price_header_id 
+            WHERE h.endDate IS NULL AND h.clientCategoryId = ? AND p.active = true AND p.categoryId = ? AND l.price > 0;', [$clientCategoryId, $productCategory->id]);
             foreach ($products as $p_key => $p_value) {
                 $product = (object) $p_value;
                 $itemOrdered = in_array($product->id, array_column($this->cartItems, 'id'));
@@ -55,7 +89,6 @@ class Shop extends Component
         $product = $category->products[$p_index];
         $product->addedToCart = true;
         $product->quantity = 1;
-        $product->price = 1500;
         $product->subTotal = $product->quantity * $product->price;
 
         $itemOrdered = in_array($product->id, array_column($this->cartItems, 'id'));

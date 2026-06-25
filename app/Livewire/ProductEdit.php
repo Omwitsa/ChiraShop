@@ -17,7 +17,6 @@ class ProductEdit extends Component
     public $categories;
     public string $name = '';
     public string $code = '';
-    public string $category = '';
     public string $barcode = '';
     public string $reasonToLove = '';
     public string $description = '';
@@ -28,6 +27,7 @@ class ProductEdit extends Component
     public string $origin = '';
     public string $volume = '';
     public string $shipmentTime = '';
+    public int $categoryId = 1;
     public $product;
     public string $picUrl = '';
     public $active;
@@ -43,7 +43,7 @@ class ProductEdit extends Component
         $this->product = Product::find($id);
         $this->name = $this->product->name;
         $this->code = $this->product->code;
-        $this->category = $this->product->category;
+        $this->categoryId = $this->product->categoryId;
         $this->barcode = $this->product->barcode;
         $this->reasonToLove = $this->product->reasonToLove;
         $this->description = $this->product->description;
@@ -81,7 +81,7 @@ class ProductEdit extends Component
 
         $this->product->name = $this->name;
         $this->product->code = $this->code;
-        $this->product->category = $this->category;
+        $this->product->categoryId = $this->categoryId;
         $this->product->barcode = $this->barcode;
         $this->product->active = $this->active;
         $this->product->isAddOn = $this->isAddOn;

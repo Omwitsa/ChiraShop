@@ -49,9 +49,9 @@
                                         <th scope="row">{{ $loop->iteration}}</th>
                                         <td>{{ $client->name }}</td>
                                         <td>{{ $client->code }}</td>
-                                        <td>{{ $client->categoryId }}</td>
+                                        <td>{{ $client->category }}</td>
                                         <td>{{ $client->group }}</td>
-                                        <td>{{ $client->Currency }}</td>
+                                        <td>{{ $client->currency }}</td>
                                         <td>
                                             <button wire:click="edit({{ $client->id }})" wire:key="{{ $client->id }}" type="button" class="btn btn-primary btn-sm waves-effect waves-light">Edit</button>|
                                             <button wire:click="delete({{ $client->id }})" wire:key="{{ $client->id }}" wire:confirm="Are you sure you want to delete?" type="button" class="btn btn-danger btn-sm waves-effect waves-light">Delete</button>

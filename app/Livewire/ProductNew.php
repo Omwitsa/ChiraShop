@@ -19,7 +19,6 @@ class ProductNew extends Component
     public $categories;
     public string $name = '';
     public string $code = '';
-    public string $category = '';
     public string $barcode = '';
     public string $reasonToLove = '';
     public string $description = '';
@@ -30,6 +29,7 @@ class ProductNew extends Component
     public string $origin = '';
     public string $volume = '';
     public string $shipmentTime = '';
+    public int $categoryId = 1;
     public $isAddOn;
     #[Validate('image|max:1024')] // 1MB Max
     public $image;         // holds a TemporaryUploadedFile
@@ -63,7 +63,7 @@ class ProductNew extends Component
         $product = new Product;
         $product->name = $this->name;
         $product->code = $this->code;
-        $product->category = $this->category;
+        $product->categoryId = $this->categoryId;
         $product->barcode = $this->barcode;
         $product->reasonToLove = $this->reasonToLove;
         $product->description = $this->description;

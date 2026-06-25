@@ -4,13 +4,14 @@ namespace App\Livewire;
 
 use Livewire\Component;
 use App\Models\Product;
+use Illuminate\Support\Facades\DB;
 
 class ProductList extends Component
 {
     public $products;
     public function mount()
     {
-        $this->products = Product::all();
+       $this->products = DB::select('SELECT p.id, p.name, p.code, p.barcode, p.minimumOrder, p.active, p.inStock, p.isAddOn, c.name AS category FROM products p INNER JOIN product_categories c ON p.categoryId = c.id ORDER BY c.name, p.name;');
     }
 
     public function edit($id){

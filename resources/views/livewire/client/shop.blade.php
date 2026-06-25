@@ -40,7 +40,8 @@
 
                                                 <div class="row">
                                                     <div class="col-sm-12 text-center">
-                                                        <p> {{$product->name}} </p> 
+                                                        <span> {{$product->name}} </span> <br>
+                                                        <span> Ksh {{$product->price}} </span>
                                                     </div>
                                                 </div>
 
@@ -66,7 +67,7 @@
                                         @endforeach
                                     </div>
                                 </div>
-                            </div>
+                            </div><hr>
                         @endforeach
                     </div>
                 </div>

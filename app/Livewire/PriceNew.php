@@ -41,7 +41,7 @@ class PriceNew extends Component
             $this->priceHeaderId = $priceHeader->id;
         }
 
-        $this->priceLines = DB::select('SELECT id AS productId, name, category FROM products ORDER BY category, name;');
+        $this->priceLines = DB::select('SELECT p.id AS productId, p.name, c.name AS category FROM products p INNER JOIN product_categories c ON p.categoryId = c.id ORDER BY c.name, p.name;');
         foreach ($this->priceLines as $item) {
             $line = PriceLine::where('price_header_id', $this->priceHeaderId)
             ->where('productId', $item->productId)

@@ -16,7 +16,7 @@ return new class extends Migration
             $table->id();
             $table->string('name', length: 100)->unique(); 
             $table->string('code', length: 50)->unique();
-            $table->string('category', length: 100);
+            $table->integer('categoryId')->default(1);
             $table->string('barcode', length: 20)->default('');
             $table->boolean('active')->default(true);
             $table->integer('minimumOrder')->default(0);
