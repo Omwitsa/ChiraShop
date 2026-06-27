@@ -13,6 +13,7 @@ use Illuminate\Support\Facades\DB;
 class PriceNew extends Component
 {
     public string $name = '';
+    public $currentDate;
     public $startDate;
     public $endDate;
     public $products;
@@ -23,7 +24,8 @@ class PriceNew extends Component
 
     public function mount()
     {
-        $this->startDate = Carbon::today()->format('Y-m-d'); 
+        $this->currentDate = Carbon::today()->format('Y-m-d'); 
+        $this->startDate =  $this->currentDate; 
         $this->products = Product::all();
         $this->clientCategories = ClientCategory::all();
 
@@ -53,6 +55,12 @@ class PriceNew extends Component
 
     public function createPrice()
     {
+        
+        if($this->startDate < $this->currentDate){
+            toastr()->error('Effective date must be from today', 'Sorry', ['positionClass' => 'toast-top-center']);
+            return;
+        }
+
         $priceHeader = DB::table('price_headers')
             ->where('id', $this->priceHeaderId)
             ->update(['endDate' => $this->startDate]);

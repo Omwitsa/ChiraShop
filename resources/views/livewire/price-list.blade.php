@@ -38,6 +38,7 @@
                                     <th>Description</th>
                                     <th>From</th>
                                     <th>To</th>
+                                    <th></th>
                                 </tr>
                             </thead>
 
@@ -49,6 +50,9 @@
                                         <td>{{ $price->name }}</td>
                                         <td>{{ $price->startDate }}</td>
                                         <td>{{ $price->endDate }}</td>
+                                        <td>
+                                            <button wire:click="details({{ $price->id }})" wire:key="{{ $price->id }}" type="button" class="btn btn-info btn-sm waves-effect waves-light">Details</button>
+                                        </td>
                                     </tr>
                                 @endforeach
                             </tbody>
