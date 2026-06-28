@@ -18,8 +18,8 @@ return new class extends Migration
             $table->bigInteger('productId');
             $table->decimal('orderQuantity', total: 8, places: 2);
             $table->decimal('unit_price', total: 11, places: 2);
-            $table->decimal('price', total: 11, places: 2);
-            $table->decimal('price', total: 11, places: 2);
+            $table->decimal('discount', total: 11, places: 2)->default(0);
+            $table->decimal('tax', total: 11, places: 2)->default(0);
             $table->string('notes')->default('');
             $table->timestamps();
         });

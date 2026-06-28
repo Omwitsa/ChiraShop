@@ -42,6 +42,7 @@ class CartItems extends Component
         $this->calculateOrderValue();
     }
 
+
     public function calculateOrderValue()
     {
         $this->orderHeader['subTotal'] = 0;
@@ -85,7 +86,7 @@ class CartItems extends Component
                 'order_header_id' => $order->id,
                 'productId' => $item->id,
                 'orderQuantity' => $item->quantity,
-                'price' => $item->price,
+                'unit_price' => $item->price,
                 'notes' => ''
             ];
 
