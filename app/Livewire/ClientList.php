@@ -11,6 +11,10 @@ class ClientList extends Component
     public $clients;
     public function mount()
     {
+        if(!auth()->guard('web')->check()){
+           return redirect('login');
+        }
+        
         $this->clients = DB::select('SELECT p.id, p.name, p.code, p.group, p.currency, c.name AS category FROM clients p INNER JOIN client_categories c ON p.categoryId = c.id ORDER BY c.name, p.name;');
     }
 

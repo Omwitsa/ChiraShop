@@ -11,6 +11,10 @@ class ProductList extends Component
     public $products;
     public function mount()
     {
+        if(!auth()->guard('web')->check()){
+           return redirect('login');
+        }
+        
        $this->products = DB::select('SELECT p.id, p.name, p.code, p.barcode, p.minimumOrder, p.active, p.inStock, p.isAddOn, c.name AS category FROM products p INNER JOIN product_categories c ON p.categoryId = c.id ORDER BY c.name, p.name;');
     }
 

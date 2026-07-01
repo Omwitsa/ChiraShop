@@ -35,10 +35,17 @@
                 </a>
             </li>
 
-            <li class="nav-item">
-                <a href="{{env('APP_ROOT')}}clubs" class="nav-link">
+             <li class="nav-item">
+                <a href="{{env('APP_ROOT')}}orders" class="nav-link">
                     <i class="nav-icon fas fa-tachometer-alt"></i>
-                    <p>Clubs</p>
+                    <p>Orders</p>
+                </a>
+            </li>
+
+            <li class="nav-item">
+                <a href="{{env('APP_ROOT')}}prices" class="nav-link">
+                    <i class="nav-icon fas fa-tachometer-alt"></i>
+                    <p>Prices</p>
                 </a>
             </li>
 
@@ -57,20 +64,6 @@
             </li>
 
             <li class="nav-item">
-                <a href="{{env('APP_ROOT')}}regions" class="nav-link">
-                    <i class="nav-icon fas fa-tachometer-alt"></i>
-                    <p>Regions</p>
-                </a>
-            </li>
-
-            <li class="nav-item">
-                <a href="{{env('APP_ROOT')}}courses" class="nav-link">
-                    <i class="nav-icon fas fa-tachometer-alt"></i>
-                    <p>Courses</p>
-                </a>
-            </li>
-
-            <li class="nav-item">
                 <a href="{{env('APP_ROOT')}}product-categories" class="nav-link">
                     <i class="nav-icon fas fa-tachometer-alt"></i>
                     <p>Product Categories</p>
@@ -85,25 +78,25 @@
             </li>
 
             <li class="nav-item">
-                <a href="{{env('APP_ROOT')}}prices" class="nav-link">
+                <a href="{{env('APP_ROOT')}}clubs" class="nav-link">
                     <i class="nav-icon fas fa-tachometer-alt"></i>
-                    <p>Prices</p>
+                    <p>Clubs</p>
                 </a>
             </li>
 
-            {{-- <li class="nav-item">
-                <a href="{{env('APP_ROOT')}}orders" class="nav-link">
+            <li class="nav-item">
+                <a href="{{env('APP_ROOT')}}courses" class="nav-link">
                     <i class="nav-icon fas fa-tachometer-alt"></i>
-                    <p>Orders</p>
+                    <p>Courses</p>
                 </a>
-            </li> --}}
+            </li>
 
-            {{-- <li class="nav-item">
-                <a href="{{env('APP_ROOT')}}client-categories" class="nav-link">
+            <li class="nav-item">
+                <a href="{{env('APP_ROOT')}}regions" class="nav-link">
                     <i class="nav-icon fas fa-tachometer-alt"></i>
-                    <p>Client Categories</p>
+                    <p>Regions</p>
                 </a>
-            </li> --}}
+            </li>
 
             {{-- <li class="nav-item">
                 <a href="{{env('APP_ROOT')}}varieties" class="nav-link">

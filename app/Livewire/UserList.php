@@ -10,6 +10,10 @@ class UserList extends Component
     public $users;
     public function mount()
     {
+        if(!auth()->guard('web')->check()){
+           return redirect('login');
+        }
+        
         $this->users = User::all();
     }
 

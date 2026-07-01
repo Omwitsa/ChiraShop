@@ -3,12 +3,12 @@
         <div class="container-fluid">
             <div class="row mb-2">
                 <div class="col-sm-6">
-                    <h1>Orders</h1>
+                    <h1>Order</h1>
                 </div>
                 <div class="col-sm-6">
                     <ol class="breadcrumb float-sm-right">
                         <li class="breadcrumb-item"><a href="{{env('APP_ROOT')}}">Home</a></li>
-                        <li class="breadcrumb-item active">Orders</li>
+                        <li class="breadcrumb-item active">Order</li>
                     </ol>
                 </div>
             </div>
@@ -20,14 +20,7 @@
             <div class="col-sm-12">
                 <div class="card">
                     <div class="card-header">
-                        <h3 class="card-title">Orders</h3>
-
-                        <div class="card-tools">
-                            <div class="input-group input-group-sm" style="width: 150px;">
-                                <!-- <input type="text" name="table_search" class="form-control float-right" placeholder="Search"> -->
-
-                            </div>
-                        </div>
+                        <h3 class="card-title">Order</h3>
                     </div>
 
                     <div class="card-body table-responsive p-0">
@@ -35,26 +28,27 @@
                             <thead>
                                 <tr>
                                     <th>#</th>
-                                    <th>Order Date</th>
-                                    <th>Client</th>
-                                    <th>Amount</th>
-                                    <th></th>
-                                    <!-- <th>Status</th> -->
+                                    <th>Product</th>
+                                    <th>Unit Price</th>
+                                    <th>Quantity</th>
+                                    <th>Line Total</th>
                                 </tr>
                             </thead>
                             <tbody>
-                                @foreach ($orders as $order)
+                                @foreach ($orderItems as $line)
                                     <tr>
                                         <th scope="row">{{ $loop->iteration}}</th>
-                                        <td>{{ $order->orderDate }}</td>
-                                        <td>{{ $order->name }}</td>
-                                        <td>{{ $order->amount }}</td>
-                                        <td>
-                                            <button wire:click="details({{ $order->id }})" wire:key="{{ $order->id }}" type="button" class="btn btn-info btn-sm waves-effect waves-light">Details</button>
-                                        </td>
-                                        <!-- <td>{{ $order->status }}</td> -->
+                                        <td>{{ $line->name }}</td>
+                                        <td>{{ $line->unit_price }}</td>
+                                        <td>{{ $line->orderQuantity }}</td>
+                                        <td>{{ $line->lineTotal }}</td>
                                     </tr>
                                 @endforeach
+
+                                <tr>
+                                    <td colspan="4">Total</td>
+                                    <td>{{ $order->amount }}</td>
+                                </tr>
                             </tbody>
                         </table>
                     </div>
