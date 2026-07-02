@@ -21,9 +21,22 @@
                 <div class="card">
                     <div class="card-header">
                         <h3 class="card-title">Order</h3>
+
+                        <div class="card-tools">
+                            <div class="input-group input-group-sm" style="width: 150px;">
+                                <button wire:click="print()" type="button" class="btn btn-primary waves-effect waves-light">Print</button>
+                            </div>
+                        </div>
                     </div>
 
                     <div class="card-body table-responsive p-0">
+                        <div class="row text-center">
+                            <div class="col-sm-12">
+                                <h3>{{ $order->name }}</3>
+                                <h6>{{ $order->orderDate }}</h6>
+                            </div>
+                        </div><hr>
+
                         <table class="table table-hover text-nowrap">
                             <thead>
                                 <tr>
