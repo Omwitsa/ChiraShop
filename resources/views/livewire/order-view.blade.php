@@ -24,7 +24,7 @@
 
                         <div class="card-tools">
                             <div class="input-group input-group-sm" style="width: 150px;">
-                                <button wire:click="print()" type="button" class="btn btn-primary waves-effect waves-light">Print</button>
+                                <button wire:click="print"  wire:loading.attr="disabled" class="btn btn-primary waves-effect waves-light">Print</button>
                             </div>
                         </div>
                     </div>

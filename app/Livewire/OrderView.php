@@ -5,9 +5,13 @@ namespace App\Livewire;
 use Livewire\Component;
 use App\Models\OrderHeader;
 use Illuminate\Support\Facades\DB;
+use Spatie\LaravelPdf\Facades\Pdf;
 
 class OrderView extends Component
 {
+    public $orderId = 101;
+    public $total = 1500;
+
     public $order;
     public $orderItems;
     public function mount($id)
@@ -22,7 +26,15 @@ class OrderView extends Component
 
     public function print()
     {
-        dd("Willy");
+        // 1. Generate the PDF and get it as a base64 encoded string
+        $base64Content = Pdf::view('reports.orders', ['order' => $this->order, 'orderItems' => $this->orderItems])
+            ->format('a4')
+            ->base64(); // <-- This extracts the base64 string
+
+        // 2. Return it by decoding it inside Livewire's stream download
+        return response()->streamDownload(function () use ($base64Content) {
+            echo base64_decode($base64Content);
+        }, 'invoice.pdf');
     }
 
     public function render()
