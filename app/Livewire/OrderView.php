@@ -24,6 +24,19 @@ class OrderView extends Component
         }
     }
 
+    public function print1()
+    {
+        // 1. Generate the PDF and get it as a base64 encoded string
+        $base64Content = Pdf::view('reports.orders', ['order' => $this->order, 'orderItems' => $this->orderItems])
+            ->format('a4')
+            ->base64(); // <-- This extracts the base64 string
+
+        // 2. Return it by decoding it inside Livewire's stream download
+        return response()->streamDownload(function () use ($base64Content) {
+            echo base64_decode($base64Content);
+        }, 'invoice.pdf');
+    }
+
     public function print()
     {
         // 1. Generate the PDF and get it as a base64 encoded string
