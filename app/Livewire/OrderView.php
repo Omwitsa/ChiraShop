@@ -9,14 +9,11 @@ use Spatie\LaravelPdf\Facades\Pdf;
 
 class OrderView extends Component
 {
-    public $orderId = 101;
-    public $total = 1500;
-
     public $order;
     public $orderItems;
     public function mount($id)
     {
-        $results = DB::select('SELECT o.id, o.orderDate, o.receivingDate, o.amount, o.lineTotal, c.name FROM orderheader o INNER JOIN clients c ON o.clientId = c.id WHERE o.id = ' .$id. ';');
+        $results = DB::select('SELECT o.id, o.orderDate, o.receivingDate, o.amount, o.lineTotal, c.name, c.emailRecepients FROM orderheader o INNER JOIN clients c ON o.clientId = c.id WHERE o.id = ' .$id. ';');
         $this->order = $results[0];
         $this->orderItems = DB::select('SELECT l.id, l.unit_price, l.orderQuantity, l.discount, l.tax, p.name, p.barcode FROM orderline l INNER JOIN products p ON l.productId = p.id WHERE l.order_header_id = '. $id .' ORDER BY p.categoryId, p.name;');
         foreach ($this->orderItems as $item) {
@@ -47,7 +44,7 @@ class OrderView extends Component
         // 2. Return it by decoding it inside Livewire's stream download
         return response()->streamDownload(function () use ($base64Content) {
             echo base64_decode($base64Content);
-        }, 'invoice.pdf');
+        }, "order-{$this->order->name}-{$this->order->orderDate}.pdf");
     }
 
     public function render()

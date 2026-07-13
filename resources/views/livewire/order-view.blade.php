@@ -40,7 +40,7 @@
                         <table class="table table-hover text-nowrap">
                             <thead>
                                 <tr>
-                                    <th>#</th>
+                                    <!-- <th>#</th> -->
                                     <th>Product</th>
                                     <th>Unit Price</th>
                                     <th>Quantity</th>
@@ -50,7 +50,7 @@
                             <tbody>
                                 @foreach ($orderItems as $line)
                                     <tr>
-                                        <th scope="row">{{ $loop->iteration}}</th>
+                                        <!-- <th scope="row">{{ $loop->iteration}}</th> -->
                                         <td>{{ $line->name }}</td>
                                         <td>{{ $line->unit_price }}</td>
                                         <td>{{ $line->orderQuantity }}</td>
@@ -59,7 +59,7 @@
                                 @endforeach
 
                                 <tr>
-                                    <td colspan="4">Total</td>
+                                    <td colspan="3">Total</td>
                                     <td>{{ $order->amount }}</td>
                                 </tr>
                             </tbody>
