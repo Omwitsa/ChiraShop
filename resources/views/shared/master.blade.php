@@ -50,8 +50,7 @@
             @yield('content')
             
             <footer class="main-footer">
-                <strong>Copyright &copy; {{date('Y')}}<a href="https://www.charabeauty.co.ke/" target="_blank"> Chara Beauty</a>.</strong>
-                All rights reserved.
+                <strong>Copyright &copy; {{date('Y')}} - powered by <a href="http://www.newtechsoftwares.com" target="_blank"> Newtech Softwares</a>.</strong>
                 <!-- <div class="float-right d-none d-sm-inline-block">
                     <b>Version</b> 3.2.0
                 </div> -->

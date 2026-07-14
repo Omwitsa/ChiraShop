@@ -31,6 +31,13 @@
                 </li>
 
                 <li class="nav-item">
+                    <a href="{{env('APP_ROOT')}}client-orders" class="nav-link">
+                        <i class="nav-icon fas fa-tachometer-alt"></i>
+                        <p>My Orders</p>
+                    </a>
+                </li>
+
+                <li class="nav-item">
                     <a href="{{env('APP_ROOT')}}shop" class="nav-link">
                         <i class="nav-icon fas fa-tachometer-alt"></i>
                         <p>Shop</p>

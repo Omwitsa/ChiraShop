@@ -37,6 +37,7 @@ use App\Livewire\Client\ClientOrders;
 use App\Livewire\Client\Shop;
 use App\Livewire\Client\CartItems;
 use App\Livewire\Client\ProductInfo;
+use App\Livewire\Client\MyOrderView;
 
 use App\Livewire\Orders;
 use App\Livewire\OrderSummery;
@@ -105,7 +106,7 @@ Route::get('/client-home', ClientHome::class);
 Route::get('/order-summary', OrderSummery::class); 
 Route::get('/checkout', Checkout::class); 
 Route::get('/client-orders', ClientOrders::class); 
-
+Route::get('/my-order-view/{id}', MyOrderView::class)->name('my-order-view');
 
 // // Route for mailing
 // Route::get('/email', function(){
