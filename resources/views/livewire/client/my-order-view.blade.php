@@ -32,7 +32,7 @@
                     <div class="card-body table-responsive p-0">
                         <div class="row text-center">
                             <div class="col-sm-12">
-                                <h3>{{ $order->name }}</3>
+                                <h3>{{ $client->name }}</3>
                                 <h6>{{ $order->orderDate }}</h6>
                             </div>
                         </div><hr>
