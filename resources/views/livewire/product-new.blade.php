@@ -131,7 +131,7 @@
                             </div><hr>
 
                             <div class="form-group row">
-                                <label class="col-xs-12 col-sm-2 col-form-label">Upload Picture</label>
+                                <label class="col-xs-12 col-sm-2 col-form-label">Upload Image</label>
                                 <div class="col-xs-12 col-sm-4">
                                     <input wire:model="image" type="file" class="form-control">
                                     <div wire:loading wire:target="image"> Uploading... </div>
