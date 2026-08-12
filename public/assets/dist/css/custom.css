@@ -1,3 +1,34 @@
+.product-section img{
+	width: 100%;
+	display: block; 
+	object-fit: cover;
+}
+.product-images {
+  display: flex;                   /* Aligns children in a row */
+  flex-wrap: nowrap;               /* Prevents items from wrapping to the next line */
+  overflow-x: auto;                /* Enables horizontal scrolling when content overflows */
+  overflow-y: hidden;              /* Hides vertical scrollbar */
+  padding: 10px;
+  gap: 15px;                       /* Adds space between items */
+}
+.product-image {
+  flex: 0 0 auto;                  /* Prevents items from shrinking; keeps their native width */
+  width: 200px;                    /* Set your preferred item size */
+  height: 150px;
+  background-color: #f0f0f0;
+}
+/* .product-images::-webkit-scrollbar {
+  display: none;               
+} */
+/* .product-images {
+  -ms-overflow-style: none;    
+  scrollbar-width: none;       
+} */
+/* .product-images {
+  -webkit-overflow-scrolling: touch; 
+} */
+
+
 .required{
 	color: red;
 }

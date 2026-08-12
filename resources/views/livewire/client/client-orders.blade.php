@@ -37,8 +37,8 @@
                                     <th>#</th>
                                     <th>Order Date</th>
                                     <th>Amount</th>
+                                    <th>Status</th>
                                     <th></th>
-                                    <!-- <th>Status</th> -->
                                 </tr>
                             </thead>
                             <tbody>
@@ -47,10 +47,10 @@
                                         <th scope="row">{{ $loop->iteration}}</th>
                                         <td>{{ $order->orderDate }}</td>
                                         <td>{{ $order->amount }}</td>
+                                        <td>{{ $order->status }}</td>
                                         <td>
                                             <button wire:click="details({{ $order->id }})" wire:key="{{ $order->id }}" type="button" class="btn btn-info btn-sm waves-effect waves-light">Details</button>
                                         </td>
-                                        <!-- <td>{{ $order->status }}</td> -->
                                     </tr>
                                 @endforeach
                             </tbody>

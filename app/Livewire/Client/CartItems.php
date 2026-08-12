@@ -7,6 +7,7 @@ use Illuminate\Support\Facades\Session;
 use App\Mail\OrderNotification;
 use Illuminate\Support\Facades\Mail;
 use App\Models\OrderHeader;
+use App\Constants\Enums\OrderStatus;
 use stdclass;
 
 class CartItems extends Component
@@ -72,7 +73,7 @@ class CartItems extends Component
             'clientId' => $this->client->id,
             'orderDate' => date('Y-m-d', time()),
             'receivingDate' => date('Y-m-d', time()),
-            'status' => '1',
+            'status' => OrderStatus::PENDING->value,
             'lpo' => '',
             'dropOff' => '',
             'lineTotal' => $total,

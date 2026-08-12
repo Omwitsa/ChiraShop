@@ -78,6 +78,9 @@ class Shop extends Component
                 $product = (object) $p_value;
                 $itemOrdered = in_array($product->id, array_column($this->cartItems, 'id'));
                 $product->addedToCart = empty($this->cartItems) ? false : $itemOrdered;
+
+                $productImages = explode(';', $product->picUrl);
+                $product->picUrl = $productImages[0];
             }
 
             $productCategory->products = $products;

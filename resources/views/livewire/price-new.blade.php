@@ -96,7 +96,7 @@
                                         </div>
                                     </div>
 
-                                    <button type="submit" class="btn btn-primary waves-effect waves-light">Submit</button>
+                                    <button type="submit" wire:loading.attr="disabled" class="btn btn-primary waves-effect waves-light">Submit</button>
                                 </div>
                             </div>
                         </form> 

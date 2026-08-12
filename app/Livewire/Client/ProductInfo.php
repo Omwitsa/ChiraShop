@@ -22,6 +22,8 @@ class ProductInfo extends Component
         $products =  DB::select('SELECT * FROM products WHERE id = ?', [$id]);
         foreach ($products as $p_key => $p_value) {
             $this->product = (object) $p_value;
+            $this->product->images = explode(';', $this->product->picUrl);
+            $this->product->firstImage = $this->product->images[0];
         }
     }
 

@@ -9,6 +9,7 @@ use App\Models\Product;
 use App\Models\ProductCategory;
 use Illuminate\Support\Facades\Storage;
 use Intervention\Image\Laravel\Facades\Image;
+use Illuminate\Support\Str;
 
 class ProductEdit extends Component
 {
@@ -33,8 +34,10 @@ class ProductEdit extends Component
     public $active;
     public $isAddOn;
     public $inStock;
-    #[Validate('image|max:1024')] // 1MB Max
+    #[Validate('image|max:2048')] // 2MB Max
     public $image;         // holds a TemporaryUploadedFile
+    public $images = []; // holds a TemporaryUploadedFile
+
     public $croppedImage;
 
     public function mount($id)
@@ -55,6 +58,7 @@ class ProductEdit extends Component
         $this->volume = $this->product->volume;
         $this->shipmentTime = $this->product->shipmentTime;
         $this->picUrl = $this->product->picUrl;
+        $this->product->images = explode(';', $this->product->picUrl);
         $this->active = $this->product->active === 1;
         $this->isAddOn = $this->product->isAddOn === 1;
         $this->inStock = $this->product->inStock === 1;
@@ -62,22 +66,40 @@ class ProductEdit extends Component
 
     public function UpdateProduct()
     {
-        if($this->image){
-            // Decode the base64 string sent from the frontend
-            $imageData = explode(";base64,", $this->croppedImage)[1]; // Remove the 'data:image/png;base64,' part
-            $decodedImage = base64_decode($imageData);
+        $this->validate([
+            'images.*' => 'image|max:2048', // 2MB each
+        ]);
 
-            // // Using Intervention Image to force dimensions one last time
-            // $img = Image::make($decodedImage)
-            //     ->resize(800, 800);
-            //     // ->encode('jpg', 80);
-
-            $name = time().'-'.$this->image->getClientOriginalName();
+        $this->picUrl = empty($this->images) ? $this->picUrl : '';
+        foreach ($this->images as $image) {
+            
+            $name = time().'-'.$image->getClientOriginalName();
             $filename = pathinfo($name, PATHINFO_FILENAME);
+
             $path = 'images/' . $filename . '.png';
-            Storage::disk('public')->put($path, $decodedImage);
-            $this->product->picUrl = $path;
+            // Storage::disk('public')->put($path, $decodedImage);
+
+            $image->storeAs('/', $path, 'public');
+
+            $this->picUrl = Str::of($this->picUrl)->isEmpty() ? $path : $this->picUrl . ';' . $path;
         }
+
+        // if($this->image){
+        //     // Decode the base64 string sent from the frontend
+        //     $imageData = explode(";base64,", $this->croppedImage)[1]; // Remove the 'data:image/png;base64,' part
+        //     $decodedImage = base64_decode($imageData);
+
+        //     // // Using Intervention Image to force dimensions one last time
+        //     // $img = Image::make($decodedImage)
+        //     //     ->resize(800, 800);
+        //     //     // ->encode('jpg', 80);
+
+        //     $name = time().'-'.$this->image->getClientOriginalName();
+        //     $filename = pathinfo($name, PATHINFO_FILENAME);
+        //     $path = 'images/' . $filename . '.png';
+        //     Storage::disk('public')->put($path, $decodedImage);
+        //     $this->product->picUrl = $path;
+        // }
 
         $this->product->name = $this->name;
         $this->product->code = $this->code;
@@ -95,6 +117,7 @@ class ProductEdit extends Component
         $this->product->origin = $this->origin;
         $this->product->volume = $this->volume;
         $this->product->shipmentTime = $this->shipmentTime;
+        $this->product->picUrl = $this->picUrl;
         $this->product->save();
         toastr()->success('Product updated successfully', 'Congrats', ['positionClass' => 'toast-top-center']);
         $this->redirect(env('APP_ROOT').'products');

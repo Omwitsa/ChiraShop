@@ -32,23 +32,8 @@
                     <div class="card-body">
                         <div class="row">
                             <div class="col-sm-6">
-                                <div class="row">
-                                    <div class="col-sm-12">
-                                        <img src="{{ asset('storage'.env('IMG_STORAGE').$product->firstImage) }}" alt="Chara Beauty" style="max-width: 100%;" class="block max-w-full">
-                                    </div>
-                                </div>
-
-                                <div class="row">
-                                    <div class="col-sm-12 product-images">
-                                        @foreach($product->images as $image)
-                                            <div class="product-image">
-                                                <img src="{{ asset('storage'.env('IMG_STORAGE').$image) }}" class="img-thumbnail" width="100%">
-                                            </div>
-                                        @endforeach
-                                    </div>
-                                </div>
+                                <img src="{{ asset('storage'.env('IMG_STORAGE').$product->picUrl) }}" alt="Chara Beauty" style="max-width: 100%;" class="block max-w-full">
                             </div>
-
                             <div class="col-sm-6">
                                 <div id="accordion">
                                     <div class="card">

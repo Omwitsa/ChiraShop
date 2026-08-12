@@ -8,6 +8,7 @@ use Livewire\Attributes\Validate;
 use App\Models\Product;
 use App\Models\ProductCategory;
 
+use Illuminate\Support\Str;
 use Illuminate\Support\Facades\Storage;
 use Intervention\Image\Laravel\Facades\Image;
 
@@ -31,8 +32,11 @@ class ProductNew extends Component
     public string $shipmentTime = '';
     public int $categoryId = 1;
     public $isAddOn;
-    #[Validate('image|max:1024')] // 1MB Max
+    #[Validate('image|max:2048')] // 2MB Max
     public $image;         // holds a TemporaryUploadedFile
+
+    public $images = []; // holds a TemporaryUploadedFile
+
     public $croppedImage;
     
     public function mount()
@@ -45,6 +49,74 @@ class ProductNew extends Component
     }
 
     public function creatProduct()
+    {
+        $this->validate([
+            'images.*' => 'image|max:2048', // 2MB each
+        ]);
+
+        $picUrls = "";
+        foreach ($this->images as $image) {
+            $name = time().'-'.$image->getClientOriginalName();
+            $filename = pathinfo($name, PATHINFO_FILENAME);
+
+            $path = 'images/' . $filename . '.png';
+            // Storage::disk('public')->put($path, $decodedImage);
+
+            $image->storeAs('/', $path, 'public');
+
+            $picUrls = Str::of($picUrls)->isEmpty() ? $path : $picUrls . ';' . $path;
+        }
+
+        Product::create([
+            'name' => $this->name,
+            'code' => $this->code,
+            'categoryId' => $this->categoryId,
+            'barcode' => $this->barcode,
+            'reasonToLove' => $this->reasonToLove,
+            'description' => $this->description,
+            'olFactoryNotes' => $this->olFactoryNotes,
+            'ingredients' => $this->ingredients,
+            'howToUse' => $this->howToUse,
+            'claims' => $this->claims,
+            'origin' => $this->origin,
+            'volume' => $this->volume,
+            'shipmentTime' => $this->shipmentTime,
+            'isAddOn' => $this->isAddOn === 1,
+            'picUrl' => $picUrls,
+        ]);
+
+        $this->reset('images');
+
+        // $name = time().'-'.$this->image->getClientOriginalName();
+        // $filename = pathinfo($name, PATHINFO_FILENAME);
+        // $path = 'images/' . $filename . '.png';
+        // Storage::disk('public')->put($path, $decodedImage);
+
+        // $product = new Product;
+        // $product->name = $this->name;
+        // $product->code = $this->code;
+        // $product->categoryId = $this->categoryId;
+        // $product->barcode = $this->barcode;
+        // $product->reasonToLove = $this->reasonToLove;
+        // $product->description = $this->description;
+        // $product->olFactoryNotes = $this->olFactoryNotes;
+        // $product->ingredients = $this->ingredients;
+        // $product->howToUse = $this->howToUse;
+        // $product->claims = $this->claims;
+        // $product->origin = $this->origin;
+        // $product->volume = $this->volume;
+        // $product->shipmentTime = $this->shipmentTime;
+        // $product->isAddOn = $this->isAddOn === 1;
+        // $product->picUrl = $path;
+        // $product->save();
+        
+        // $this->reset(['image', 'croppedImage']); // Reset state
+
+        // session()->flash('message', 'Image saved successfully!');
+        $this->redirect(env('APP_ROOT').'products');
+    }
+
+    public function creatProduct1()
     {
         // Decode the base64 string sent from the frontend
         $imageData = explode(";base64,", $this->croppedImage)[1]; // Remove the 'data:image/png;base64,' part

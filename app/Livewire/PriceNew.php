@@ -62,7 +62,8 @@ class PriceNew extends Component
         }
 
         $priceHeader = DB::table('price_headers')
-            ->where('id', $this->priceHeaderId)
+            ->where('clientCategoryId', $this->clientCategoryId)
+            ->whereNull('endDate')
             ->update(['endDate' => $this->startDate]);
 
         $price = PriceHeader::create([
