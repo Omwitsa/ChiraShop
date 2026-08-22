@@ -25,4 +25,5 @@ Run Migrations
 - Modify .evn file to match the appriopriate production properties
 
 ## Optimization Cammand
+- php artisan route:clear
 - php artisan optimize:clear
